@@ -1,6 +1,6 @@
-function appendValue(value) {
+function appendValue(deger) {
     let display = document.getElementById("display");
-    display.value += value;
+    display.value += deger;
   }
   
   function calculate() {
