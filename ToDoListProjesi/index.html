@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Todo List Projesi</title>
 </head>
 <body>
@@ -11,14 +12,14 @@
         <div class="header">
             <h2 class="title">Todo List Sayfası</h2>
         </div>
-        <div class="body">
+        <div class="card-body">
             <form id="todoAddForm">
-                <input type="text" placeholder="Todo Giriniz">
+                <input type="text" id="addInput" placeholder="Todo Giriniz">
                 <button type="submit" id="todoAddButton">Todo Ekleyin</button>
-                <hr>
             </form>
+            <hr>
         </div>
-        <div class="body">
+        <div class="card-body">
             <h2 class="title">Todo Listesi</h2>
             <form id="todoListForm">
                 <input type="text" placeholder="Todo Arayınız">
