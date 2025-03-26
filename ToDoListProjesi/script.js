@@ -6,3 +6,43 @@ let todoList = document.querySelector(".list-group");
 let firstCardBody = document.querySelectorAll(".card-body")[0];
 let secondCardBody = document.querySelectorAll(".card-body")[1];
 let clearButton = document.querySelector("#clearButton");
+
+runEvents();
+
+function runEvents(){
+    form.addEventListener("submit", addTodo);
+}
+
+function addTodo(e){
+    let inputText = addInput.value.trim();
+    if (inputText==null || inputText=="") {
+        alert("Lütfen bir değer giriniz!");
+    }else{
+        addTodoToUI(inputText);
+    }
+    e.preventDefault();
+}
+
+function addTodoToUI(newTodo) {  //Arayüze bir todo ekle demek.
+     /*
+<li class="list-group-item d-flex justify-content-between">Todo 1
+                            <a href="#" class="delete-item">
+                                <i class="fa fa-remove"></i>
+                            </a>
+                        </li>
+                        */
+    let li = document.createElement("li");
+    li.className="list-group-item d-flex justify-content-between";
+    li.textContent = newTodo;
+
+    let a =document.createElement("a");
+    a.href="#";
+    a.className="delete-item";
+
+    let i =document.createElement("i");
+    i.className="fa fa-remove";
+    
+    a.appendChild(i);
+    li.appendChild(a);
+    todoList.appendChild(li);
+}
