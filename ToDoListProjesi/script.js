@@ -19,6 +19,7 @@ function addTodo(e){
         alert("Lütfen bir değer giriniz!");
     }else{
         addTodoToUI(inputText);
+        addTodoStorage(inputText);
     }
     e.preventDefault();
 }
