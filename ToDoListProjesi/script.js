@@ -7,6 +7,8 @@ let firstCardBody = document.querySelectorAll(".card-body")[0];
 let secondCardBody = document.querySelectorAll(".card-body")[1];
 let clearButton = document.querySelector("#clearButton");
 
+let todos=[];
+
 runEvents();
 
 function runEvents(){
@@ -46,4 +48,18 @@ function addTodoToUI(newTodo) {  //Arayüze bir todo ekle demek.
     a.appendChild(i);
     li.appendChild(a);
     todoList.appendChild(li);
+}
+
+function addTodoStorage(newTodo) {
+    checkTodosFromStorage();
+    todos.push(newTodo);
+    localStorage.setItem("todos",JSON.stringify(todos));
+}
+
+function checkTodosFromStorage() {
+    if (localStorage.getItem("todos")===null) {
+        todos = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
 }
