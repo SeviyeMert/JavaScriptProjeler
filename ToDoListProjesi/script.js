@@ -77,4 +77,8 @@ function showAlert(type,message) {
    div.textContent = message;
 
    firstCardBody.appendChild(div);
+
+   setTimeout(function(){
+        div.remove();
+   }, 2500);
 }
