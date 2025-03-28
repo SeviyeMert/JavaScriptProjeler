@@ -18,10 +18,11 @@ function runEvents(){
 function addTodo(e){
     let inputText = addInput.value.trim();
     if (inputText==null || inputText=="") {
-        alert("Lütfen bir değer giriniz!");
+        showAlert("warning","Lütfen boş bırakmayınız!");
     }else{
         addTodoToUI(inputText);
         addTodoStorage(inputText);
+        showAlert("success","Todo Eklendi.");
     }
     e.preventDefault();
 }
@@ -74,4 +75,6 @@ function showAlert(type,message) {
    // div.className="alert alert-"+type;
    div.className = `alert alert-${type}`; 
    div.textContent = message;
+
+   firstCardBody.appendChild(div);
 }
