@@ -72,4 +72,5 @@ function showAlert(type,message) {
     */
    let div = document.createElement("div");
    div.className="alert alert-"+type;
+   div.textContent = message;
 }
