@@ -63,3 +63,13 @@ function checkTodosFromStorage() {
         todos = JSON.parse(localStorage.getItem("todos"));
     }
 }
+
+function showAlert(type,message) {
+    /*
+    <div class="alert alert-warning" role="alert">
+  This is a warning alert—check it out!
+</div>
+    */
+   let div = document.createElement("div");
+   div.className="alert alert-"+type;
+}
