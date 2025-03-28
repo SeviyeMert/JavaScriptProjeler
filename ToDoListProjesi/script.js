@@ -71,6 +71,7 @@ function showAlert(type,message) {
 </div>
     */
    let div = document.createElement("div");
-   div.className="alert alert-"+type;
+   // div.className="alert alert-"+type;
+   div.className = `alert alert-${type}`; 
    div.textContent = message;
 }
