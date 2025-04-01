@@ -6,6 +6,7 @@ let todoList = document.querySelector(".list-group");
 let firstCardBody = document.querySelectorAll(".card-body")[0];
 let secondCardBody = document.querySelectorAll(".card-body")[1];
 let clearButton = document.querySelector("#clearButton");
+let filterInput = document.querySelector("#todoSearch");
 
 let todos=[];
 
