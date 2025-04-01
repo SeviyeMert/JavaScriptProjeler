@@ -17,6 +17,7 @@ function runEvents(){
 }
 
 function removeTodoToStorage(removeTodo){
+    checkTodosFromStorage();
 }
 
 function addTodo(e){
