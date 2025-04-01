@@ -16,6 +16,9 @@ function runEvents(){
     form.addEventListener("submit", addTodo);
 }
 
+function removeTodoToStorage(removeTodo){
+}
+
 function addTodo(e){
     let inputText = addInput.value.trim();
     if (inputText==null || inputText=="") {
