@@ -16,6 +16,9 @@ function runEvents(){
     form.addEventListener("submit", addTodo);
 }
 
+function removeTodoToUI(e){
+}
+
 function removeTodoToStorage(removeTodo){
     checkTodosFromStorage();
     todos.forEach(function(todo,index){
