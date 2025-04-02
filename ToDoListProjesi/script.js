@@ -20,6 +20,7 @@ function removeTodoToStorage(removeTodo){
     checkTodosFromStorage();
     todos.forEach(function(todo,index){
         if(removeTodo===todo){
+            todos.splice(index,1);
         }
     });
 }
