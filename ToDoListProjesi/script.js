@@ -18,7 +18,9 @@ function runEvents(){
 
 function removeTodoToStorage(removeTodo){
     checkTodosFromStorage();
-}
+    todos.forEach(function(todo,index){
+    }
+});
 
 function addTodo(e){
     let inputText = addInput.value.trim();
