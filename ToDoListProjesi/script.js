@@ -23,6 +23,7 @@ function removeTodoToStorage(removeTodo){
             todos.splice(index,1);
         }
     });
+    localStorage.setItem("todos",JSON.stringify(todos));
 }
 
 function addTodo(e){
