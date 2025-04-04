@@ -24,6 +24,7 @@ function removeTodoToUI(e){
 
          //Storage'dan Silme
          removeTodoToStorage(todo.textContent);
+         showAlert("success","Todo başarıyla silindi.");
     }
 }
 
