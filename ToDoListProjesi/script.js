@@ -18,6 +18,7 @@ function runEvents(){
 
 function removeTodoToUI(e){
     if(e.target.className==="fa fa-remove"){
+         //Ekrandan Silme
     }
 }
 
