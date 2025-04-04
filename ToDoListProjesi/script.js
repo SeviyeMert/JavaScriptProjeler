@@ -23,6 +23,7 @@ function removeTodoToUI(e){
          todo.remove();
 
          //Storage'dan Silme
+         removeTodoToStorage(todo.textContent);
     }
 }
 
