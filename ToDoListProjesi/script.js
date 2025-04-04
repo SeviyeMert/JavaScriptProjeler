@@ -21,6 +21,8 @@ function removeTodoToUI(e){
          //Ekrandan Silme
          const todo = e.target.parentElement.parentElement;
          todo.remove();
+
+         //Storage'dan Silme
     }
 }
 
