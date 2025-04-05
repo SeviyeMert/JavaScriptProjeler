@@ -18,6 +18,11 @@ function runEvents(){
 
 function allTodosEverywhere() {
     let todoListesi = document.querySelectorAll(".list-group-item");
+    if (todoListesi.length>0) {
+        
+    } else {
+        
+    }
 }
 
 function removeTodoToUI(e){
