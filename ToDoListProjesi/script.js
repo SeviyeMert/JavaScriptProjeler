@@ -16,6 +16,10 @@ function runEvents(){
     form.addEventListener("submit", addTodo);
 }
 
+function allTodosEverywhere() {
+    
+}
+
 function removeTodoToUI(e){
     if(e.target.className==="fa fa-remove"){
          //Ekrandan Silme
