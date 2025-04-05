@@ -17,13 +17,13 @@ function runEvents(){
 }
 
 function allTodosEverywhere() {
-    
+    let todoListesi = document.querySelectorAll(".list-group-item");
 }
 
 function removeTodoToUI(e){
     if(e.target.className==="fa fa-remove"){
          //Ekrandan Silme
-         const todo = e.target.parentElement.parentElement;
+         let todo = e.target.parentElement.parentElement;
          todo.remove();
 
          //Storage'dan Silme
