@@ -13,7 +13,7 @@
 <body>
     <fieldset>
         <label for="sayi">Sayı</label>
-        <input type="number" placeholder="Sayı giriniz...">
+        <input id="sayi" type="number" placeholder="Sayı giriniz...">
         <button id="btn">Hesapla</button>
         <hr>
         <div id="sonuc"></div>
@@ -23,6 +23,17 @@
 
     <script>
         let deger = document.getElementById("sayi");
+        let btn = document.getElementById("btn");
+        let divSonuc = document.getElementById("sonuc");
+
+        function hesapla(){
+            let sayi = Number(deger.value);
+            let sonuc = sayi % 2 == 0 ? "çift" : "tek";
+            let cevap = `${sayi} sayısı bir <span class="sonuc">${sonuc}</span> sayıdır.`;
+            divSonuc.innerHTML = cevap;
+
+            btn.addEventListener("click", hesapla);
+        }
     </script>
 </body>
 </html>
