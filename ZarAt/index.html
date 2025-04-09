@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zar At</title>
+    <style>
+        ul#zarlar li:first-child {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button id="zarat">Zar At</button>
+    <ul id="zarlar"></ul>
+
+    <script>
+        const btnZarAt = document.getElementById("zarat");
+        const ulZarlar = document.getElementById("zarlar");
+
+        btnZarAt.onclick = function() {
+            let li = document.createElement("li");
+            li.textContent = zarAt();
+            ulZarlar.prepend(li);
+        };
+
+        function zarAt() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+    </script>
+</body>
+</html>

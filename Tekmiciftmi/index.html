@@ -29,11 +29,12 @@
         function hesapla(){
             let sayi = Number(deger.value);
             let sonuc = sayi % 2 == 0 ? "çift" : "tek";
-            let cevap = `${sayi} sayısı bir <span class="sonuc">${sonuc}</span> sayıdır.`;
+            let cevap = sayi + " sayısı bir " + sonuc + " sayıdır.";
             divSonuc.innerHTML = cevap;
-
-            btn.addEventListener("click", hesapla);
         }
+
+        btn.addEventListener("click", hesapla);
+
     </script>
 </body>
 </html>
