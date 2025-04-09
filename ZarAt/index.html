@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zar At</title>
     <style>
-        ul#zarlar li:first-child {
+        #sayi {
             color: red;
             font-weight: bold;
         }
@@ -13,16 +13,15 @@
 </head>
 <body>
     <button id="zarat">Zar At</button>
-    <ul id="zarlar"></ul>
+
+    <div id="sayi"></div>
 
     <script>
         const btnZarAt = document.getElementById("zarat");
-        const ulZarlar = document.getElementById("zarlar");
+        const zargelen = document.getElementById("sayi");
 
         btnZarAt.onclick = function() {
-            let li = document.createElement("li");
-            li.textContent = zarAt();
-            ulZarlar.prepend(li);
+            zargelen.textContent = zarAt(); 
         };
 
         function zarAt() {
