@@ -1,4 +1,5 @@
 const sayac = document.getElementById("btn");
 
-let x = 0;
-sayac.onclick = () => sayac.textContent = ++x;
+sayac.addEventListener("click", function() {
+    sayac.textContent = Number(sayac.textContent) + 1;
+});
