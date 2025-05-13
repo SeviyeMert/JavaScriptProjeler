@@ -1,13 +1,32 @@
-const coptbtn = document.getElementById("copybtn");
+const copybtn = document.getElementById("copybtn");
 const uretbtn = document.getElementById("uretbtn");
-const password = document.getElementById("password");
+const passwordInput = document.getElementById("password");
 
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}<>?/"";
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}<>?/';
+
+function sifreUret(length) {
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const random = Math.floor(Math.random() * characters.length);
+        password += characters[random];
+    }
+    return password;
+}
 
 uretbtn.addEventListener("click", () => {
-    const length = parseInt(password.value);
-    if ( length < 8 || length > 16){
-        alert("Şifre uzunluğu 8 ile 16 arasında olmalı.");
+    const length = Math.floor(Math.random() * 9) + 8; 
+    const password = sifreUret(length);
+    passwordInput.value = password;
+});
+
+copybtn.addEventListener("click", () => {
+    const password = passwordInput.value;
+    if (!password) {
+        alert("Önce bir şifre üret!");
         return;
     }
-})
+
+    navigator.clipboard.writeText(password)
+        .then(() => alert("Şifre kopyalandı!"))
+        .catch(() => alert("Kopyalama başarısız!"));
+});
