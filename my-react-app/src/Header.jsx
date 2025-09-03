@@ -1,8 +1,11 @@
 import React from 'react'
+import './css/Header.css';
 
 function Header() {
   return (
-    <div>Header</div>
+    <div className='header'>
+      <div className='title'>KURSLARIM</div>
+    </div>
   )
 }
 
