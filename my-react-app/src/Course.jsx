@@ -5,7 +5,7 @@ function Course({ course }) {
   return (
     <div className='course'>
         <div>
-            <img src={image} width={250}/>
+            <img src={image} width={210} height={110}/>
             <h4 className='course-title'>{title}</h4>
             <p className='course-desc'>{description}</p>
         </div>
