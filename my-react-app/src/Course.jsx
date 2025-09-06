@@ -6,8 +6,8 @@ function Course({ course }) {
     <div className='course'>
         <div>
             <img src={image} width={250}/>
-            <h4>{title}</h4>
-            <h5>{description}</h5>
+            <h4 className='course-title'>{title}</h4>
+            <p className='course-desc'>{description}</p>
         </div>
     </div>
   )
