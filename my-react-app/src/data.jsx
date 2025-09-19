@@ -1,7 +1,7 @@
 import Html from './images/html.png';
 import Css from './images/css.png';
 import JavaScript from './images/javascript.png';
-import React from './images/react.png';
+import React from './images/react.jpg';
 
 export const courses = [
     {
