@@ -3,14 +3,17 @@ import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    // Sahte basit login kontrolü
-    if(data.email === "test@example.com" && data.password === "1234") {
+    if (data.email === "test@example.com" && data.password === "1234") {
       alert("Giriş başarılı!");
-      navigate("/projects"); // Giriş başarılıysa projelere yönlendir
+      navigate("/projects");
     } else {
       alert("Email veya şifre hatalı!");
     }
@@ -33,8 +36,12 @@ function Login() {
           {...register("password", { required: "Şifre zorunlu" })}
           style={{ width: "100%", marginBottom: 10, padding: 8 }}
         />
-        {errors.password && <p style={{ color: "red" }}>{errors.password.message}</p>}
-        <button type="submit" style={{ width: "100%", padding: 10 }}>Giriş Yap</button>
+        {errors.password && (
+          <p style={{ color: "red" }}>{errors.password.message}</p>
+        )}
+        <button type="submit" style={{ width: "100%", padding: 10 }}>
+          Giriş Yap
+        </button>
       </form>
       <p style={{ marginTop: 10 }}>
         Hesabın yok mu? <Link to="/register">Kayıt Ol</Link>

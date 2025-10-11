@@ -3,16 +3,18 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    // localStorage'da email zaten kayıtlı mı kontrol et
-    if(localStorage.getItem(data.email)) {
+    if (localStorage.getItem(data.email)) {
       alert("Bu email zaten kayıtlı!");
       return;
     }
-    // Kullanıcı bilgisini localStorage'a kaydet
     const userData = {
       name: data.name,
       email: data.email,
@@ -49,9 +51,13 @@ function Register() {
           {...register("password", { required: "Şifre zorunlu" })}
           style={{ width: "100%", marginBottom: 10, padding: 8 }}
         />
-        {errors.password && <p style={{ color: "red" }}>{errors.password.message}</p>}
+        {errors.password && (
+          <p style={{ color: "red" }}>{errors.password.message}</p>
+        )}
 
-        <button type="submit" style={{ width: "100%", padding: 10 }}>Kayıt Ol</button>
+        <button type="submit" style={{ width: "100%", padding: 10 }}>
+          Kayıt Ol
+        </button>
       </form>
       <p style={{ marginTop: 10 }}>
         Zaten hesabın var mı? <Link to="/login">Giriş Yap</Link>
