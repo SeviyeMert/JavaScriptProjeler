@@ -1,25 +1,27 @@
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Projects from "./pages/Projects";
-import React, { useContext } from 'react';
+import "./App.css";
+import { LanguageProvider } from "./Contexts/languageContext";
+import { ThemeProvider } from "./Contexts/ThemeContext";
+import Header from "./Components/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Components/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-  const { language } = useContext(LanguageContext);
   return (
-    <div></div>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <ThemeProvider>
+        <LanguageProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </LanguageProvider>
+      </ThemeProvider>
+    </Router>
   );
 }
-
 
 export default App;

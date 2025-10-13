@@ -1,0 +1,25 @@
+.register-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.register-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box; /* Padding'in genişliği artırmamasını sağlar */
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+.register-link-text {
+  margin-top: 10px;
+}

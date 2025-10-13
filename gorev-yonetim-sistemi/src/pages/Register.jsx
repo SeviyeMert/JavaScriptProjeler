@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import "../css/Register.css";
 
 function Register() {
   const {
@@ -12,7 +13,7 @@ function Register() {
 
   const onSubmit = (data) => {
     if (localStorage.getItem(data.email)) {
-      alert("Bu email zaten kayıtlı!");
+      alert("This email is already registered!");
       return;
     }
     const userData = {
@@ -21,46 +22,50 @@ function Register() {
       password: data.password,
     };
     localStorage.setItem(data.email, JSON.stringify(userData));
-    alert("Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.");
+    alert(
+      "Registration successful! You are being redirected to the login page."
+    );
     navigate("/login");
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "auto", padding: 20 }}>
-      <h2>Kayıt Ol</h2>
+    <div className="register-container">
+      <h2>Sign up</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
-          placeholder="İsim"
-          {...register("name", { required: "İsim zorunlu" })}
-          style={{ width: "100%", marginBottom: 10, padding: 8 }}
+          placeholder="Name"
+          {...register("name", { required: "Name is required" })}
+          className="register-input"
         />
-        {errors.name && <p style={{ color: "red" }}>{errors.name.message}</p>}
+        {errors.name && <p className="error-message">{errors.name.message}</p>}
 
         <input
           type="email"
           placeholder="Email"
-          {...register("email", { required: "Email zorunlu" })}
-          style={{ width: "100%", marginBottom: 10, padding: 8 }}
+          {...register("email", { required: "Email is required" })}
+          className="register-input"
         />
-        {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
+        {errors.email && (
+          <p className="error-message">{errors.email.message}</p>
+        )}
 
         <input
           type="password"
-          placeholder="Şifre"
-          {...register("password", { required: "Şifre zorunlu" })}
-          style={{ width: "100%", marginBottom: 10, padding: 8 }}
+          placeholder="Password"
+          {...register("password", { required: "Password is required" })}
+          className="register-input"
         />
         {errors.password && (
-          <p style={{ color: "red" }}>{errors.password.message}</p>
+          <p className="error-message">{errors.password.message}</p>
         )}
 
-        <button type="submit" style={{ width: "100%", padding: 10 }}>
-          Kayıt Ol
+        <button type="submit" className="register-button">
+          Sign up
         </button>
       </form>
-      <p style={{ marginTop: 10 }}>
-        Zaten hesabın var mı? <Link to="/login">Giriş Yap</Link>
+      <p className="register-link-text">
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </div>
   );
