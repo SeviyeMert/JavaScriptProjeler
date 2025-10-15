@@ -24,20 +24,11 @@ function Header() {
 
   const t = translations[language];
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <header className="header">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
-
-      <button
-        className="menu-button"
-        onClick={() => setMenuOpen(!MenuOpen)}
-      ></button>
-
-      {/* Büyük ekran */}
 
       <div className="nav-links-container">
         <Link to="/products" className="nav-link">
@@ -59,51 +50,6 @@ function Header() {
           </button>
           {isEnterpriseOpen && (
             <div className="dropdown-enterprice">
-              <Link to="/enterprise/overview" className="dropdown-item">
-                Overview
-              </Link>
-              <Link to="/enterprise/services" className="dropdown-item">
-                Services
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Küçük ekran */}
-
-      <div className={`mobile-menu ${menuOpenenuOpen ? "open" : ""}`}>
-        <nav className="log">
-          <Link to="/login" className="logIn-button">
-            {t.login_button}
-          </Link>
-          <span className="divider">|</span>
-          <Link to="/register" className="signUp-button">
-            {t.signup_button}
-          </Link>
-        </nav>
-      </div>
-
-      <div className="mobile-nav-links">
-        <Link to="/products" className="nav-link">
-          Products
-        </Link>
-        <Link to="/solutions" className="nav-link">
-          Solutions
-        </Link>
-        <Link to="/resources" className="nav-link">
-          Resources
-        </Link>
-
-        <div className="mobile-dropdown">
-          <button
-            className="mobile-dropdown-button"
-            onClick={() => setIsEnterpriseOpen(!isEnterpriseOpen)}
-          >
-            Enterprise
-          </button>
-          {isEnterpriseOpen && (
-            <div className="mobile-dropdown-enterprice">
               <Link to="/enterprise/overview" className="dropdown-item">
                 Overview
               </Link>

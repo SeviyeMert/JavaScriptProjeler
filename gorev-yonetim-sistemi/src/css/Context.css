@@ -1,0 +1,7 @@
+.card-container-1 {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  height: 100px;
+  width: 100px;
+}

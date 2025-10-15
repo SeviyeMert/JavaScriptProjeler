@@ -3,9 +3,9 @@ import { LanguageProvider } from "./Contexts/languageContext";
 import { ThemeProvider } from "./Contexts/ThemeContext";
 import Header from "./Components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Context from "./pages/Context";
 
 function App() {
   return (
@@ -14,7 +14,14 @@ function App() {
         <LanguageProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Context />
+                </>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
