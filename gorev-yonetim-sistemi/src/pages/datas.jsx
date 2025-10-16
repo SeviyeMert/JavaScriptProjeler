@@ -1,8 +1,3 @@
-import React from "react";
-import Card_h1 from "./Card-h1";
-import Card_h2 from "./Card-h2";
-import Card_h3 from "./Card-h3";
-import Card4 from "./Card4";
 import image1 from "../images/section1-image1.png";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import image2 from "../images/section2-image1.png";
@@ -24,8 +19,8 @@ import image9 from "../images/section7-image1.png";
 import image10 from "../images/section7-image2.png";
 import image11 from "../images/section7-image3.png";
 
-function Context() {
-  const cardData1 = [
+export const datas= {
+    cardData1: [
     {
       cardHeader: "Hundreds of powerful tools, one platform.",
       cardContext:
@@ -35,14 +30,14 @@ function Context() {
       cardImage: image1,
     },
   ];
-  const cardData2 = [
+  cardData2: [
     {
       cardHeader: "ClickUp Overview.",
       cardContext:
         "ClickUp's unique Hierarchy helps you create the perfect structure that scales with your needs.",
     },
   ];
-  const cardData3 = [
+  cardData3: [
     {
       cardLogo: <HiOutlineViewGrid />,
       cardHeader: "Everything View",
@@ -72,21 +67,21 @@ function Context() {
       cardImage: image5,
     },
   ];
-  const cardData4 = [
+ cardData4: [
     {
       cardHeader: "Tackle work from any angle with 15+ powerful views.",
       cardContext: "hhfhrfhh", // Buraya bak
       cardImage: image5, //Buraya bak
     },
   ];
-  const cardData5 = [
+  cardData5: [
     {
       cardHeader: "Customize ClickUp for any need, no code required.",
       cardContext:
         "Everything in ClickUp can be easily customized to manage any type of project, no code or add-ons required.",
     },
   ];
-  const cardData6 = [
+   cardData6: [
     {
       cardLogo: <IoOptionsOutline />,
       cardHeader: "ClickApps",
@@ -121,7 +116,7 @@ function Context() {
         "ClickUp integrates with over 1,000 of your favorite tools. Sync your team calendars, messaging apps, cloud storage, and more to keep all of your tools in one place",
     },
   ];
-  const cardData7 = [
+  cardData7: [
     {
       cardHeader: "Collaborate on anything with your team.",
       cardContext:
@@ -129,7 +124,7 @@ function Context() {
       cardImage: image7,
     },
   ];
-  const cardData8 = [
+  cardData8: [
     {
       cardHeader: "Document and share anything with your team.",
       cardContext:
@@ -138,14 +133,14 @@ function Context() {
     },
   ];
 
-  const cardData9 = [
+   cardData9: [
     {
       cardHeader: "Stay on track with real-time reporting.",
       cardContext:
         "Set goals, track progress, and manage resources more effectively with powerful reporting features.",
     },
   ];
-  const cardData10 = [
+  cardData10: [
     {
       cardLogo: <HiOutlineViewGrid />,
       cardHeader: "Dashboards",
@@ -181,86 +176,4 @@ function Context() {
       cardImage: "",
     },
   ];
-
-  return (
-    <div>
-      <div className="section-1">
-        {cardData1.map((card1, index) => (
-          <Card_h1 key={index} {...card1} />
-        ))}
-      </div>
-      <div className="section-2">
-        {cardData2.map((card2, index) => (
-          <Card_h1 key={index} {...card2} />
-        ))}
-        {cardData3.map((card3, index) => (
-          <Card_h3 key={index} {...card3} />
-        ))}
-      </div>
-      <div className="section-3">
-        {cardData4.map((card4, index) => (
-          <Card_h2
-            key={index}
-            cardHeader={card4.cardHeader}
-            cardContext={card4.cardContext} //
-            cardImage={card4.cardImage} //
-          />
-        ))}
-      </div>
-      <div className="section-4">
-        {cardData5.map((card5, index) => (
-          <Card_h2 key={index} {...card5} />
-        ))}
-        {cardData6.map((card6, index) => (
-          <Card_h3 key={index} {...card6} />
-        ))}
-      </div>
-      <div className="section-5">
-        <div>
-          {cardData7.map((card7, index) => (
-            <Card_h2 key={index} {...card7} />
-          ))}
-        </div>
-        <button
-          style={{
-            backgroundColor: "white",
-            height: "30px",
-            width: "30px",
-            borderRadius: "20px",
-            border: "1px solid skyBlue",
-          }}
-        >
-          <FiArrowLeft />
-        </button>
-        <button
-          style={{
-            backgroundColor: "white",
-            height: "30px",
-            width: "30px",
-            borderRadius: "20px",
-            border: "1px solid skyBlue",
-          }}
-        >
-          <FiArrowRight />
-        </button>
-      </div>
-      <div className="section-6">
-        {cardData8.map((card8, index) => (
-          <Card_h2 key={index} {...card8} />
-        ))}
-      </div>
-
-      <div className="section-7">
-        {cardData9.map((card9, index) => (
-          <Card_h2 key={index} {...card9} />
-        ))}
-        {cardData10.map((card10, index) => (
-          <Card_h3 key={index} {...card10} />
-        ))}
-      </div>
-      <div className="section-8">card</div>
-    </div>
-  );
-}
-
-export default Context;
+};
