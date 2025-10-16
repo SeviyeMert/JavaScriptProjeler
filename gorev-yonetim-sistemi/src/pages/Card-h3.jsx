@@ -5,7 +5,9 @@ const Card_h3 = (props) => {
 
   return (
     <div>
-      <img src={cardLogo} alt="Card Logo" />
+      <span className="small-logo" style={{}}>
+        {cardLogo}
+      </span>
       <h3>{cardHeader}</h3>
       <div>{cardContext}</div>
       <img src={cardImage} alt="Card Image" />
