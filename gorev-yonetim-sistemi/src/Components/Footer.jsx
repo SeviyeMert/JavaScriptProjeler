@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/Footer.css";
 import logo from "../images/logo.png";
+import { Link } from "react-router-dom";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
@@ -14,18 +15,30 @@ function Footer() {
       </div>
 
       <div className="socials">
-        <button className="button">
+        <a
+          href="https://www.linkedin.com/"
+          className="social-button"
+          target="_blank"
+        >
           <IoLogoLinkedin />
-        </button>
-        <button className="button">
+        </a>
+        <a
+          href="https://www.facebook.com/"
+          className="social-button"
+          target="_blank"
+        >
           <FaFacebookSquare />
-        </button>
-        <button className="button">
+        </a>
+        <a
+          href="https://www.instagram.com/"
+          className="social-button"
+          target="_blank"
+        >
           <IoLogoInstagram />
-        </button>
-        <button className="button">
+        </a>
+        <a href="https://x.com/" className="social-button" target="_blank">
           <FaSquareXTwitter />
-        </button>
+        </a>
       </div>
     </footer>
   );

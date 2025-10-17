@@ -1,7 +1,24 @@
-.card-container-1 {
+.context-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  width: 100vw;
+  height: 100vh;
+}
+/* .section-1 {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  height: 40vh;
+  width: 100vw;
+  border: 2px solid black;
+  z-index: 1;
+}
+.section-2 {
   display: flex;
   justify-content: center;
-  background-color: black;
-  height: 100px;
-  width: 100px;
-}
+  background-color: rgb(0, 0, 0);
+  height: 40vh;
+  width: 100vw;
+} */

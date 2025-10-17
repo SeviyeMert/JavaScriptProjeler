@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Context.css";
 import Card_h1 from "../pages/Card-h1";
 import Card_h2 from "../pages/Card-h2";
 import Card_h3 from "../pages/Card-h3";
@@ -263,7 +264,7 @@ function Context() {
   ];
 
   return (
-    <div>
+    <div className="context-container">
       <div className="section-1">
         {cardData1.map((card1, index) => (
           <Card_h1 key={index} {...card1} />
