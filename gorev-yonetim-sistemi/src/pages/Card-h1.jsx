@@ -8,7 +8,7 @@ function Card_h1(props) {
       <h1>{cardHeader}</h1>
       <p>{cardContext}</p>
       <div>{cardList}</div>
-      <img src={cardImage} alt="image" />
+      {cardImage != null && <img src={cardImage} alt="image" />}
     </div>
   );
 }

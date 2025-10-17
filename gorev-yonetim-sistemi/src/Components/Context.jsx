@@ -4,6 +4,7 @@ import Card_h2 from "../pages/Card-h2";
 import Card_h3 from "../pages/Card-h3";
 import Card4 from "../pages/Card4";
 import Card5 from "../pages/Card5";
+import Card6 from "../pages/Card6";
 import image1 from "../images/section1-image1.png";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import image2 from "../images/section2-image1.png";
@@ -79,8 +80,15 @@ function Context() {
   const cardData4 = [
     {
       cardHeader: "Tackle work from any angle with 15+ powerful views.",
-      cardContext: "hhfhrfhh", // Buraya bak
-      cardImage: image5, //Buraya bak
+      cardLogo: [
+        <TbSubtask />,
+        <IoOptionsOutline />,
+        <MdTaskAlt />,
+        <PiPlanet />,
+        <TbSubtask />,
+        <MdTaskAlt />,
+      ],
+      cardImage: [image5, image6, image4, image3, image5, image4],
     },
   ];
   const cardData5 = [
@@ -182,7 +190,6 @@ function Context() {
       cardHeader: "Pulse",
       cardContext:
         "View automatic activity reports powered by machine learning to easily see where your time is being spent.",
-      cardImage: "",
     },
   ];
   const cardData11 = [
@@ -272,11 +279,11 @@ function Context() {
       </div>
       <div className="section-3">
         {cardData4.map((card4, index) => (
-          <Card_h2
+          <Card6
             key={index}
             cardHeader={card4.cardHeader}
-            cardContext={card4.cardContext} //
-            cardImage={card4.cardImage} //
+            cardLogo={card4.cardLogo}
+            cardImage={card4.cardImage}
           />
         ))}
       </div>

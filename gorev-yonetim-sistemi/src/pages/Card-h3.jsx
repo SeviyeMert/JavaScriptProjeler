@@ -10,7 +10,7 @@ const Card_h3 = (props) => {
       </span>
       <h3>{cardHeader}</h3>
       <div>{cardContext}</div>
-      <img src={cardImage} alt="Card Image" />
+      {cardImage != null && <img src={cardImage} alt="image" />}
     </div>
   );
 };
