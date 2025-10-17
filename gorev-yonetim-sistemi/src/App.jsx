@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Context from "./pages/Context";
+import Context from "./Components/Context";
 
 function App() {
   return (

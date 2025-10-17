@@ -1,8 +1,9 @@
 import React from "react";
-import Card_h1 from "./Card-h1";
-import Card_h2 from "./Card-h2";
-import Card_h3 from "./Card-h3";
-import Card4 from "./Card4";
+import Card_h1 from "../pages/Card-h1";
+import Card_h2 from "../pages/Card-h2";
+import Card_h3 from "../pages/Card-h3";
+import Card4 from "../pages/Card4";
+import Card5 from "../pages/Card5";
 import image1 from "../images/section1-image1.png";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import image2 from "../images/section2-image1.png";
@@ -23,6 +24,9 @@ import image8 from "../images/section6-image1.png";
 import image9 from "../images/section7-image1.png";
 import image10 from "../images/section7-image2.png";
 import image11 from "../images/section7-image3.png";
+import image12 from "../images/section8-image1.png";
+import image13 from "../images/section8-image2.png";
+import image14 from "../images/section8-image3.png";
 
 function Context() {
   const cardData1 = [
@@ -181,6 +185,75 @@ function Context() {
       cardImage: "",
     },
   ];
+  const cardData11 = [
+    {
+      cardHeader: "Time management made easy.",
+      cardContext:
+        "Make the most of your time with global Time Tracking from any device, Time Estimates, and time Reporting.",
+    },
+  ];
+  const cardData12 = [
+    {
+      cardImage: image12,
+      cardHeader: "Tracking",
+      cardContext:
+        "Track time automatically (or manually) link it to tasks from your desktop, mobile, or browser with ClickUp's global timer.",
+    },
+    {
+      cardImage: image13,
+      cardHeader: "Estimates",
+      cardContext:
+        "Add time estimates to tasks to allocate resources smarter and set expectations for your team.",
+    },
+    {
+      cardImage: image14,
+      cardHeader: "Reporting",
+      cardContext:
+        "Access detailed reporting for time tracked and automatically create reports for billable time.",
+    },
+  ];
+  const cardData13 = [
+    {
+      cardHeader: "But wait, there's more.",
+      cardContext:
+        "ClickUp comes with hundreds of more features to help your team tackle any type of work, check them all out below.",
+    },
+  ];
+  const cardData14 = [
+    {
+      cardLogo: <HiOutlineViewGrid />,
+      cardHeader: "Task Management",
+      cardContext: [
+        "Recurring Checklists",
+        "Reminders",
+        "Resolve Comments",
+        "Scrum Points",
+        "Status Templates",
+      ],
+    },
+    {
+      cardLogo: <HiOutlineViewGrid />,
+      cardHeader: "Complete Customization",
+      cardContext: [
+        "Custom Fields",
+        "Custom Statuses",
+        "Customize Assignees",
+        "Filter and Search Tasks",
+        "Hotkeys & Shortcuts",
+      ],
+    },
+    {
+      cardLogo: <HiOutlineViewGrid />,
+      cardHeader: "Team Collaboration",
+      cardContext: [
+        "2-Way Calender Sync",
+        "Capture,Mark Up, and Edit Screenshots",
+        "List Details & Discussions",
+        "Mentions",
+        "Real-Time Editing",
+      ],
+    },
+  ];
 
   return (
     <div>
@@ -258,7 +331,32 @@ function Context() {
           <Card_h3 key={index} {...card10} />
         ))}
       </div>
-      <div className="section-8">card</div>
+
+      <div className="section-8">
+        {cardData11.map((card11, index) => (
+          <Card_h2 key={index} {...card11} />
+        ))}
+        {cardData12.map((card12, index) => (
+          <Card4 key={index} {...card12} />
+        ))}
+      </div>
+
+      <div className="section-9">
+        <div>
+          {cardData13.map((card13, index) => (
+            <Card_h2 key={index} {...card13} />
+          ))}
+          {cardData14.map((card14, index) => (
+            <Card5
+              key={index}
+              cardLogo={card14.cardLogo}
+              cardHeader={card14.cardHeader}
+              cardContext={card14.cardContext}
+            />
+          ))}
+        </div>
+        <button className="see-all-button">See All Features</button>
+      </div>
     </div>
   );
 }

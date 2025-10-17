@@ -17,6 +17,7 @@ function Header() {
   };
 
   const [isEnterpriseOpen, setIsEnterpriseOpen] = useState(false);
+
   const translations = {
     en: enTranslations,
     tr: trTranslations,
