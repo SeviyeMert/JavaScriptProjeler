@@ -21,7 +21,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h2>Log in</h2>
+      <h2 className="login">Log in</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"
@@ -46,7 +46,10 @@ function Login() {
         </button>
       </form>
       <p className="login-link-text">
-        Don't have an account? <Link to="/register">Sign up</Link>
+        Don't have an account?{" "}
+        <Link to="/register" className="signup">
+          Sign up
+        </Link>
       </p>
     </div>
   );

@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import logo from "../images/logo.png";
 import enTranslations from "../i18n/en.json";
 import trTranslations from "../i18n/tr.json";
+import { IoIosArrowDown } from "react-icons/io";
 
 function Header() {
   const { language, setLanguage } = useLanguage();
@@ -47,7 +48,7 @@ function Header() {
             className="dropdown-button"
             onClick={() => setIsEnterpriseOpen(!isEnterpriseOpen)}
           >
-            Enterprise
+            Enterprise <IoIosArrowDown />
           </button>
           {isEnterpriseOpen && (
             <div className="dropdown-enterprice">

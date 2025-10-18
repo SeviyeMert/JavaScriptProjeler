@@ -36,8 +36,15 @@ function Context() {
       cardHeader: "Hundreds of powerful tools, one platform.",
       cardContext:
         "ClickUp comes with hundreds of features that can be customized for any work need—with more added every week. And they're all free, forever.",
-      cardList:
-        "OVERVIEW, VİEWS, CUSTOMIZATION, DOCS, REPORTING, TIME, ALL FEATURES",
+      cardList: [
+        "OVERVIEW",
+        "VİEWS",
+        "CUSTOMIZATION",
+        "DOCS",
+        "REPORTING",
+        "TIME",
+        "ALL FEATURES",
+      ],
       cardImage: image1,
     },
   ];
@@ -271,16 +278,21 @@ function Context() {
         ))}
       </div>
       <div className="section-2">
-        {cardData2.map((card2, index) => (
-          <Card_h1 key={index} {...card2} />
-        ))}
-        {cardData3.map((card3, index) => (
-          <Card_h3 key={index} {...card3} />
-        ))}
+        <div className="card2">
+          {cardData2.map((card2, index) => (
+            <Card_h1 key={index} {...card2} />
+          ))}
+        </div>
+        <div className="card3">
+          {cardData3.map((card3, index) => (
+            <Card_h3 key={index} {...card3} />
+          ))}
+        </div>
       </div>
       <div className="section-3">
         {cardData4.map((card4, index) => (
           <Card6
+            className="card4"
             key={index}
             cardHeader={card4.cardHeader}
             cardLogo={card4.cardLogo}

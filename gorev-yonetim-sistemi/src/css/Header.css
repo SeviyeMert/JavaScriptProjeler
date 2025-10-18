@@ -3,20 +3,22 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 0 10vh;
+  padding: 0 15vw;
   background-color: rgba(255, 255, 255, 0.968);
   width: 100vw;
   height: 15vh;
   box-sizing: border-box;
   position: relative;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #b4b4b4;
+  box-shadow: 0 2px 4px rgba(195, 195, 195, 0.2);
+  position: sticky;
+  top: 0;
 }
 
 body.dark .header {
   background-color: #1e1e1e;
   color: #ececec;
 }
-
 body.dark .logIn-button,
 body.dark .signUp-button {
   background-color: #1e1e1e;
@@ -38,7 +40,8 @@ body.dark .signUp-button {
   display: flex;
   align-items: center;
   position: absolute;
-  margin-left: 20vw;
+  left: 21vw;
+  gap: 20px;
 }
 
 .nav-link,
@@ -73,14 +76,20 @@ body.dark .dropdown-item {
   margin: 0;
 }
 
+.dropdown-button {
+  font-size: medium;
+}
+
 .dropdown-enterprice {
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: #ffffff;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
   left: 0;
+  top: 100%;
 }
 
 .dropdown-item {
@@ -103,7 +112,7 @@ body.dark .dropdown-item {
 .toggle-language {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 /* Tr | En (Language) buttons */
 .language {
@@ -132,7 +141,7 @@ body.dark .language button {
 .log {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  gap: 5px;
 }
 
 .logIn-button {
@@ -143,7 +152,7 @@ body.dark .language button {
   font-size: 25px;
 }
 
-.logIn-button:hover {
+.logIn-button:hover .signUp-button:hover {
   background-color: #ffffff;
   color: #000000;
 }
@@ -154,11 +163,6 @@ body.dark .language button {
   text-decoration: none;
   font-weight: bold;
   font-size: 25px;
-}
-
-.signUp-button:hover {
-  color: #000000;
-  background-color: #ffffff;
 }
 
 /* Divider */
