@@ -1,0 +1,22 @@
+.card6-header {
+  display: flex;
+  justify-content: center;
+}
+.card6-logos {
+  display: flex;
+  justify-content: center;
+}
+
+.card6-active-logo {
+  border-radius: 10px;
+  background-color: #fffb93;
+}
+.card6-image {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: auto;
+  margin: 30px;
+  padding: 30px;
+  border-top: 2px solid #fffb93;
+}

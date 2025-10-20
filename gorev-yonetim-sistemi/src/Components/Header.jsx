@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/Header.css";
 import { useLanguage } from "../Contexts/languageContext";
-import DarkLightToggle from "../Pages/DarkLightToggle";
+import DarkLightToggle from "../Contexts/DarkLightToggle";
 import { Link } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";

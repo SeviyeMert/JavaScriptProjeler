@@ -4,8 +4,135 @@
   margin: 0 auto;
 }
 
-.card2 {
+.card3 {
+  max-width: 1000px;
   display: grid;
+  grid-template-areas:
+    "card3-0 card3-0"
+    "card3-1 card3-2"
+    "card3-3 card3-3";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card3-0 {
+  grid-area: card3-0;
+}
+.card3-1 {
+  grid-area: card3-1;
+}
+.card3-2 {
+  grid-area: card3-2;
+}
+.card3-3 {
+  grid-area: card3-3;
+}
+
+.card3-0 .card-logo-h3 {
+  background-color: #fff9b4;
+}
+
+.card3-1 .card-logo-h3 {
+  background-color: rgb(255, 223, 167);
+}
+
+.card3-2 .card-logo-h3 {
+  background-color: rgb(255, 202, 202);
+}
+
+.card3-3 .card-logo-h3 {
+  background-color: rgb(219, 198, 253);
+}
+
+.section-4 {
+  max-width: 1000px;
+  display: grid;
+  grid-template-areas:
+    "card6-0 card6-0"
+    "card6-1 card6-2"
+    "card6-3 card6-4";
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+.car6-0 {
+  grid-area: card6-0;
+}
+.car6-1 {
+  grid-area: card6-1;
+}
+.car6-2 {
+  grid-area: card6-2;
+}
+.car6-3 {
+  grid-area: card6-3;
+}
+.car6-4 {
+  grid-area: card6-4;
+}
+
+.section5-buttons {
+  display: flex;
+  justify-content: center;
+}
+.section5-left-button,
+.section5-right-button {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  border: 1px solid skyblue;
+}
+
+.section-7 {
+  max-width: 1000px;
+  display: grid;
+  grid-template-areas:
+    "card7-0 card7-0"
+    "card7-1 card7-2"
+    "card7-3 card7-4";
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+.car7-0 {
+  grid-area: card7-0;
+}
+.card7-1 {
+  grid-area: card7-1;
+}
+.card7-2 {
+  grid-area: card7-2;
+}
+.card7-3 {
+  grid-area: card7-3;
+}
+.card7-4 {
+  grid-area: card7-4;
+}
+
+.section-8 {
+  display: flex;
+  flex-direction: center;
+}
+
+.section-9 {
+  display: flex;
+  justify-content: center;
+}
+
+.see-all-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  left: 37%;
+  height: 50px;
+  width: 250px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 119);
 }

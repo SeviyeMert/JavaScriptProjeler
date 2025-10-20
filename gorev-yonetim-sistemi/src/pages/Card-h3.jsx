@@ -1,12 +1,20 @@
 import React from "react";
-import "../css/card-h3.css";
+import "../css/Card-h3.css";
+import "../css/Context.css";
 
 const Card_h3 = (props) => {
   const { cardLogo, cardHeader, cardContext, cardImage } = props;
 
   return (
-    <div>
-      <span className="small-logo" style={{ fontSize: "40px" }}>
+    <div className={`card-container-h3`}>
+      <span
+        className="card-logo-h3"
+        style={{
+          fontSize: "40px",
+          padding: "11px 5px 0 7px",
+          borderRadius: "20px",
+        }}
+      >
         {cardLogo}
       </span>
       <h3 className="card-header-h3">{cardHeader}</h3>

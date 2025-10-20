@@ -28,6 +28,7 @@ import image10 from "../images/section7-image2.png";
 import image11 from "../images/section7-image3.png";
 import image12 from "../images/section8-image1.png";
 import image13 from "../images/section8-image2.png";
+import { BsBox } from "react-icons/bs";
 import image14 from "../images/section8-image3.png";
 
 function Context() {
@@ -236,7 +237,7 @@ function Context() {
   ];
   const cardData14 = [
     {
-      cardLogo: <HiOutlineViewGrid />,
+      cardLogo: <BsBox />,
       cardHeader: "Task Management",
       cardContext: [
         "Recurring Checklists",
@@ -247,7 +248,7 @@ function Context() {
       ],
     },
     {
-      cardLogo: <HiOutlineViewGrid />,
+      cardLogo: <BsBox />,
       cardHeader: "Complete Customization",
       cardContext: [
         "Custom Fields",
@@ -258,7 +259,7 @@ function Context() {
       ],
     },
     {
-      cardLogo: <HiOutlineViewGrid />,
+      cardLogo: <BsBox />,
       cardHeader: "Team Collaboration",
       cardContext: [
         "2-Way Calender Sync",
@@ -285,7 +286,14 @@ function Context() {
         </div>
         <div className="card3">
           {cardData3.map((card3, index) => (
-            <Card_h3 key={index} {...card3} />
+            <Card_h3
+              className={`card3-${index} `}
+              key={index}
+              cardLogo={card3.cardLogo}
+              cardHeader={card3.cardHeader}
+              cardContext={card3.cardContext}
+              cardImage={card3.cardImage}
+            />
           ))}
         </div>
       </div>
@@ -300,72 +308,57 @@ function Context() {
           />
         ))}
       </div>
+      {cardData5.map((card5, index) => (
+        <Card_h2 key={index} {...card5} />
+      ))}
       <div className="section-4">
-        {cardData5.map((card5, index) => (
-          <Card_h2 key={index} {...card5} />
-        ))}
         {cardData6.map((card6, index) => (
-          <Card_h3 key={index} {...card6} />
+          <Card_h3 key={index} className={`card6-${index} `} {...card6} />
         ))}
       </div>
       <div className="section-5">
-        <div>
+        <div className="card7">
           {cardData7.map((card7, index) => (
             <Card_h2 key={index} {...card7} />
           ))}
         </div>
-        <button
-          style={{
-            backgroundColor: "white",
-            height: "30px",
-            width: "30px",
-            borderRadius: "20px",
-            border: "1px solid skyBlue",
-          }}
-        >
-          <FiArrowLeft />
-        </button>
-        <button
-          style={{
-            backgroundColor: "white",
-            height: "30px",
-            width: "30px",
-            borderRadius: "20px",
-            border: "1px solid skyBlue",
-          }}
-        >
-          <FiArrowRight />
-        </button>
+        <div className="section5-buttons">
+          <button className="section5-left-button">
+            <FiArrowLeft />
+          </button>
+          <button className="section5-right-button">
+            <FiArrowRight />
+          </button>
+        </div>
       </div>
       <div className="section-6">
         {cardData8.map((card8, index) => (
           <Card_h2 key={index} {...card8} />
         ))}
       </div>
-
+      {cardData9.map((card9, index) => (
+        <Card_h2 key={index} {...card9} />
+      ))}
       <div className="section-7">
-        {cardData9.map((card9, index) => (
-          <Card_h2 key={index} {...card9} />
-        ))}
         {cardData10.map((card10, index) => (
-          <Card_h3 key={index} {...card10} />
+          <Card_h3 key={index} className={`card10-${index} `} {...card10} />
         ))}
       </div>
 
+      {cardData11.map((card11, index) => (
+        <Card_h2 key={index} {...card11} />
+      ))}
       <div className="section-8">
-        {cardData11.map((card11, index) => (
-          <Card_h2 key={index} {...card11} />
-        ))}
         {cardData12.map((card12, index) => (
           <Card4 key={index} {...card12} />
         ))}
       </div>
 
-      <div className="section-9">
-        <div>
-          {cardData13.map((card13, index) => (
-            <Card_h2 key={index} {...card13} />
-          ))}
+      <div>
+        {cardData13.map((card13, index) => (
+          <Card_h2 key={index} {...card13} />
+        ))}
+        <div className="section-9">
           {cardData14.map((card14, index) => (
             <Card5
               key={index}
@@ -375,8 +368,8 @@ function Context() {
             />
           ))}
         </div>
-        <button className="see-all-button">See All Features</button>
       </div>
+      <button className="see-all-button">See All Features</button>
     </div>
   );
 }

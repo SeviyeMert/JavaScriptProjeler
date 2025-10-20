@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/Card6.css";
 
 function Card6(props) {
   const { cardHeader, cardLogo, cardImage } = props;
@@ -10,27 +11,28 @@ function Card6(props) {
   };
 
   return (
-    <div className="container">
-      <h2>{cardHeader}</h2>
-      <div className="card-logos" style={{ fontSize: "40px" }}>
+    <div className="card6-container">
+      <h2 className="card6-header">{cardHeader}</h2>
+      <div className="card6-logos" style={{ fontSize: "40px" }}>
         {cardLogo.map((item, index) => (
           <li
             key={index}
             onClick={() => handleImage(index)}
-            className={index === activeIndex ? "active-logo" : ""}
+            className={index === activeIndex ? "card6-active-logo" : ""}
             style={{
               display: "inline-block",
               margin: "0 10px",
-              padding: 0,
+              padding: "20px 0 0 20px",
+              height: "60px",
+              width: "60px",
               cursor: "pointer",
-              border: "3px solid lemonchiffon",
             }}
           >
             {item}
           </li>
         ))}
       </div>
-      <div className="card-image">
+      <div className="card6-image">
         {cardImage && cardImage[activeIndex] && (
           <img src={cardImage[activeIndex]} alt="Card image" />
         )}

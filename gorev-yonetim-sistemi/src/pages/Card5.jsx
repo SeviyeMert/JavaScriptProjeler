@@ -1,22 +1,33 @@
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
+import "../css/Card5.css";
 
 function Card5(props) {
-  const { cardLogo, cardHeader, cardContext } = props;
+  const { cardLogo, cardHeader, cardContext, className } = props;
   return (
-    <div className="container">
-      <img src={cardLogo} alt="Card Logo" />
-      <h3>{cardHeader}</h3>
-      <div>
+    <div className="card5-container">
+      <span
+        className="card5-logo"
+        style={{
+          fontSize: "40px",
+          padding: "11px 5px 0 7px",
+          borderRadius: "20px",
+        }}
+      >
+        {cardLogo}
+      </span>
+      <h3 className="card5-header">{cardHeader}</h3>
+      <div className="card5-context">
         {cardContext.map((item, index) => (
           <li key={index}>
             <a href="/.{item}">{item}</a>
           </li>
         ))}
+        <a className="card5-view-button" href="">
+          View all
+          <BsArrowRightShort />
+        </a>
       </div>
-      <a href="">
-        View all <BsArrowRightShort />
-      </a>
     </div>
   );
 }

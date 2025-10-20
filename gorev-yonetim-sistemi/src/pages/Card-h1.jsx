@@ -6,10 +6,10 @@ function Card_h1(props) {
   const { cardHeader, cardContext, cardList, cardImage } = props;
 
   return (
-    <div className="container">
-      <h1 className="card-header">{cardHeader}</h1>
-      <p className="card-context">{cardContext}</p>
-      <div className="card-list">
+    <div className="card-container-h1">
+      <h1 className="card-header-h1">{cardHeader}</h1>
+      <p className="card-context-h1">{cardContext}</p>
+      <div className="card-list-h1">
         {cardList &&
           cardList.map((item, index) => (
             <li
@@ -20,7 +20,7 @@ function Card_h1(props) {
             </li>
           ))}
       </div>
-      <div className="card-image">
+      <div className="card-image-h1">
         {cardImage != null && <img src={cardImage} alt="image" />}
       </div>
     </div>

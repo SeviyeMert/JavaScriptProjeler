@@ -1,15 +1,18 @@
-.container {
+.card-container-h1 {
   margin: 30px 0;
   padding-bottom: 50px;
 }
-.card-list a {
+.card-list-h1 a {
   color: black;
   text-decoration: none;
 }
-.card-header,
-.card-context,
-.card-list,
-.card-image {
+.card-header-h1,
+.card-context-h1,
+.card-list-h1,
+.card-image-h1 {
   display: flex;
   justify-content: center;
+}
+.card-list-h1 {
+  margin: 40px 0;
 }

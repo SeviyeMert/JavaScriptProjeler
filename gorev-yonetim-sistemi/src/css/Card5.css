@@ -1,0 +1,49 @@
+.card5-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 50px 15px;
+  height: 400px;
+  width: 300px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(44, 44, 44, 0.155);
+}
+
+.card5-logo {
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  left: 35px;
+}
+.card5-header {
+  display: inline-block;
+  position: relative;
+  font-size: 25px;
+  width: 80px;
+  left: 105px;
+  bottom: 40px;
+}
+.card5-context {
+  position: relative;
+  left: 50px;
+}
+
+.card5-context li a {
+  display: flex;
+  position: relative;
+  list-style-type: none;
+  left: -10px;
+  width: 250px;
+  padding: 8px;
+  text-decoration: none;
+  color: rgb(147, 147, 147);
+}
+.card5-view-button {
+  position: relative;
+  bottom: -20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
