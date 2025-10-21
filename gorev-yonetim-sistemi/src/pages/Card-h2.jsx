@@ -2,7 +2,7 @@ import React from "react";
 import "../css/Card-h2.css";
 
 function Card_h2(props) {
-  const { cardHeader, cardLogos, cardContext, cardImage } = props;
+  const { cardHeader, cardLogos, cardContext, cardImage, className } = props;
 
   return (
     <div className="card-container-h2">

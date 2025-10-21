@@ -3,7 +3,7 @@ import "../css/Card-h3.css";
 import "../css/Context.css";
 
 const Card_h3 = (props) => {
-  const { cardLogo, cardHeader, cardContext, cardImage } = props;
+  const { cardLogo, cardHeader, cardContext, cardImage, className } = props;
 
   return (
     <div className={`card-container-h3`}>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/Card6.css";
 
 function Card6(props) {
-  const { cardHeader, cardLogo, cardImage } = props;
+  const { cardHeader, cardLogo, cardImage, className } = props;
 
   const [activeIndex, setActiveIndex] = useState(0);
 

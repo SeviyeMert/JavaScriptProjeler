@@ -15,14 +15,7 @@ function App() {
         <LanguageProvider>
           <Header />
           <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Context />
-                </>
-              }
-            />
+            <Route path="/" element={<Context />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
