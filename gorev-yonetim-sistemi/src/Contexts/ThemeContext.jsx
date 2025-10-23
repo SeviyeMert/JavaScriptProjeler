@@ -9,7 +9,6 @@
 //     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
 //   };
 
-//   // body etiketine tema sınıfını eklemek için
 //   useEffect(() => {
 //     document.body.className = theme;
 //   }, [theme]);

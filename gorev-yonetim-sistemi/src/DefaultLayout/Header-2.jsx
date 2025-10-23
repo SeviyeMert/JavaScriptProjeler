@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import { PiUserCircleGearLight } from "react-icons/pi";
 
-function Header-2() {
+function Header_2() {
   return (
-    <div className='header-2-container'>
-        <div className="user">
-          <button className="user-logo">
-            <PiUserCircleGearLight />
-          </button>
-        </div>
+    <div className="header-2-container">
+      <div className="user">
+        <button className="user-logo">
+          <PiUserCircleGearLight />
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Header-2;
+export default Header_2;
