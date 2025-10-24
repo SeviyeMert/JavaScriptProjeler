@@ -1,14 +1,13 @@
 import React from "react";
 import { PiUserCircleGearLight } from "react-icons/pi";
+import "../css/Header-2.css";
 
 function Header_2() {
   return (
-    <div className="header-2-container">
-      <div className="user">
-        <button className="user-logo">
-          <PiUserCircleGearLight />
-        </button>
-      </div>
+    <div className="user">
+      <button className="user-logo">
+        <PiUserCircleGearLight />
+      </button>
     </div>
   );
 }

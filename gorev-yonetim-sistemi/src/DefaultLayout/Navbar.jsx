@@ -5,6 +5,7 @@ import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
 import TableButton from "./TableButton";
 import AddProjectButton from "./AddProjectButton";
+import "../css/Navbar.css";
 
 function Navbar() {
   return (

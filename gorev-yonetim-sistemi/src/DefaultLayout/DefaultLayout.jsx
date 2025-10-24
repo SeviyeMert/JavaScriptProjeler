@@ -4,6 +4,7 @@ import Header from "./Header-2";
 import Navbar from "./Navbar";
 import Project from "./Project";
 import StateProvider from "../Contexts/StateContext.jsx";
+import "../css/DefaultLayout.css";
 
 function DefaultLayout() {
   return (

@@ -19,8 +19,8 @@ function App() {
             <Route path="/" element={<Context />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/projects" element={<DefaultLayout />} />
           </Routes>
-          <DefaultLayout />
           <Footer />
         </LanguageProvider>
       </ThemeProvider>
