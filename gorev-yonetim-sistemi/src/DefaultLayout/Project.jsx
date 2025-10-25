@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
 import { StateContext } from "../Contexts/StateContext";
+import "../css/Project.css";
+// import SearchButton from "./SearchButton";
+import { CiEdit } from "react-icons/ci";
+import { MdDeleteOutline } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
 
 function Project() {
   const {
@@ -21,6 +26,10 @@ function Project() {
 
   const handleSaveProject = () => {
     setProjects([...projects, projectName]);
+    localStorage.setItem(
+      "projects",
+      JSON.stringify([...projects, projectName])
+    );
     setProjectName("");
     setIsInput(false);
   };
@@ -49,9 +58,17 @@ function Project() {
   return (
     <div className="projects">
       <ul className="project-list">
+        <div className="header-line">
+          <button>Projects</button>
+          {/* <button>
+            <SearchButton />
+          </button> */}
+        </div>
+
         {isInput && (
           <li className="new-project-input-item">
             <input
+              className="input"
               type="text"
               value={projectName}
               onChange={handleInputChange}
@@ -70,18 +87,38 @@ function Project() {
                   value={editedProjectName}
                   onChange={handleEditInputChange}
                 />
-                <button onClick={() => handleSaveEdit(project)}>OK</button>
-                <button onClick={() => handleDeleteClick(project)}>
-                  Delete
-                </button>
+                <div>
+                  <button
+                    className="ok-button"
+                    onClick={() => handleSaveEdit(project)}
+                  >
+                    <TiTick />
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDeleteClick(project)}
+                  >
+                    <MdDeleteOutline />
+                  </button>
+                </div>
               </>
             ) : (
               <>
                 <span>{project}</span>
-                <button onClick={() => handleEditClick(project)}>Edit</button>
-                <button onClick={() => handleDeleteClick(project)}>
-                  Delete
-                </button>
+                <div>
+                  <button
+                    className="edit-button"
+                    onClick={() => handleEditClick(project)}
+                  >
+                    <CiEdit />
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDeleteClick(project)}
+                  >
+                    <MdDeleteOutline />
+                  </button>
+                </div>
               </>
             )}
           </li>

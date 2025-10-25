@@ -1,10 +1,10 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
+import AddProjectButton from "./AddProjectButton";
 import ListButton from "./ListButton";
 import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
 import TableButton from "./TableButton";
-import AddProjectButton from "./AddProjectButton";
 import "../css/Navbar.css";
 
 function Navbar() {

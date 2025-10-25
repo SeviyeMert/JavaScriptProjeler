@@ -4,13 +4,47 @@
   padding: 60px;
   border-radius: 30px;
   display: flex;
+}
+
+.header-line {
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  font-weight: bold;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.projects ul {
+  display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.project li {
-  background-color: white;
+.projects ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(56, 56, 56);
+}
+
+.projects li div {
+  display: flex;
+  gap: 10px;
+}
+
+.projects button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 254, 171);
+  font-size: 15px;
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 10px;
 }
