@@ -4,8 +4,7 @@ import { StateContext } from "../Contexts/StateContext.jsx";
 import "../css/AddProjectButton.css";
 
 function AddProjectButton() {
-  const { isInput, setIsInput, ProjectName, setProjectName } =
-    useContext(StateContext);
+  const { setIsInput, ProjectName, setProjectName } = useContext(StateContext);
 
   function handleStartAddProject() {
     setIsInput(true);

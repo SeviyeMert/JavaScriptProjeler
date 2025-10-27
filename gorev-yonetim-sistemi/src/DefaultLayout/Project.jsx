@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Project.css";
-// import SearchButton from "./SearchButton";
+import SearchButton from "./SearchButton";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
@@ -18,6 +18,7 @@ function Project() {
     setEditableProject,
     editedProjectName,
     setEditedProjectName,
+    filteredProjects,
   } = useContext(StateContext);
 
   const handleInputChange = (e) => {
@@ -34,8 +35,19 @@ function Project() {
     setIsInput(false);
   };
 
+  useEffect(() => {
+    const storedProjects = localStorage.getItem("projects");
+    if (storedProjects) {
+      setProjects(JSON.parse(storedProjects));
+    }
+  }, []);
+
   const handleDeleteClick = (projectDelete) => {
-    setProjects((prev) => prev.filter((p) => p !== projectDelete));
+    setProjects((prev) => {
+      const updatedProjects = prev.filter((p) => p !== projectDelete);
+      localStorage.setItem("projects", JSON.stringify(updatedProjects));
+      return updatedProjects;
+    });
   };
 
   const handleEditClick = (project) => {
@@ -48,9 +60,13 @@ function Project() {
   };
 
   const handleSaveEdit = () => {
-    setProjects((prev) =>
-      prev.map((p) => (p === editableProject ? editedProjectName : p))
-    );
+    setProjects((prev) => {
+      const updatedProjects = prev.map((p) =>
+        p === editableProject ? editedProjectName : p
+      );
+      localStorage.setItem("projects", JSON.stringify(updatedProjects));
+      return updatedProjects;
+    });
     setEditableProject(null);
     setEditedProjectName("");
   };
@@ -60,9 +76,7 @@ function Project() {
       <ul className="project-list">
         <div className="header-line">
           <button>Projects</button>
-          {/* <button>
-            <SearchButton />
-          </button> */}
+          <SearchButton />
         </div>
 
         {isInput && (
@@ -78,7 +92,7 @@ function Project() {
           </li>
         )}
 
-        {projects.map((project) => (
+        {(filteredProjects || projects).map((project) => (
           <li key={project}>
             {editableProject === project ? (
               <>

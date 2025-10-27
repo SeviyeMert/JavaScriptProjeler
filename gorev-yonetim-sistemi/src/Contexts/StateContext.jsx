@@ -8,6 +8,8 @@ const StateProvider = ({ children }) => {
   const [isInput, setIsInput] = useState(false);
   const [editableProject, setEditableProject] = useState(null);
   const [editedProjectName, setEditedProjectName] = useState("");
+  const [searchVal, setSearchVal] = useState("");
+  const [filteredProjects, setFilteredProjects] = useState("");
 
   return (
     <StateContext.Provider
@@ -22,6 +24,10 @@ const StateProvider = ({ children }) => {
         setEditableProject,
         editedProjectName,
         setEditedProjectName,
+        searchVal,
+        setSearchVal,
+        filteredProjects,
+        setFilteredProjects,
       }}
     >
       {children}
