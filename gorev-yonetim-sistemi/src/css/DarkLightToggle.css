@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #808080;
+  background-color: #1e1e1e;
   transition: 0.4s;
 }
 .slider::before {
@@ -32,17 +32,17 @@
   width: 22px;
   left: 4px;
   bottom: 2px;
-  background-color: #1e1e1e;
+  background-color: #fff;
   border-radius: 50%;
   transition: 0.4s;
 }
 
 /* dark mode */
 input:checked + .slider {
-  background-color: #000;
+  background-color: #808080;
 }
 
 input:checked + .slider::before {
   transform: translateX(22px);
-  background-color: #fff;
+  background-color: #000;
 }

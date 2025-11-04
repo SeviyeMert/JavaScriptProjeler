@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StateContext } from "../Contexts/StateContext";
 import { IoSearchSharp } from "react-icons/io5";
+import "../css/SearchButton.css";
 
 function SearchButton() {
   const { searchVal, setSearchVal, projects, setFilteredProjects } =

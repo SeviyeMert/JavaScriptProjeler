@@ -23,9 +23,9 @@ function Register() {
     };
     localStorage.setItem(data.email, JSON.stringify(userData));
     alert(
-      "Registration successful! You are being redirected to the login page."
+      "Registration successful! You are being redirected to the projects page."
     );
-    navigate("/login");
+    navigate("/projects");
   };
 
   return (

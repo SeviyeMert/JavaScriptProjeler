@@ -1,13 +1,6 @@
-import { useState } from "react";
 import "../css/Sidebar.css";
 
-function Menu() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
-
+function Menu({ menuOpen, handleToggle }) {
   return (
     <>
       <nav

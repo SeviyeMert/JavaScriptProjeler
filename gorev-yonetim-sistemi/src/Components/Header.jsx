@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import logo from "../images/logo.png";
 import enTranslations from "../i18n/en.json";
 import trTranslations from "../i18n/tr.json";
+import ruTranslations from "../i18n/ru.json";
 import { IoIosArrowDown } from "react-icons/io";
 
 function Header() {
@@ -22,6 +23,7 @@ function Header() {
   const translations = {
     en: enTranslations,
     tr: trTranslations,
+    ru: ruTranslations,
   };
 
   const t = translations[language];
@@ -80,6 +82,13 @@ function Header() {
               className={language === "en" ? "active" : ""}
             >
               En
+            </button>
+            <span className="divider"> | </span>
+            <button
+              onClick={() => handleLanguageChange("ru")}
+              className={language === "ru" ? "active" : ""}
+            >
+              Ru
             </button>
           </div>
         </div>

@@ -19,6 +19,7 @@ body.dark .header {
   background-color: #1e1e1e;
   color: #ececec;
 }
+
 body.dark .logIn-button,
 body.dark .signUp-button {
   background-color: #1e1e1e;
@@ -152,7 +153,8 @@ body.dark .language button {
   font-size: 25px;
 }
 
-.logIn-button:hover .signUp-button:hover {
+.logIn-button:hover,
+.signUp-button:hover {
   background-color: #ffffff;
   color: #000000;
 }
