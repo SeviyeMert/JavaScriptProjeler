@@ -16,6 +16,8 @@ import {
   Register,
   DefaultLayout,
 } from "./index";
+import { Suspense } from "react";
+import Loading from "./Components/Loading.jsx";
 
 const PublicLayout = ({ children }) => (
   <>
@@ -42,20 +44,31 @@ function App() {
             <Route
               path="/login"
               element={
-                <PublicLayout>
-                  <Login />
-                </PublicLayout>
+                <Suspense fallback={<Loading />}>
+                  <PublicLayout>
+                    <Login />
+                  </PublicLayout>
+                </Suspense>
               }
             />
             <Route
               path="/register"
               element={
-                <PublicLayout>
-                  <Register />
-                </PublicLayout>
+                <Suspense fallback={<Loading />}>
+                  <PublicLayout>
+                    <Register />
+                  </PublicLayout>
+                </Suspense>
               }
             />
-            <Route path="/projects" element={<DefaultLayout />} />
+            <Route
+              path="/projects"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <DefaultLayout />
+                </Suspense>
+              }
+            />
           </Routes>
         </LanguageProvider>
       </ThemeProvider>
