@@ -2,9 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Project.css";
 import SearchButton from "./SearchButton";
-import { CiEdit } from "react-icons/ci";
-import { MdDeleteOutline } from "react-icons/md";
-import { TiTick } from "react-icons/ti";
+import ProjectItem from "./ProjectItem";
 
 function Project() {
   const {
@@ -21,61 +19,62 @@ function Project() {
     filteredProjects,
   } = useContext(StateContext);
 
-  const handleInputChange = (e) => {
-    setProjectName(e.target.value);
-  };
+  const handleInputChange = (e) => setProjectName(e.target.value);
 
   const handleSaveProject = () => {
-    setProjects([...projects, projectName]);
-    localStorage.setItem(
-      "projects",
-      JSON.stringify([...projects, projectName])
-    );
+    if (!projectName.trim()) return;
+    const newProject = {
+      id: Date.now(),
+      name: projectName,
+    };
+    const updated = [...projects, newProject];
+    setProjects(updated);
+    localStorage.setItem("projects", JSON.stringify(updated));
     setProjectName("");
     setIsInput(false);
   };
 
   useEffect(() => {
-    const storedProjects = localStorage.getItem("projects");
-    if (storedProjects) {
-      setProjects(JSON.parse(storedProjects));
-    }
+    const stored = localStorage.getItem("projects");
+    if (stored) setProjects(JSON.parse(stored));
   }, []);
 
   const handleDeleteClick = (projectDelete) => {
-    setProjects((prev) => {
-      const updatedProjects = prev.filter((p) => p !== projectDelete);
-      localStorage.setItem("projects", JSON.stringify(updatedProjects));
-      return updatedProjects;
-    });
+    const updated = projects.filter((p) => p.id !== projectDelete);
+    setProjects(updated);
+    localStorage.setItem("projects", JSON.stringify(updated));
   };
 
   const handleEditClick = (project) => {
-    setEditedProjectName(project);
+    setEditedProjectName(project.name);
     setEditableProject(project);
   };
 
-  const handleEditInputChange = (e) => {
-    setEditedProjectName(e.target.value);
-  };
+  const handleEditInputChange = (e) => setEditedProjectName(e.target.value);
 
   const handleSaveEdit = () => {
-    setProjects((prev) => {
-      const updatedProjects = prev.map((p) =>
-        p === editableProject ? editedProjectName : p
-      );
-      localStorage.setItem("projects", JSON.stringify(updatedProjects));
-      return updatedProjects;
-    });
+    const updated = projects.map((p) =>
+      p === editableProject ? editedProjectName : p
+    );
+    setProjects(updated);
+    localStorage.setItem("projects", JSON.stringify(updated));
     setEditableProject(null);
     setEditedProjectName("");
+  };
+
+  const moveProject = (fromIndex, toIndex) => {
+    const updated = [...projects];
+    const [moved] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, moved);
+    setProjects(updated);
+    // localStorage.setItem("projects", JSON.stringify(updated));
   };
 
   return (
     <div className="projects">
       <ul className="project-list">
         <div className="header-line">
-          <button>Projects</button>
+          <button onClick={() => setIsInput(true)}>Projects</button>
           <SearchButton />
         </div>
 
@@ -92,50 +91,20 @@ function Project() {
           </li>
         )}
 
-        {(filteredProjects || projects).map((project) => (
-          <li key={project}>
-            {editableProject === project ? (
-              <>
-                <input
-                  type="text"
-                  value={editedProjectName}
-                  onChange={handleEditInputChange}
-                />
-                <div>
-                  <button
-                    className="ok-button"
-                    onClick={() => handleSaveEdit(project)}
-                  >
-                    <TiTick />
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeleteClick(project)}
-                  >
-                    <MdDeleteOutline />
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <span>{project}</span>
-                <div>
-                  <button
-                    className="edit-button"
-                    onClick={() => handleEditClick(project)}
-                  >
-                    <CiEdit />
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeleteClick(project)}
-                  >
-                    <MdDeleteOutline />
-                  </button>
-                </div>
-              </>
-            )}
-          </li>
+        {(filteredProjects || projects).map((project, index) => (
+          <ProjectItem
+            key={project.id}
+            project={project}
+            id={project.id}
+            index={index}
+            editableProject={editableProject}
+            editedProjectName={editedProjectName}
+            handleEditInputChange={handleEditInputChange}
+            handleSaveEdit={handleSaveEdit}
+            handleEditClick={handleEditClick}
+            handleDeleteClick={handleDeleteClick}
+            moveProject={moveProject}
+          />
         ))}
       </ul>
     </div>

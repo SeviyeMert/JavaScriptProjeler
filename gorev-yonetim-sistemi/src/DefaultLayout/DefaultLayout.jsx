@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import Project from "./Project";
 import StateProvider from "../Contexts/StateContext.jsx";
 import "../css/DefaultLayout.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function DefaultLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,18 +16,20 @@ function DefaultLayout() {
   };
   return (
     <StateProvider>
-      <div className={`layout-container ${menuOpen ? "sidebar-open" : ""}`}>
-        <div className="sidebar-area">
-          <SideBar menuOpen={menuOpen} handleToggle={handleToggle} />
+      <DndProvider backend={HTML5Backend}>
+        <div className={`layout-container ${menuOpen ? "sidebar-open" : ""}`}>
+          <div className="sidebar-area">
+            <SideBar menuOpen={menuOpen} handleToggle={handleToggle} />
+          </div>
+          <div className="header-area">
+            <Header />
+          </div>
+          <div className="content-area">
+            <Navbar />
+            <Project />
+          </div>
         </div>
-        <div className="header-area">
-          <Header />
-        </div>
-        <div className="content-area">
-          <Navbar />
-          <Project />
-        </div>
-      </div>
+      </DndProvider>
     </StateProvider>
   );
 }
