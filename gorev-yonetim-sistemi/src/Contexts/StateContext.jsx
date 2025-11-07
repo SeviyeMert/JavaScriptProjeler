@@ -9,7 +9,7 @@ const StateProvider = ({ children }) => {
   const [editableProject, setEditableProject] = useState(null);
   const [editedProjectName, setEditedProjectName] = useState("");
   const [searchVal, setSearchVal] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState("");
+  const [filteredProjects, setFilteredProjects] = useState(null);
 
   return (
     <StateContext.Provider

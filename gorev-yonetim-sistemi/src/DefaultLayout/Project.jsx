@@ -40,8 +40,9 @@ function Project() {
   }, []);
 
   const handleDeleteClick = (projectDelete) => {
-    const updated = projects.filter((p) => p.id !== projectDelete);
+    const updated = projects.filter((p) => p && p.id !== projectDelete.id);
     setProjects(updated);
+
     localStorage.setItem("projects", JSON.stringify(updated));
   };
 
@@ -54,7 +55,7 @@ function Project() {
 
   const handleSaveEdit = () => {
     const updated = projects.map((p) =>
-      p === editableProject ? editedProjectName : p
+      p === editableProject ? { ...p, name: editedProjectName } : p
     );
     setProjects(updated);
     localStorage.setItem("projects", JSON.stringify(updated));
@@ -62,12 +63,14 @@ function Project() {
     setEditedProjectName("");
   };
 
-  const moveProject = (fromIndex, toIndex) => {
-    const updated = [...projects];
-    const [moved] = updated.splice(fromIndex, 1);
-    updated.splice(toIndex, 0, moved);
-    setProjects(updated);
-    // localStorage.setItem("projects", JSON.stringify(updated));
+  const moveProject = (dragIndex, hoverIndex) => {
+    const dragProject = projects[dragIndex];
+    const newProjects = [...projects];
+    newProjects.splice(dragIndex, 1);
+    newProjects.splice(hoverIndex, 0, dragProject);
+
+    setProjects(newProjects);
+    localStorage.setItem("projects", JSON.stringify(newProjects));
   };
 
   return (
@@ -91,21 +94,22 @@ function Project() {
           </li>
         )}
 
-        {(filteredProjects || projects).map((project, index) => (
-          <ProjectItem
-            key={project.id}
-            project={project}
-            id={project.id}
-            index={index}
-            editableProject={editableProject}
-            editedProjectName={editedProjectName}
-            handleEditInputChange={handleEditInputChange}
-            handleSaveEdit={handleSaveEdit}
-            handleEditClick={handleEditClick}
-            handleDeleteClick={handleDeleteClick}
-            moveProject={moveProject}
-          />
-        ))}
+        {(filteredProjects || projects)
+          .filter((project) => project != null)
+          .map((project, index) => (
+            <ProjectItem
+              key={project.id}
+              project={project}
+              index={index}
+              editableProject={editableProject}
+              editedProjectName={editedProjectName}
+              handleEditInputChange={handleEditInputChange}
+              handleSaveEdit={handleSaveEdit}
+              handleEditClick={handleEditClick}
+              handleDeleteClick={handleDeleteClick}
+              moveProject={moveProject}
+            />
+          ))}
       </ul>
     </div>
   );

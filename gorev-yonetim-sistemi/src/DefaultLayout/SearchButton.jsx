@@ -14,7 +14,7 @@ function SearchButton() {
       setFilteredProjects(projects);
     } else {
       const results = projects.filter((project) =>
-        project.toLowerCase().includes(newSearchValue.toLowerCase())
+        project.name.toLowerCase().includes(newSearchValue.toLowerCase())
       );
       setFilteredProjects(results);
     }

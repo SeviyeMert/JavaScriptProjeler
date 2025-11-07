@@ -1,13 +1,12 @@
-import React from "react";
-import { useDrag, useDrop } from "react-dnd";
+import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
+import { useDrag, useDrop } from "react-dnd";
 
 function ProjectItem({
   project,
   index,
-  isEditing,
   editableProject,
   editedProjectName,
   handleEditInputChange,
@@ -16,33 +15,46 @@ function ProjectItem({
   handleDeleteClick,
   moveProject,
 }) {
-  const [{ isDragging }, dragRef] = useDrag(() => ({
-    type: "PROJECT",
-    item: { index },
+  const ref = useRef(null);
+
+  const [{ isDragging }, dragRef] = useDrag({
+    type: "item",
+    item: { id: project.id, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  }));
+  });
 
-  const [, dropRef] = useDrop(() => ({
-    accept: "PROJECT",
+  const [, dropRef] = useDrop({
+    accept: "item",
     hover: (item, monitor) => {
-      if (item.index === index) {
-        return;
-      }
+      const dragIndex = item.index;
+      const hoverIndex = index;
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const hoverActualY = monitor.getClientOffset().y - hoverBoundingRect.top;
 
-      moveProject(item.index, index);
+      if (dragIndex < hoverIndex && hoverActualY < hoverMiddleY) return;
+      if (dragIndex > hoverIndex && hoverActualY > hoverMiddleY) return;
+
+      moveProject(dragIndex, hoverIndex);
+      item.index = hoverIndex;
     },
-  }));
+  });
+
+  const dragDropRef = dragRef(dropRef(ref));
+
+  const opacity = isDragging ? 0 : 1;
+
   return (
-    <li ref={(node) => dragRef(dropRef(node))}>
+    <li ref={dragDropRef} style={{ opacity }}>
       {editableProject === project ? (
         <>
           <input
             type="text"
             value={editedProjectName}
             onChange={handleEditInputChange}
-            style={{ flex: 1, marginRight: "10px" }}
           />
           <div>
             <button className="ok-button" onClick={handleSaveEdit}>
