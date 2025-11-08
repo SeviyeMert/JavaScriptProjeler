@@ -2,7 +2,9 @@ import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
+import { FaCircle } from "react-icons/fa";
 import { useDrag, useDrop } from "react-dnd";
+import ProjectStatusIcon from "./ProjectStatusIcon";
 
 function ProjectItem({
   project,
@@ -70,6 +72,7 @@ function ProjectItem({
         </>
       ) : (
         <>
+          <ProjectStatusIcon project={project} ProjectStatus={ProjectStatus} />
           <span>{project.name}</span>
           <div>
             <button
