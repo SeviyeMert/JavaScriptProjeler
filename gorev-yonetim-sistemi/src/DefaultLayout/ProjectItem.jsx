@@ -5,6 +5,7 @@ import { TiTick } from "react-icons/ti";
 import { FaCircle } from "react-icons/fa";
 import { useDrag, useDrop } from "react-dnd";
 import ProjectStatusIcon from "./ProjectStatusIcon";
+import { useNavigate } from "react-router-dom";
 
 function ProjectItem({
   project,
@@ -16,8 +17,10 @@ function ProjectItem({
   handleEditClick,
   handleDeleteClick,
   moveProject,
+  handleStatusChange,
 }) {
   const ref = useRef(null);
+  const navigate = useNavigate();
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "item",
@@ -49,6 +52,10 @@ function ProjectItem({
 
   const opacity = isDragging ? 0 : 1;
 
+  const handleProjectClick = () => {
+    navigate(`/tasks/${project.id}`, { state: { projectName: project.name } });
+  };
+
   return (
     <li ref={dragDropRef} style={{ opacity }}>
       {editableProject === project ? (
@@ -72,8 +79,12 @@ function ProjectItem({
         </>
       ) : (
         <>
-          <ProjectStatusIcon project={project} ProjectStatus={ProjectStatus} />
-          <span>{project.name}</span>
+          <ProjectStatusIcon
+            project={project}
+            currentStatus={project.status || "default"}
+            handleStatusChange={handleStatusChange}
+          />
+          <span onClick={handleProjectClick}>{project.name}</span>
           <div>
             <button
               className="edit-button"

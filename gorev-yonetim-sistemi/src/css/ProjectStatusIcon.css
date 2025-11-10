@@ -1,0 +1,37 @@
+.status-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.dropdown-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid grey;
+  width: 150px;
+  position: absolute;
+  top: 100%;
+  z-index: 10;
+}
+
+.dropdown-status button {
+  background-color: white;
+  width: auto;
+  z-index: 0;
+}
+
+.status-button.status-default {
+  background-color: #ededed;
+}
+
+.status-button.status-in-progress {
+  background-color: rgb(255, 255, 161);
+}
+
+.status-button.status-completed {
+  background-color: rgb(255, 190, 106);
+}

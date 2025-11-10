@@ -26,6 +26,7 @@ function Project() {
     const newProject = {
       id: Date.now(),
       name: projectName,
+      status: "default",
     };
     const updated = [...projects, newProject];
     setProjects(updated);
@@ -73,6 +74,14 @@ function Project() {
     localStorage.setItem("projects", JSON.stringify(newProjects));
   };
 
+  const handleStatusChange = (projectId, newStatus) => {
+    const updatedProjects = projects.map((p) =>
+      p.id === projectId ? { ...p, status: newStatus } : p
+    );
+    setProjects(updatedProjects);
+    localStorage.setItem("projects", JSON.stringify(updatedProjects));
+  };
+
   return (
     <div className="projects">
       <ul className="project-list">
@@ -108,6 +117,7 @@ function Project() {
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
               moveProject={moveProject}
+              handleStatusChange={handleStatusChange}
             />
           ))}
       </ul>

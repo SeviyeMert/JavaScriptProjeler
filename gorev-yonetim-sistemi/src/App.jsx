@@ -18,6 +18,8 @@ import {
 } from "./index";
 import { Suspense } from "react";
 import Loading from "./Components/Loading.jsx";
+import Project from "./DefaultLayout/Project.jsx";
+import Tasks from "./DefaultLayout/Tasks.jsx";
 
 const PublicLayout = ({ children }) => (
   <>
@@ -68,7 +70,11 @@ function App() {
                   <DefaultLayout />
                 </Suspense>
               }
-            />
+            >
+              <Route index element={<Project />} />
+
+              <Route path="tasks/:projectId" element={<Tasks />} />
+            </Route>
           </Routes>
         </LanguageProvider>
       </ThemeProvider>

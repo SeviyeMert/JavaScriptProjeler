@@ -7,6 +7,7 @@ import StateProvider from "../Contexts/StateContext.jsx";
 import "../css/DefaultLayout.css";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { Outlet } from "react-router-dom";
 
 function DefaultLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ function DefaultLayout() {
           </div>
           <div className="content-area">
             <Navbar />
-            <Project />
+            <Outlet />
           </div>
         </div>
       </DndProvider>
