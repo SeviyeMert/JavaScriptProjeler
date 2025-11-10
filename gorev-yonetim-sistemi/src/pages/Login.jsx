@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/Login.css";
-function Login() {
+function Login({ onLoginSuccess }) {
   const {
     register,
     handleSubmit,
@@ -13,6 +13,7 @@ function Login() {
   const onSubmit = (data) => {
     if (data.email === "test@example.com" && data.password === "1234") {
       alert("Login successful!");
+      onLoginSuccess();
       navigate("/projects");
     } else {
       alert("Email or password is incorrect!");

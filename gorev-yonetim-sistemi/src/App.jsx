@@ -1,7 +1,12 @@
 import "./App.css";
 import { LanguageProvider } from "./Contexts/languageContext";
 import { ThemeProvider } from "./Contexts/ThemeContext";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 // import Header from "./Components/Header";
 // import Footer from "./Components/Footer";
 // import Login from "./pages/Login";
@@ -16,7 +21,7 @@ import {
   Register,
   DefaultLayout,
 } from "./index";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Loading from "./Components/Loading.jsx";
 import Project from "./DefaultLayout/Project.jsx";
 import Tasks from "./DefaultLayout/Tasks.jsx";
@@ -30,6 +35,12 @@ const PublicLayout = ({ children }) => (
 );
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <Router>
       <ThemeProvider>
@@ -48,7 +59,7 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <PublicLayout>
-                    <Login />
+                    <Login onLoginSuccess={handleLoginSuccess} />
                   </PublicLayout>
                 </Suspense>
               }
@@ -64,10 +75,14 @@ function App() {
               }
             />
             <Route
-              path="/projects"
+              path="/projects/*"
               element={
                 <Suspense fallback={<Loading />}>
-                  <DefaultLayout />
+                  {isLoggedIn ? (
+                    <DefaultLayout />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )}
                 </Suspense>
               }
             >
