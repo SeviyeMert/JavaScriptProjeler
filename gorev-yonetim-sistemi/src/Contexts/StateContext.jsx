@@ -10,6 +10,7 @@ const StateProvider = ({ children }) => {
   const [editedProjectName, setEditedProjectName] = useState("");
   const [searchVal, setSearchVal] = useState("");
   const [filteredProjects, setFilteredProjects] = useState(null);
+  const [tasks, setTasks] = useState([]);
 
   return (
     <StateContext.Provider
@@ -28,6 +29,8 @@ const StateProvider = ({ children }) => {
         setSearchVal,
         filteredProjects,
         setFilteredProjects,
+        tasks,
+        setTasks,
       }}
     >
       {children}

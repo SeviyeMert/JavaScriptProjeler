@@ -17,6 +17,8 @@ function Project() {
     editedProjectName,
     setEditedProjectName,
     filteredProjects,
+    searchVal,
+    setSearchVal,
   } = useContext(StateContext);
 
   const handleInputChange = (e) => setProjectName(e.target.value);
@@ -45,6 +47,8 @@ function Project() {
     setProjects(updated);
 
     localStorage.setItem("projects", JSON.stringify(updated));
+
+    setSearchVal("");
   };
 
   const handleEditClick = (project) => {
@@ -65,6 +69,10 @@ function Project() {
   };
 
   const moveProject = (dragIndex, hoverIndex) => {
+    if (searchVal && searchVal.trim().length > 0) {
+      return;
+    }
+
     const dragProject = projects[dragIndex];
     const newProjects = [...projects];
     newProjects.splice(dragIndex, 1);

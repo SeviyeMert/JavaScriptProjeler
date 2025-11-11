@@ -2,38 +2,35 @@ import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { FaCircle } from "react-icons/fa";
+import TaskStatusIcon from "./TaskStatusIcon.jsx";
 import { useDrag, useDrop } from "react-dnd";
-import ProjectStatusIcon from "./ProjectStatusIcon";
-import { useNavigate } from "react-router-dom";
 
-function ProjectItem({
-  project,
+function TaskItem({
+  task,
   index,
-  editableProject,
-  editedProjectName,
+  editableTask,
+  editedTaskName,
   handleEditInputChange,
   handleSaveEdit,
   handleEditClick,
   handleDeleteClick,
-  moveProject,
+  moveTask,
   handleStatusChange,
 }) {
   const ref = useRef(null);
-  const navigate = useNavigate();
 
   const [{ isDragging }, dragRef] = useDrag({
-    type: "item",
-    item: { id: project.id, index },
+    type: "taskItem",
+    item: { id: task.id, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
   const [, dropRef] = useDrop({
-    accept: "item",
+    accept: "taskItem",
     hover: (item, monitor) => {
-      if (!ref.current || item.index === index) {
+      if (!ref.current || item.index === index || !moveTask) {
         return;
       }
       const dragIndex = item.index;
@@ -46,7 +43,7 @@ function ProjectItem({
       if (dragIndex < hoverIndex && hoverActualY < hoverMiddleY) return;
       if (dragIndex > hoverIndex && hoverActualY > hoverMiddleY) return;
 
-      moveProject(dragIndex, hoverIndex);
+      moveTask(dragIndex, hoverIndex);
 
       item.index = hoverIndex;
     },
@@ -56,28 +53,22 @@ function ProjectItem({
 
   const opacity = isDragging ? 0 : 1;
 
-  const handleProjectClick = () => {
-    navigate(`/projects/tasks/${project.id}`, {
-      state: { projectName: project.name },
-    });
-  };
-
   return (
-    <li ref={dragDropRef} style={{ opacity }}>
-      {editableProject === project ? (
+    <li ref={dragDropRef} style={{ opacity }} className="task-item">
+      {editableTask && editableTask.id === task.id ? (
         <>
           <input
             type="text"
-            value={editedProjectName}
+            value={editedTaskName}
             onChange={handleEditInputChange}
           />
-          <div>
+          <div className="task-actions">
             <button className="ok-button" onClick={handleSaveEdit}>
               <TiTick />
             </button>
             <button
               className="delete-button"
-              onClick={() => handleDeleteClick(project)}
+              onClick={() => handleDeleteClick(task)}
             >
               <MdDeleteOutline />
             </button>
@@ -85,22 +76,22 @@ function ProjectItem({
         </>
       ) : (
         <>
-          <ProjectStatusIcon
-            project={project}
-            currentStatus={project.status || "default"}
+          <TaskStatusIcon
+            task={task}
+            currentStatus={task.status || "default"}
             handleStatusChange={handleStatusChange}
           />
-          <span onClick={handleProjectClick}>{project.name}</span>
-          <div>
+          <span className="task-name">{task.name}</span>
+          <div className="task-actions">
             <button
               className="edit-button"
-              onClick={() => handleEditClick(project)}
+              onClick={() => handleEditClick(task)}
             >
               <CiEdit />
             </button>
             <button
               className="delete-button"
-              onClick={() => handleDeleteClick(project)}
+              onClick={() => handleDeleteClick(task)}
             >
               <MdDeleteOutline />
             </button>
@@ -111,4 +102,4 @@ function ProjectItem({
   );
 }
 
-export default ProjectItem;
+export default TaskItem;

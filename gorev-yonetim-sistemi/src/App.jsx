@@ -35,10 +35,13 @@ const PublicLayout = ({ children }) => (
 );
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const initialLoginState = localStorage.getItem("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = useState(initialLoginState);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+
+    localStorage.setItem("isLoggedIn", "true");
   };
 
   return (
