@@ -3,6 +3,7 @@ import { StateContext } from "../Contexts/StateContext";
 import "../css/Project.css";
 import SearchButton from "./SearchButton";
 import ProjectItem from "./ProjectItem";
+import CommentSection from "./CommentSection.jsx";
 
 function Project() {
   const {
@@ -19,6 +20,7 @@ function Project() {
     filteredProjects,
     searchVal,
     setSearchVal,
+    isCommentSectionOpen,
   } = useContext(StateContext);
 
   const handleInputChange = (e) => setProjectName(e.target.value);
@@ -29,6 +31,7 @@ function Project() {
       id: Date.now(),
       name: projectName,
       status: "default",
+      comments: [],
     };
     const updated = [...projects, newProject];
     setProjects(updated);
@@ -129,6 +132,7 @@ function Project() {
             />
           ))}
       </ul>
+      {isCommentSectionOpen && <CommentSection />}
     </div>
   );
 }

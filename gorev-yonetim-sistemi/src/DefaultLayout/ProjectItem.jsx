@@ -6,6 +6,7 @@ import { FaCircle } from "react-icons/fa";
 import { useDrag, useDrop } from "react-dnd";
 import ProjectStatusIcon from "./ProjectStatusIcon";
 import { useNavigate } from "react-router-dom";
+import CommentButton from "./CommentButton";
 
 function ProjectItem({
   project,
@@ -104,6 +105,7 @@ function ProjectItem({
             >
               <MdDeleteOutline />
             </button>
+            <CommentButton project={project} />
           </div>
         </>
       )}

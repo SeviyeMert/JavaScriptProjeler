@@ -12,6 +12,21 @@ const StateProvider = ({ children }) => {
   const [filteredProjects, setFilteredProjects] = useState(null);
   const [tasks, setTasks] = useState([]);
 
+  // Tasks
+
+  const [taskName, setTaskName] = useState("");
+
+  const [editableTask, setEditableTask] = useState(null);
+  const [editedTaskName, setEditedTaskName] = useState("");
+
+  const [searchValTask, setSearchValTask] = useState("");
+  const [filteredTasks, setFilteredTasks] = useState([]);
+
+  // Comment
+  const [isCommentSectionOpen, setIsCommentSectionOpen] = useState(false);
+  const [selectedProjectForComment, setSelectedProjectForComment] =
+    useState(null);
+
   return (
     <StateContext.Provider
       value={{
@@ -31,6 +46,20 @@ const StateProvider = ({ children }) => {
         setFilteredProjects,
         tasks,
         setTasks,
+        taskName,
+        setTaskName,
+        editableTask,
+        setEditableTask,
+        editedTaskName,
+        setEditedTaskName,
+        searchValTask,
+        setSearchValTask,
+        filteredTasks,
+        setFilteredTasks,
+        isCommentSectionOpen,
+        setIsCommentSectionOpen,
+        selectedProjectForComment,
+        setSelectedProjectForComment,
       }}
     >
       {children}

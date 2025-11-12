@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Tasks.css";
@@ -13,16 +13,22 @@ function Tasks() {
   const navigate = useNavigate();
   const projectName = location.state?.projectName || "Tasks";
 
-  const { tasks, setTasks } = useContext(StateContext);
-
-  const [taskName, setTaskName] = useState("");
-  const [isInput, setIsInput] = useState(false);
-
-  const [editableTask, setEditableTask] = useState(null);
-  const [editedTaskName, setEditedTaskName] = useState("");
-
-  const [searchValTask, setSearchValTask] = useState("");
-  const [filteredTasks, setFilteredTasks] = useState([]);
+  const {
+    tasks,
+    setTasks,
+    taskName,
+    setTaskName,
+    isInput,
+    setIsInput,
+    editableTask,
+    setEditableTask,
+    editedTaskName,
+    setEditedTaskName,
+    searchValTask,
+    setSearchValTask,
+    filteredTasks,
+    setFilteredTasks,
+  } = useContext(StateContext);
 
   const allProjectTasks = tasks.filter((task) => task.projectId === projectId);
 
