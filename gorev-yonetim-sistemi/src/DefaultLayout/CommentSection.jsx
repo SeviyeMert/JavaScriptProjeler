@@ -11,7 +11,6 @@ function CommentSection() {
     projects,
     setProjects,
   } = useContext(StateContext);
-  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
   const handleCloseCommend = () => {
@@ -20,16 +19,32 @@ function CommentSection() {
   };
 
   const handleAddComment = () => {
-    if (!newComment.trim()) return;
+    if (!newComment.trim() || !selectedProjectForComment) return;
 
     const commentObject = {
       id: Date.now(),
       text: newComment.trim(),
+      date: new Date().toLocaleString(),
     };
 
-    setComments((prevComments) => [commentObject, ...prevComments]);
+    const updatedProjects = projects.map((p) => {
+      if (p.id === selectedProjectForComment.id) {
+        const updatedComments = [commentObject, ...(p.comments || [])];
+        return { ...p, comments: updatedComments };
+      }
+      return p;
+    });
+
+    setProjects(updatedProjects);
+    localStorage.setItem("projects", JSON.stringify(updatedProjects));
+
     setNewComment("");
   };
+
+  const currentProject = projects.find(
+    (p) => p.id === selectedProjectForComment?.id
+  );
+  const comments = currentProject ? currentProject.comments || [] : [];
 
   return (
     <div className="comment-section">
@@ -46,6 +61,7 @@ function CommentSection() {
           comments.map((comment) => (
             <div key={comment.id} className="comment-item">
               <p>{comment.text}</p>
+              <small> - {comment.date}</small>
             </div>
           ))
         )}
