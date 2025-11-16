@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import TaskStatusIcon from "./TaskStatusIcon.jsx";
+// import TaskStatusIcon from "./TaskStatusIcon.jsx";
+import StatusIcon from "./StatusIcon";
 import { useDrag, useDrop } from "react-dnd";
 
 function TaskItem({
@@ -76,8 +77,8 @@ function TaskItem({
         </>
       ) : (
         <>
-          <TaskStatusIcon
-            task={task}
+          <StatusIcon
+            itemId={task.id}
             currentStatus={task.status || "default"}
             handleStatusChange={handleStatusChange}
           />

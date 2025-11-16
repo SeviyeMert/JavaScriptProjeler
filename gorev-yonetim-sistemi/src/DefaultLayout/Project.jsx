@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Project.css";
 import SearchButton from "./SearchButton";
-import ProjectItem from "./ProjectItem";
+// import ProjectItem from "./ProjectItem";
+import ListItem from "./ProjectItem.jsx";
 import CommentSection from "./CommentSection.jsx";
 
 function Project() {
@@ -117,18 +118,20 @@ function Project() {
         {(filteredProjects || projects)
           .filter((project) => project != null)
           .map((project, index) => (
-            <ProjectItem
+            <ListItem
               key={project.id}
-              project={project}
+              item={project}
               index={index}
-              editableProject={editableProject}
-              editedProjectName={editedProjectName}
+              editableItem={editableProject}
+              editedItemName={editedProjectName}
               handleEditInputChange={handleEditInputChange}
               handleSaveEdit={handleSaveEdit}
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
-              moveProject={moveProject}
+              moveItem={moveProject}
               handleStatusChange={handleStatusChange}
+              dragType="item"
+              hasCommentButton={true}
             />
           ))}
       </ul>

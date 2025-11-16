@@ -2,43 +2,44 @@ import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { FaCircle } from "react-icons/fa";
 import { useDrag, useDrop } from "react-dnd";
-// import ProjectStatusIcon from "./ProjectStatusIcon";
 import StatusIcon from "./StatusIcon";
-import { useNavigate } from "react-router-dom";
 import CommentButton from "./CommentButton";
+import { useNavigate } from "react-router-dom";
 
-function ProjectItem({
-  project,
+function ListItem({
+  item,
   index,
-  editableProject,
-  editedProjectName,
+  editableItem,
+  editedItemName,
   handleEditInputChange,
   handleSaveEdit,
   handleEditClick,
   handleDeleteClick,
-  moveProject,
+  moveItem,
   handleStatusChange,
+  dragType,
+  hasCommentButton = false,
+  onItemClick,
 }) {
   const ref = useRef(null);
   const navigate = useNavigate();
 
   const [{ isDragging }, dragRef] = useDrag({
-    type: "item",
-    item: { id: project.id, index },
+    type: dragType,
+    item: { id: item.id, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
   const [, dropRef] = useDrop({
-    accept: "item",
-    hover: (item, monitor) => {
-      if (!ref.current || item.index === index) {
+    accept: dragType,
+    hover: (draggedItem, monitor) => {
+      if (!ref.current || draggedItem.index === index || !moveItem) {
         return;
       }
-      const dragIndex = item.index;
+      const dragIndex = draggedItem.index;
       const hoverIndex = index;
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY =
@@ -48,9 +49,9 @@ function ProjectItem({
       if (dragIndex < hoverIndex && hoverActualY < hoverMiddleY) return;
       if (dragIndex > hoverIndex && hoverActualY > hoverMiddleY) return;
 
-      moveProject(dragIndex, hoverIndex);
+      moveItem(dragIndex, hoverIndex);
 
-      item.index = hoverIndex;
+      draggedItem.index = hoverIndex;
     },
   });
 
@@ -58,28 +59,34 @@ function ProjectItem({
 
   const opacity = isDragging ? 0 : 1;
 
-  const handleProjectClick = () => {
-    navigate(`/projects/tasks/${project.id}`, {
-      state: { projectName: project.name },
-    });
+  const handleItemClick = () => {
+    if (onItemClick) {
+      onItemClick(item);
+    } else if (dragType === "item") {
+      navigate(`/projects/tasks/${item.id}`, {
+        state: { projectName: item.name },
+      });
+    }
   };
 
+  const isEditable = editableItem && editableItem.id === item.id;
+
   return (
-    <li ref={dragDropRef} style={{ opacity }}>
-      {editableProject === project ? (
+    <li ref={dragDropRef} style={{ opacity }} className="list-item">
+      {isEditable ? (
         <>
           <input
             type="text"
-            value={editedProjectName}
+            value={editedItemName}
             onChange={handleEditInputChange}
           />
-          <div>
+          <div className="item-actions">
             <button className="ok-button" onClick={handleSaveEdit}>
               <TiTick />
             </button>
             <button
               className="delete-button"
-              onClick={() => handleDeleteClick(project)}
+              onClick={() => handleDeleteClick(item)}
             >
               <MdDeleteOutline />
             </button>
@@ -88,25 +95,27 @@ function ProjectItem({
       ) : (
         <>
           <StatusIcon
-            itemId={project.id}
-            currentStatus={project.status || "default"}
+            itemId={item.id}
+            currentStatus={item.status || "default"}
             handleStatusChange={handleStatusChange}
           />
-          <span onClick={handleProjectClick}>{project.name}</span>
-          <div>
+          <span onClick={handleItemClick} className="item-name">
+            {item.name}
+          </span>
+          <div className="item-actions">
             <button
               className="edit-button"
-              onClick={() => handleEditClick(project)}
+              onClick={() => handleEditClick(item)}
             >
               <CiEdit />
             </button>
             <button
               className="delete-button"
-              onClick={() => handleDeleteClick(project)}
+              onClick={() => handleDeleteClick(item)}
             >
               <MdDeleteOutline />
             </button>
-            <CommentButton project={project} />
+            {hasCommentButton && <CommentButton project={item} />}
           </div>
         </>
       )}
@@ -114,4 +123,4 @@ function ProjectItem({
   );
 }
 
-export default ProjectItem;
+export default ListItem;

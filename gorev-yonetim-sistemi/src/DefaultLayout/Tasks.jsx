@@ -3,7 +3,8 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Tasks.css";
 import SearchButton from "./SearchButton";
-import TaskItem from "./TaskItem.jsx";
+// import TaskItem from "./TaskItem.jsx";
+import ListItem from "./ListItem";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
 
@@ -171,18 +172,20 @@ function Tasks() {
         {tasksToDisplay
           .filter((task) => task != null)
           .map((task, index) => (
-            <TaskItem
+            <ListItem
               key={task.id}
-              task={task}
+              item={task}
               index={index}
-              editableTask={editableTask}
-              editedTaskName={editedTaskName}
+              editableItem={editableTask}
+              editedItemName={editedTaskName}
               handleEditInputChange={handleEditInputChange}
               handleSaveEdit={handleSaveEdit}
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
               handleStatusChange={handleStatusChange}
-              moveTask={moveTask}
+              moveItem={moveTask}
+              dragType="taskItem"
+              hasCommentButton={false}
             />
           ))}
       </ul>
