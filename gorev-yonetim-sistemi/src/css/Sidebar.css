@@ -1,9 +1,10 @@
 #nav {
-  background-color: #fff;
-  padding: 20px;
-  width: 80px;
-  height: 100%;
+  background-color: #ffffff;
+  padding: 12px;
+  width: 70px;
+  height: 70px;
   border-radius: 3px;
+  margin: 8px 20px;
   transition: width 0.6s linear;
   overflow-x: clip;
 }
@@ -55,13 +56,14 @@
 
 .icon {
   display: flex;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 0;
   cursor: pointer;
   padding: 0;
+  margin: 10px;
   position: relative;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
 }
 
 .icon:focus {
@@ -73,14 +75,14 @@
   height: 2px;
   width: 20px;
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 5px;
   transition: transform 0.6s linear;
 }
 
 .icon .line2 {
   top: auto;
-  bottom: 10px;
+  bottom: 5px;
 }
 
 #nav.active .icon .line1 {
@@ -106,6 +108,6 @@ button {
   border: none;
 }
 ul button:hover {
-  background-color: rgb(255, 255, 191);
+  background-color: rgb(245, 245, 245);
   font-size: 16px;
 }

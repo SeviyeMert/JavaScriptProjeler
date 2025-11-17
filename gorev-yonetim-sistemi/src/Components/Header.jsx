@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import logo from "../images/logo.png";
-import enTranslations from "../i18n/en.json";
-import trTranslations from "../i18n/tr.json";
-import ruTranslations from "../i18n/ru.json";
+// import enTranslations from "../i18n/en.json";
+// import trTranslations from "../i18n/tr.json";
+// import ruTranslations from "../i18n/ru.json";
 import { IoIosArrowDown } from "react-icons/io";
+import { headerTranslations } from "../i18n/Header";
 
 function Header() {
   const { language, setLanguage } = useLanguage();
@@ -20,13 +21,7 @@ function Header() {
 
   const [isEnterpriseOpen, setIsEnterpriseOpen] = useState(false);
 
-  const translations = {
-    en: enTranslations,
-    tr: trTranslations,
-    ru: ruTranslations,
-  };
-
-  const t = translations[language];
+  const t = headerTranslations[language];
 
   return (
     <header className="header">
@@ -36,13 +31,13 @@ function Header() {
 
       <div className="nav-links-container">
         <Link to="/products" className="nav-link">
-          Products
+          {t.products_link}
         </Link>
         <Link to="/solutions" className="nav-link">
-          Solutions
+          {t.solutions_link}
         </Link>
         <Link to="/resources" className="nav-link">
-          Resources
+          {t.resources_link}
         </Link>
 
         <div className="dropdown">
@@ -50,15 +45,15 @@ function Header() {
             className="dropdown-button"
             onClick={() => setIsEnterpriseOpen(!isEnterpriseOpen)}
           >
-            Enterprise <IoIosArrowDown />
+            {t.enterprise_dropdown} <IoIosArrowDown />
           </button>
           {isEnterpriseOpen && (
             <div className="dropdown-enterprice">
               <Link to="/enterprise/overview" className="dropdown-item">
-                Overview
+                {t.overview_link}
               </Link>
               <Link to="/enterprise/services" className="dropdown-item">
-                Services
+                {t.services_link}
               </Link>
             </div>
           )}

@@ -36,3 +36,26 @@ body {
 .layout-container.sidebar-open {
   grid-template-columns: 350px 1fr;
 }
+
+@media (min-width: 1025px) {
+  .add-delete-list-bar {
+    display: block !important;
+  }
+
+  /* Sidebar gizli olmalı */
+  .sidebar-area {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .add-delete-list-bar {
+    display: none !important;
+  }
+
+  .sidebar-area {
+    display: block !important;
+    position: fixed;
+    z-index: 100;
+  }
+}

@@ -1,13 +1,13 @@
 .user {
-  background-color: white;
-  width: 100%;
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
   height: 80px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-top: 5px;
   border-radius: 30px;
-  border: 1px solid rgb(252, 252, 150);
+  border: 1px solid rgb(215, 215, 215);
   position: relative;
 }
 

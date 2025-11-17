@@ -3,7 +3,7 @@ import { StateContext } from "../Contexts/StateContext";
 import "../css/Project.css";
 import SearchButton from "./SearchButton";
 // import ProjectItem from "./ProjectItem";
-import ListItem from "./ProjectItem.jsx";
+import ListItem from "./ListItem.jsx";
 import CommentSection from "./CommentSection.jsx";
 
 function Project() {
@@ -98,7 +98,7 @@ function Project() {
     <div className="projects">
       <ul className="project-list">
         <div className="header-line">
-          <button onClick={() => setIsInput(true)}>Projects</button>
+          <button>Projects</button>
           <SearchButton />
         </div>
 

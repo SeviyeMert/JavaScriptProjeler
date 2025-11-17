@@ -1,0 +1,32 @@
+export const headerTranslations = {
+  en: {
+    login_button: "Log In",
+    signup_button: "Sign Up",
+    products_link: "Products",
+    solutions_link: "Solutions",
+    resources_link: "Resources",
+    enterprise_dropdown: "Enterprise",
+    overview_link: "Overview",
+    services_link: "Services",
+  },
+  tr: {
+    login_button: "Giriş Yap",
+    signup_button: "Kaydol",
+    products_link: "Ürünler",
+    solutions_link: "Çözümler",
+    resources_link: "Kaynaklar",
+    enterprise_dropdown: "Kurumsal",
+    overview_link: "Genel Bakış",
+    services_link: "Hizmetler",
+  },
+  ru: {
+    login_button: "Войти",
+    signup_button: "Регистрация",
+    products_link: "Продукты",
+    solutions_link: "Решения",
+    resources_link: "Ресурсы",
+    enterprise_dropdown: "Корпоративный",
+    overview_link: "Обзор",
+    services_link: "Услуги",
+  },
+};

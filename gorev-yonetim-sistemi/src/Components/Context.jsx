@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Context.css";
+import { useLanguage } from "../Contexts/languageContext";
 import Card_h1 from "../pages/Card-h1";
 import Card_h2 from "../pages/Card-h2";
 import Card_h3 from "../pages/Card-h3";
@@ -30,65 +31,55 @@ import image12 from "../images/section8-image1.png";
 import image13 from "../images/section8-image2.png";
 import { BsBox } from "react-icons/bs";
 import image14 from "../images/section8-image3.png";
+import { contextTranslations } from "../i18n/Context";
 
 function Context() {
+  const { language } = useLanguage();
+  const t = contextTranslations[language];
+
   const cardData1 = [
     {
-      cardHeader: "Hundreds of powerful tools, one platform.",
-      cardContext:
-        "ClickUp comes with hundreds of features that can be customized for any work need—with more added every week. And they're all free, forever.",
-      cardList: [
-        "OVERVIEW",
-        "VİEWS",
-        "CUSTOMIZATION",
-        "DOCS",
-        "REPORTING",
-        "TIME",
-        "ALL FEATURES",
-      ],
+      cardHeader: t.card1_header,
+      cardContext: t.card1_context,
+      cardList: t.card1_list,
       cardImage: image1,
     },
   ];
   const cardData2 = [
     {
-      cardHeader: "ClickUp Overview.",
-      cardContext:
-        "ClickUp's unique Hierarchy helps you create the perfect structure that scales with your needs.",
+      cardHeader: t.card2_header,
+      cardContext: t.card2_context,
     },
   ];
   const cardData3 = [
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Everything View",
-      cardContext:
-        "ClickUp's Everything view makes it easy to find anything you're looking for, no matter where it lives in the Hierarchy. It's your birds-eye view for all tasks across every level of your organization that can be filtered, sorted, and saved for any need.",
+      cardHeader: t.card3_1_header,
+      cardContext: t.card3_1_context,
       cardImage: image2,
     },
     {
       cardLogo: <PiPlanet />,
-      cardHeader: "Space,Folder, List",
-      cardContext:
-        "Organize teams and departments inte Spaces,group big projects or initiatives into Folders, and break out tasks into Lists for a clear visual hierarchy of all your work.",
+      cardHeader: t.card3_2_header,
+      cardContext: t.card3_2_context,
       cardImage: image3,
     },
     {
       cardLogo: <MdTaskAlt />,
-      cardHeader: "Customizable Tasks",
-      cardContext:
-        "Choose from 35+ ClickApps to customize your task management for any work need.",
+      cardHeader: t.card3_3_header,
+      cardContext: t.card3_3_context,
       cardImage: image4,
     },
     {
       cardLogo: <TbSubtask />,
-      cardHeader: "Nested substasks & checklists",
-      cardContext:
-        "Simplify complex projects by breaking them down into levels of subtasks.",
+      cardHeader: t.card3_4_header,
+      cardContext: t.card3_4_context,
       cardImage: image5,
     },
   ];
   const cardData4 = [
     {
-      cardHeader: "Tackle work from any angle with 15+ powerful views.",
+      cardHeader: t.card4_header,
       cardLogo: [
         <TbSubtask />,
         <IoOptionsOutline />,
@@ -102,172 +93,135 @@ function Context() {
   ];
   const cardData5 = [
     {
-      cardHeader: "Customize ClickUp for any need, no code required.",
-      cardContext:
-        "Everything in ClickUp can be easily customized to manage any type of project, no code or add-ons required.",
+      cardHeader: t.card5_header,
+      cardContext: t.card5_context,
     },
   ];
   const cardData6 = [
     {
       cardLogo: <IoOptionsOutline />,
-      cardHeader: "ClickApps",
-      cardContext:
-        "Tailor your tasks for any work need with 35+ ClickApps that each add different functionalities. Save time with task Automations, assign Sprint Points, add Custom Fields, and more",
+      cardHeader: t.card6_1_header,
+      cardContext: t.card6_1_context,
       cardImage: image6,
     },
     {
       cardLogo: <IoOptionsOutline />,
-      cardHeader: "Automations",
-      cardContext:
-        "Automate routine work and processes with 50+ actions, triggers, and conditions. Use pre-built automation recipes or customize them based on your needs.",
+      cardHeader: t.card6_2_header,
+      cardContext: t.card6_2_context,
     },
     {
       cardLogo: <IoOptionsOutline />,
-      cardHeader: "Templates",
-      cardContext:
-        "Save time by leveraging hundreds of templates for team use cases, views, tasks checklists, Docs, and more.",
+      cardHeader: t.card6_3_header,
+      cardContext: t.card6_3_context,
       cardImage: image6n1,
     },
     {
       cardLogo: <IoOptionsOutline />,
-      cardHeader: "Relationships",
-      cardContext:
-        "Create the perfect visual database with Relationships. Link tasks, documents, integrations and more to access everything you need in one place.",
+      cardHeader: t.card6_4_header,
+      cardContext: t.card6_4_context,
       cardImage: image6n2,
     },
     {
       cardLogo: <IoOptionsOutline />,
-      cardHeader: " Integrations",
-      cardContext:
-        "ClickUp integrates with over 1,000 of your favorite tools. Sync your team calendars, messaging apps, cloud storage, and more to keep all of your tools in one place",
+      cardHeader: t.card6_5_header,
+      cardContext: t.card6_5_context,
     },
   ];
   const cardData7 = [
     {
-      cardHeader: "Collaborate on anything with your team.",
-      cardContext:
-        "Streamline teamwork with powerful collaboration features that make it easy to work together on any type of project.",
+      cardHeader: t.card7_header,
+      cardContext: t.card7_context,
       cardImage: image7,
     },
   ];
   const cardData8 = [
     {
-      cardHeader: "Document and share anything with your team.",
-      cardContext:
-        "Collaborate on product ideas, document bugs, or jot down meeting minutes with ClickUp Docs. Edit in real-time with others, add rich editing, and keep everyone up-to-date with a visual knowledge base.",
+      cardHeader: t.card8_header,
+      cardContext: t.card8_context,
       cardImage: image8,
     },
   ];
 
   const cardData9 = [
     {
-      cardHeader: "Stay on track with real-time reporting.",
-      cardContext:
-        "Set goals, track progress, and manage resources more effectively with powerful reporting features.",
+      cardHeader: t.card9_header,
+      cardContext: t.card9_context,
     },
   ];
   const cardData10 = [
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Dashboards",
-      cardContext:
-        "Bring important project indicators into one place with Dashborads.",
+      cardHeader: t.card10_1_header,
+      cardContext: t.card10_1_context,
       cardImage: image9,
     },
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Workload & Box view",
-      cardContext:
-        "Visualize your team's day-by-day work capacity with Workload and Box views. See who is under or over capacity to reduce bottlenecks and allocate resources effectively.",
+      cardHeader: t.card10_2_header,
+      cardContext: t.card10_2_context,
     },
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Goals",
-      cardContext:
-        "Measure your project goals by tying them to specific tasks, numbers, monetary values, and more. Organize your OKRs and Sprints into Goal Folders and automatically track your progress for linked tasks.",
+      cardHeader: t.card10_3_header,
+      cardContext: t.card10_3_context,
       cardImage: image10,
     },
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Milentones",
-      cardContext:
-        "Set milentones to signify when an important stage in the project is complete.",
+      cardHeader: t.card10_4_header,
+      cardContext: t.card10_4_context,
       cardImage: image11,
     },
     {
       cardLogo: <HiOutlineViewGrid />,
-      cardHeader: "Pulse",
-      cardContext:
-        "View automatic activity reports powered by machine learning to easily see where your time is being spent.",
+      cardHeader: t.card10_5_header,
+      cardContext: t.card10_5_context,
     },
   ];
   const cardData11 = [
     {
-      cardHeader: "Time management made easy.",
-      cardContext:
-        "Make the most of your time with global Time Tracking from any device, Time Estimates, and time Reporting.",
+      cardHeader: t.card11_header,
+      cardContext: t.card11_context,
     },
   ];
   const cardData12 = [
     {
       cardImage: image12,
-      cardHeader: "Tracking",
-      cardContext:
-        "Track time automatically (or manually) link it to tasks from your desktop, mobile, or browser with ClickUp's global timer.",
+      cardHeader: t.card12_1_header,
+      cardContext: t.card12_1_context,
     },
     {
       cardImage: image13,
-      cardHeader: "Estimates",
-      cardContext:
-        "Add time estimates to tasks to allocate resources smarter and set expectations for your team.",
+      cardHeader: t.card12_2_header,
+      cardContext: t.card12_2_context,
     },
     {
       cardImage: image14,
-      cardHeader: "Reporting",
-      cardContext:
-        "Access detailed reporting for time tracked and automatically create reports for billable time.",
+      cardHeader: t.card12_3_header,
+      cardContext: t.card12_3_context,
     },
   ];
   const cardData13 = [
     {
-      cardHeader: "But wait, there's more.",
-      cardContext:
-        "ClickUp comes with hundreds of more features to help your team tackle any type of work, check them all out below.",
+      cardHeader: t.card13_header,
+      cardContext: t.card13_context,
     },
   ];
   const cardData14 = [
     {
       cardLogo: <BsBox />,
-      cardHeader: "Task Management",
-      cardContext: [
-        "Recurring Checklists",
-        "Reminders",
-        "Resolve Comments",
-        "Scrum Points",
-        "Status Templates",
-      ],
+      cardHeader: t.card14_1_header,
+      cardContext: t.card14_1_context,
     },
     {
       cardLogo: <BsBox />,
-      cardHeader: "Complete Customization",
-      cardContext: [
-        "Custom Fields",
-        "Custom Statuses",
-        "Customize Assignees",
-        "Filter and Search Tasks",
-        "Hotkeys & Shortcuts",
-      ],
+      cardHeader: t.card14_2_header,
+      cardContext: t.card14_2_context,
     },
     {
       cardLogo: <BsBox />,
-      cardHeader: "Team Collaboration",
-      cardContext: [
-        "2-Way Calender Sync",
-        "Capture,Mark Up, and Edit Screenshots",
-        "List Details & Discussions",
-        "Mentions",
-        "Real-Time Editing",
-      ],
+      cardHeader: t.card14_3_header,
+      cardContext: t.card14_3_context,
     },
   ];
 
@@ -369,7 +323,7 @@ function Context() {
           ))}
         </div>
       </div>
-      <button className="see-all-button">See All Features</button>
+      <button className="see-all-button">{t.see_all_button}</button>
     </div>
   );
 }

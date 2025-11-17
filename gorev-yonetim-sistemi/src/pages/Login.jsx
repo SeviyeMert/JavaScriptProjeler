@@ -58,7 +58,7 @@
 
 // export default Login;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/Login.css";
@@ -70,6 +70,8 @@ const API_URL = "https://6915be37465a9144626d5495.mockapi.io/api/User";
 function Login({ onLoginSuccess }) {
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [posts, setPosts] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -80,7 +82,9 @@ function Login({ onLoginSuccess }) {
   const onSubmit = async (data) => {
     setErrorMessage("");
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(API_URL, {
+        method: "GET",
+      });
 
       if (!response.ok) {
         throw new Error("Server'a erişim hatası.");
@@ -108,6 +112,16 @@ function Login({ onLoginSuccess }) {
     }
   };
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      console.log(data);
+      setPosts(data);
+    };
+    fetchPost();
+  }, []);
+
   return (
     <div className="login-container">
       <h2 className="login">Log in</h2>
@@ -117,10 +131,6 @@ function Login({ onLoginSuccess }) {
           placeholder="Email"
           {...register("email", {
             required: "Email zorunludur.",
-            pattern: {
-              value: /^\S+@\S+$/i,
-              message: "Geçerli bir e-posta adresi girin.",
-            },
           })}
           className="login-input"
         />

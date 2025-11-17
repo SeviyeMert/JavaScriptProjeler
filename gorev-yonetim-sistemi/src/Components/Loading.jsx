@@ -1,10 +1,14 @@
 import React from "react";
+import { useLanguage } from "../Contexts/languageContext";
+import { loadingTranslations } from "../i18n/Loading";
 
 function Loading() {
+  const { language } = useLanguage();
+  const t = loadingTranslations[language];
   return (
     <div>
       <div className="spinner"></div>
-      <p>Loading...</p>
+      <p>{t.loading_text}</p>
     </div>
   );
 }
