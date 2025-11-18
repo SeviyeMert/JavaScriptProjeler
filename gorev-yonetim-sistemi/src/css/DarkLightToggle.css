@@ -39,7 +39,7 @@
 
 /* dark mode */
 input:checked + .slider {
-  background-color: #808080;
+  background-color: #bfbfbf;
 }
 
 input:checked + .slider::before {

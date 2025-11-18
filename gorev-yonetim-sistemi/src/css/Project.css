@@ -44,8 +44,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
   font-size: 15px;
   padding: 10px;
   border-radius: 10px;
+}
+
+body.dark .projects {
+  background-color: #1e1e1e;
+  border: 1px solid #bfbfbf;
 }

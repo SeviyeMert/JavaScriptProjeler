@@ -79,6 +79,19 @@ function Login({ onLoginSuccess }) {
   } = useForm();
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const response = await fetch(API_URL, {
+  //       method: "GET",
+  //     });
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setPosts(data);
+  //   };
+  //   fetchPost();
+  // }, []);
+  // navigate("/projects");
+
   const onSubmit = async (data) => {
     setErrorMessage("");
     try {
@@ -87,7 +100,7 @@ function Login({ onLoginSuccess }) {
       });
 
       if (!response.ok) {
-        throw new Error("Server'a erişim hatası.");
+        throw new Error("Sunucuya erişim hatası.");
       }
 
       const users = await response.json();
@@ -98,11 +111,9 @@ function Login({ onLoginSuccess }) {
 
       if (user) {
         localStorage.setItem("jwtToken", MOCK_JWT_TOKEN);
-
         if (onLoginSuccess) {
           onLoginSuccess();
         }
-
         navigate("/projects");
       } else {
         setErrorMessage("E-posta veya şifre hatalı.");
@@ -111,16 +122,6 @@ function Login({ onLoginSuccess }) {
       setErrorMessage(`Giriş hatası: ${error.message}`);
     }
   };
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      console.log(data);
-      setPosts(data);
-    };
-    fetchPost();
-  }, []);
 
   return (
     <div className="login-container">

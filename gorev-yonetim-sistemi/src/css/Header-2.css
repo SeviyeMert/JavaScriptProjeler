@@ -55,3 +55,11 @@
   background-color: #eee;
   margin: 5px 0;
 }
+
+body.dark .user {
+  background-color: #1e1e1e;
+}
+
+body.dark .user-logo {
+  color: #bfbfbf;
+}

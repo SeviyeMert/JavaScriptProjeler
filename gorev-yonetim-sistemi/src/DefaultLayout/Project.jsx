@@ -5,6 +5,8 @@ import SearchButton from "./SearchButton";
 // import ProjectItem from "./ProjectItem";
 import ListItem from "./ListItem.jsx";
 import CommentSection from "./CommentSection.jsx";
+import { useLanguage } from "../Contexts/languageContext.jsx";
+import { projectTranslations } from "../i18n/Project.js";
 
 function Project() {
   const {
@@ -23,6 +25,8 @@ function Project() {
     setSearchVal,
     isCommentSectionOpen,
   } = useContext(StateContext);
+  const { language } = useLanguage();
+  const t = projectTranslations[language];
 
   const handleInputChange = (e) => setProjectName(e.target.value);
 
@@ -98,7 +102,7 @@ function Project() {
     <div className="projects">
       <ul className="project-list">
         <div className="header-line">
-          <button>Projects</button>
+          <button>{t.projects_header}</button>
           <SearchButton />
         </div>
 
@@ -109,9 +113,9 @@ function Project() {
               type="text"
               value={projectName}
               onChange={handleInputChange}
-              placeholder="Proje Adı Girin"
+              placeholder={t.project_input_placeholder}
             />
-            <button onClick={handleSaveProject}>Add</button>
+            <button onClick={handleSaveProject}>{t.add_button}</button>
           </li>
         )}
 

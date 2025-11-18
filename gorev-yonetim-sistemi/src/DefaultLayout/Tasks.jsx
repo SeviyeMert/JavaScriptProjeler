@@ -10,7 +10,7 @@ import { IoCloseSharp } from "react-icons/io5";
 
 function Tasks() {
   const { projectId } = useParams();
-  const location = useLocation();
+
   const navigate = useNavigate();
   const projectName = location.state?.projectName || "Tasks";
 
@@ -163,7 +163,7 @@ function Tasks() {
               type="text"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
-              placeholder="Yeni Görev Adı Girin"
+              placeholder="Enter new task..."
             />
             <button onClick={handleSaveTask}>Add Task</button>
           </li>

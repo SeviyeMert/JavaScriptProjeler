@@ -136,3 +136,17 @@
   border-radius: 20px;
   background-color: rgb(255, 255, 119);
 }
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+  color: #bfbfbf;
+}
+
+body.dark p,
+body.dark div:not(.theme-switcher) {
+  color: #777;
+}

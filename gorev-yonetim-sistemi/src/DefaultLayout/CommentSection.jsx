@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { StateContext } from "../Contexts/StateContext";
 import { FiSend } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
+import "../css/CommentSection.css";
 
 function CommentSection() {
   const {
@@ -49,7 +50,7 @@ function CommentSection() {
   return (
     <div className="comment-section">
       <div className="comment-header">
-        <h3>{selectedProjectForComment?.name} Yorumları</h3>
+        <h3>{selectedProjectForComment?.name} Comments</h3>
         <button className="close-button" onClick={handleCloseCommend}>
           <IoCloseSharp size={20} />
         </button>

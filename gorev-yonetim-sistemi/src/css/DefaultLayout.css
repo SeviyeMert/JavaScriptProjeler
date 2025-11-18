@@ -42,7 +42,6 @@ body {
     display: block !important;
   }
 
-  /* Sidebar gizli olmalı */
   .sidebar-area {
     display: none !important;
   }

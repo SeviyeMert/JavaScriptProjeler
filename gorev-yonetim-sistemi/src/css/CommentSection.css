@@ -1,0 +1,37 @@
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 25px;
+  box-shadow: 1px 1px 5px #bcbcbc;
+  width: 500px;
+  padding: 10px;
+  background-color: white;
+}
+
+.comment-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+.close-button {
+  height: 50px;
+  width: 50px;
+}
+
+.comment-item {
+  border: 1px solid rgb(183, 183, 183);
+  border-radius: 10px;
+  margin: 20px 5px;
+  padding: 10px;
+}
+
+.comment-input-area {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 30px;
+  padding: 5px;
+}

@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { LuCircleDashed } from "react-icons/lu";
-import "../css/ProjectStatusIcon.css";
+import "../css/StatusIcon.css";
 
-function StatusIcon() {
+function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLocalStatusChange = (newStatus) => {
-    handleLocalStatusChange(itemId, newStatus);
+    handleStatusChange(itemId, newStatus);
     setIsDropdownOpen(false);
   };
 
-  const statusClass = "status-${currentStatus}";
+  const statusClass = `status-${currentStatus}`;
 
   return (
     <div className="status-container">
       <button
-        className={"status-button ${statusClass"}
+        className={`status-button ${statusClass}`}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <LuCircleDashed />
