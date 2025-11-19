@@ -15,13 +15,13 @@ import { headerTranslations } from "../i18n/Header";
 function Header() {
   const { language, setLanguage } = useLanguage();
 
-  const handleLanguageChange = (newLanguage) => {
-    setLanguage(newLanguage);
-  };
-
   const [isEnterpriseOpen, setIsEnterpriseOpen] = useState(false);
 
   const t = headerTranslations[language];
+
+  const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+  };
 
   return (
     <header className="header">

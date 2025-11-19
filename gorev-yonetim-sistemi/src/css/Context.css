@@ -56,19 +56,19 @@
   gap: 30px;
   margin-top: 30px;
 }
-.car6-0 {
+.card6-0 {
   grid-area: card6-0;
 }
-.car6-1 {
+.card6-1 {
   grid-area: card6-1;
 }
-.car6-2 {
+.card6-2 {
   grid-area: card6-2;
 }
-.car6-3 {
+.card6-3 {
   grid-area: card6-3;
 }
-.car6-4 {
+.card6-4 {
   grid-area: card6-4;
 }
 
@@ -96,7 +96,7 @@
   gap: 30px;
   margin-top: 30px;
 }
-.car7-0 {
+.card7-0 {
   grid-area: card7-0;
 }
 .card7-1 {

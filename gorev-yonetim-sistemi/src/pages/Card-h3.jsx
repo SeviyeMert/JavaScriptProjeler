@@ -6,7 +6,7 @@ const Card_h3 = (props) => {
   const { cardLogo, cardHeader, cardContext, cardImage, className } = props;
 
   return (
-    <div className={`card-container-h3`}>
+    <div className={`card-container-h3 ${className}`}>
       <span
         className="card-logo-h3"
         style={{

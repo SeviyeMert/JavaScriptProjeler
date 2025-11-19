@@ -1,11 +1,10 @@
 import "../css/Sidebar.css";
-// Navbar'dan taşınan bileşenleri import ediyoruz
 import AddProjectButton from "./AddProjectButton";
 import ListButton from "./ListButton";
 import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
 import TableButton from "./TableButton";
-import { GoPlus } from "react-icons/go"; // İhtiyaç olursa
+import { GoPlus } from "react-icons/go";
 
 function Menu({ menuOpen, handleToggle }) {
   return (
@@ -24,7 +23,6 @@ function Menu({ menuOpen, handleToggle }) {
           <li>
             <input className="search" type="text" placeholder="   Search" />
           </li>
-          {/* İstenen Navbar menü öğeleri buraya taşındı */}
           <li>
             <AddProjectButton />
           </li>
