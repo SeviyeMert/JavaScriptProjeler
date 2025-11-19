@@ -9,13 +9,16 @@ import logo from "../images/logo.png";
 // import enTranslations from "../i18n/en.json";
 // import trTranslations from "../i18n/tr.json";
 // import ruTranslations from "../i18n/ru.json";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosMenu } from "react-icons/io";
 import { headerTranslations } from "../i18n/Header";
+import Sidebar from "./Sidebar";
 
 function Header() {
   const { language, setLanguage } = useLanguage();
 
   const [isEnterpriseOpen, setIsEnterpriseOpen] = useState(false);
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const t = headerTranslations[language];
 
@@ -23,13 +26,25 @@ function Header() {
     setLanguage(newLanguage);
   };
 
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
     <header className="header">
-      <div className="logo">
+      <button className="menu-toggle-button" onClick={handleToggleSidebar}>
+        <IoIosMenu size={30} />
+      </button>
+
+      <div className="header-logo">
         <img src={logo} alt="logo" />
       </div>
 
-      <div className="nav-links-container">
+      <div className="nav-links-container desktop-only">
         <Link to="/products" className="nav-link">
           {t.products_link}
         </Link>
@@ -60,7 +75,7 @@ function Header() {
         </div>
       </div>
 
-      <div className="log-and-language-container">
+      <div className="log-and-language-container desktop-only">
         <div className="toggle-language">
           <DarkLightToggle />
 
@@ -98,6 +113,17 @@ function Header() {
           </Link>
         </nav>
       </div>
+
+      {isSidebarOpen && (
+        <Sidebar
+          t={t}
+          handleLanguageChange={handleLanguageChange}
+          language={language}
+          isEnterpriseOpen={isEnterpriseOpen}
+          setIsEnterpriseOpen={setIsEnterpriseOpen}
+          handleCloseSidebar={handleCloseSidebar}
+        />
+      )}
     </header>
   );
 }

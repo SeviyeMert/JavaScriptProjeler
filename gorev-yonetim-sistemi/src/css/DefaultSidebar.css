@@ -1,0 +1,113 @@
+#nav {
+  background-color: #ffffff;
+  padding: 12px;
+  width: 70px;
+  height: 70px;
+  border-radius: 3px;
+  margin: 8px 20px;
+  transition: width 0.6s linear;
+  overflow-x: clip;
+}
+
+#nav.active {
+  width: 350px;
+  height: 100%;
+}
+
+#nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  position: relative;
+  top: 35px;
+  left: -10px;
+  padding: 0;
+  margin: 0;
+  width: 0;
+}
+
+#nav.active ul {
+  width: 330px;
+}
+
+#nav ul li {
+  transform: rotateY(0deg);
+  opacity: 0;
+  transition: transform 0.6s linear, opacity 0.4s linear;
+}
+
+#nav.active ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+#nav.active ul a:focus {
+  background-color: rgb(188, 188, 188);
+}
+
+#nav ul a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+  border: none;
+}
+
+.icon {
+  display: flex;
+  background-color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  margin: 10px;
+  position: relative;
+  height: 20px;
+  width: 20px;
+}
+
+.icon:focus {
+  outline: 0;
+}
+
+.icon .line {
+  background-color: #000000;
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: transform 0.6s linear;
+}
+
+.icon .line2 {
+  top: auto;
+  bottom: 5px;
+}
+
+#nav.active .icon .line1 {
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+#nav.active .icon .line2 {
+  transform: rotate(765deg) translateY(-5.5px);
+}
+
+.search {
+  height: 5vh;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+button {
+  background-color: white;
+  height: 60px;
+  width: 330px;
+  border: none;
+}
+ul button:hover {
+  background-color: rgb(245, 245, 245);
+  font-size: 16px;
+}

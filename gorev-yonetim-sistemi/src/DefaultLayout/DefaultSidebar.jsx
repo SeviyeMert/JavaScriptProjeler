@@ -1,10 +1,9 @@
-import "../css/Sidebar.css";
+import "../css/DefaultSidebar.css";
 import AddProjectButton from "./AddProjectButton";
 import ListButton from "./ListButton";
 import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
 import TableButton from "./TableButton";
-import { GoPlus } from "react-icons/go";
 
 function Menu({ menuOpen, handleToggle }) {
   return (

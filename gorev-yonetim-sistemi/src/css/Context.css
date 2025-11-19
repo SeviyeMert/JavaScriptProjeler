@@ -150,3 +150,34 @@ body.dark p,
 body.dark div:not(.theme-switcher) {
   color: #777;
 }
+
+@media (max-width: 1024px) {
+  .context-container {
+    padding: 20px;
+  }
+
+  /* Section 2'deki kartlar */
+  .card3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-7 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

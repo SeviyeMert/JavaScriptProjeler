@@ -26,15 +26,15 @@ body.dark .signUp-button {
   color: #808080;
 }
 
-.logo {
+.header-logo {
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
   cursor: pointer;
 }
-.logo img {
-  height: 12vh;
+.header-logo img {
+  height: 8vh;
 }
 /* Links Buttons */
 .nav-links-container {
@@ -171,4 +171,42 @@ body.dark .language button {
 .divider {
   margin: 0 10px;
   color: #aaa;
+}
+
+/* Menü Butonu  */
+.menu-toggle-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #000;
+  z-index: 1002;
+}
+body.dark .menu-toggle-button {
+  color: #808080;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    justify-content: flex-start;
+    gap: 20px;
+    height: 10vh;
+    padding: 0 5vw;
+    border: none;
+    box-shadow: none;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .menu-toggle-button {
+    display: block;
+    order: -1;
+  }
+
+  .header-logo {
+    display: none;
+  }
 }
