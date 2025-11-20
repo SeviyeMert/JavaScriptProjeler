@@ -1,5 +1,17 @@
+.card-container-h3 {
+  border: 1px solid rgb(227, 227, 227);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 5px #eaeaea;
+}
 .card-header-h3 {
-  font-size: 30px;
+  font-size: 1.4rem;
   display: flex;
   justify-content: flex-start;
+}
+.card-image-h3 {
+  display: flex;
+  align-items: center;
+  height: auto;
+  margin: 10px;
 }

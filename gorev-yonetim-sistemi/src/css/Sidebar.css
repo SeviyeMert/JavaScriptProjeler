@@ -1,92 +1,106 @@
 /* Sidebar */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 40vw;
-  height: 100vh;
-  background-color: #ffffff;
-  z-index: 1001;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+@media (min-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
 }
 
-body.dark .sidebar {
-  background-color: #2c2c2c;
-  color: #ececec;
+@media (480px <= width <= 1024px) {
+  .sidebar {
+    width: auto;
+  }
 }
+@media (320 <= width<= 480px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+@media (width <= 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
 
-.sidebar-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-  padding-top: 10px;
-}
+  body.dark .sidebar {
+    background-color: #2c2c2c;
+    color: #ececec;
+  }
 
-.sidebar-logo img {
-  display: flex;
-  margin: 0;
-  height: 5vh;
-}
+  .sidebar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding-top: 10px;
+  }
 
-/* Sidebar Navigasyon Linkleri */
-.sidebar-nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
+  .sidebar-logo img {
+    display: flex;
+    margin: 0;
+    height: 5vh;
+  }
 
-body.dark .sidebar-nav-links .nav-link,
-body.dark .sidebar-nav-links .dropdown-button {
-  color: #808080;
-}
+  /* Sidebar Navigasyon Linkleri */
+  .sidebar-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
 
-/* Sidebar Dropdown Stili */
-.sidebar-dropdown {
-  position: static;
-  box-shadow: none;
-  background-color: transparent;
-  width: 100%;
-}
-.sidebar-dropdown .dropdown-item {
-  padding: 10px 20px;
-  background-color: transparent !important;
-  color: #555;
-}
-body.dark .sidebar-dropdown .dropdown-item {
-  color: #aaa;
-}
+  body.dark .sidebar-nav-links .nav-link,
+  body.dark .sidebar-nav-links .dropdown-button {
+    color: #808080;
+  }
 
-/* Sidebar Footer (Toggle, Dil, Login/Signup) */
-.sidebar-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 15px;
-  padding: 30px 0 50px 0;
-  border-top: 1px solid #ccc;
-  margin-top: auto;
-}
+  /* Sidebar Dropdown Stili */
+  .sidebar-dropdown {
+    box-shadow: none;
+    background-color: transparent;
+    width: 100%;
+  }
+  .sidebar-dropdown .dropdown-item {
+    padding: 10px 20px;
+    background-color: transparent !important;
+    color: #555;
+  }
+  body.dark .sidebar-dropdown .dropdown-item {
+    color: #aaa;
+  }
 
-.sidebar-footer .logIn-button,
-.sidebar-footer .signUp-button {
-  font-size: 1.4rem;
-  padding: 10px 0;
-  background: none;
-  color: #000;
-}
-body.dark .sidebar-footer .logIn-button,
-body.dark .sidebar-footer .signUp-button {
-  background-color: transparent;
-  color: #808080;
-}
-.sidebar-footer .log {
-  display: flex;
-  flex-direction: row;
+  /* Sidebar Footer (Toggle, Dil, Login/Signup) */
+  .sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    padding: 30px 0 50px 0;
+    border-top: 1px solid #ccc;
+    margin-top: auto;
+  }
+
+  .sidebar-footer .logIn-button,
+  .sidebar-footer .signUp-button {
+    font-size: 1.4rem;
+    padding: 10px 0;
+    background: none;
+    color: #000;
+  }
+  body.dark .sidebar-footer .logIn-button,
+  body.dark .sidebar-footer .signUp-button {
+    background-color: transparent;
+    color: #808080;
+  }
+  .sidebar-footer .log {
+    display: flex;
+    flex-direction: row;
+  }
 }

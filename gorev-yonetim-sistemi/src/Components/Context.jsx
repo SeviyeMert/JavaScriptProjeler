@@ -11,7 +11,7 @@ import image1 from "../images/section1-image1.png";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import image2 from "../images/section2-image1.png";
 import { PiPlanet } from "react-icons/pi";
-import image3 from "../images/section2-image1.png";
+import image3 from "../images/section2-image2.png";
 import { MdTaskAlt } from "react-icons/md";
 import image4 from "../images/section2-image2.png";
 import { TbSubtask } from "react-icons/tb";
@@ -304,7 +304,7 @@ function Context() {
       ))}
       <div className="section-8">
         {cardData12.map((card12, index) => (
-          <Card4 key={index} {...card12} />
+          <Card4 key={index} {...card12} className={`card12-${index} `} />
         ))}
       </div>
 

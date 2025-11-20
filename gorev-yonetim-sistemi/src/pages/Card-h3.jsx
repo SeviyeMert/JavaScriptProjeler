@@ -10,9 +10,9 @@ const Card_h3 = (props) => {
       <span
         className="card-logo-h3"
         style={{
-          fontSize: "40px",
+          fontSize: "2rem",
           padding: "11px 5px 0 7px",
-          borderRadius: "20px",
+          borderRadius: "1.4rem",
         }}
       >
         {cardLogo}
