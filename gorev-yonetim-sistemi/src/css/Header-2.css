@@ -25,17 +25,17 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 65px;
+  top: 75px;
   right: 40px;
   background-color: white;
-  width: 150px;
+  width: 180px;
   z-index: 100;
   padding: 10px 0;
 }
 
 .dropdown-item {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px;
   cursor: pointer;
@@ -62,4 +62,22 @@ body.dark .user {
 
 body.dark .user-logo {
   color: #bfbfbf;
+}
+
+body.dark .dropdown-menu {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .dropdown-item {
+  color: #ececec;
+}
+
+body.dark .dropdown-item:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark .dropdown-divider {
+  background-color: #444;
 }

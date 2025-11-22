@@ -1,6 +1,6 @@
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
-import "../css/Card5.css";
+// import "../css/Card5.css";
 
 function Card5(props) {
   const { cardLogo, cardHeader, cardContext, className } = props;

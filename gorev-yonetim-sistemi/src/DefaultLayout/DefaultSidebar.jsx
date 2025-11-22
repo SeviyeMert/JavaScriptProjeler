@@ -1,5 +1,4 @@
 import "../css/DefaultSidebar.css";
-import AddProjectButton from "./AddProjectButton";
 import ListButton from "./ListButton";
 import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
@@ -21,9 +20,6 @@ function Menu({ menuOpen, handleToggle }) {
         <ul>
           <li>
             <input className="search" type="text" placeholder="   Search" />
-          </li>
-          <li>
-            <AddProjectButton />
           </li>
           <li>
             <ListButton />

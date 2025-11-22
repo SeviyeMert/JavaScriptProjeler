@@ -3,14 +3,11 @@ button {
   width: 100px;
   padding: 8px 15px;
   background-color: #fff;
-  border: 1px solid rgb(255, 255, 172);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 30px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-}
-button:hover {
-  background-color: rgb(255, 255, 218);
 }

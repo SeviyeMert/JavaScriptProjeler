@@ -1,9 +1,8 @@
 .search-button {
   display: flex;
   align-items: center;
-  gap: 5px;
   background-color: white;
-  padding: 5px 10px;
+  padding: 0 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
 }

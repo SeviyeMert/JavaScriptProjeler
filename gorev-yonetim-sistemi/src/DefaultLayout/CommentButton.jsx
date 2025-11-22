@@ -12,7 +12,7 @@ function CommentButton({ project }) {
   };
 
   return (
-    <button onClick={handleCommentClick}>
+    <button onClick={handleCommentClick} className="comment-button">
       <FaRegCommentDots />
     </button>
   );

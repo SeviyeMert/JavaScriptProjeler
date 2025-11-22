@@ -5,6 +5,7 @@ import SearchButton from "./SearchButton";
 // import ProjectItem from "./ProjectItem";
 import ListItem from "./ListItem.jsx";
 import CommentSection from "./CommentSection.jsx";
+import AddProjectButton from "./AddProjectButton.jsx";
 import { useLanguage } from "../Contexts/languageContext.jsx";
 import { projectTranslations } from "../i18n/Project.js";
 
@@ -139,6 +140,11 @@ function Project() {
             />
           ))}
       </ul>
+
+      <div className="add-project-wrapper">
+        <AddProjectButton />
+      </div>
+
       {isCommentSectionOpen && <CommentSection />}
     </div>
   );

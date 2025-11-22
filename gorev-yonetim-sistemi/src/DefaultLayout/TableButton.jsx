@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/TableButton.css";
+// import "../css/TableButton.css";
 import { useLanguage } from "../Contexts/languageContext";
 import { navbarTranslations } from "../i18n/Navbar";
 function TableButton() {

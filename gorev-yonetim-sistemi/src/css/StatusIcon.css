@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: white;
 }
 
 .dropdown-status {
@@ -34,4 +33,10 @@
 
 .status-button.status-completed {
   background-color: rgb(255, 190, 106);
+}
+
+body.dark .dropdown-status,
+body.dark .dropdown-status button {
+  background-color: #444;
+  border: none;
 }

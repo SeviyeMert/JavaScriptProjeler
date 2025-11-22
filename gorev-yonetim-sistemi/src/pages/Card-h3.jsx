@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Card-h3.css";
+// import "../css/Card-h3.css";
 import "../css/Context.css";
 
 const Card_h3 = (props) => {

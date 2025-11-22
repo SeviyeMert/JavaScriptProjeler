@@ -1,6 +1,5 @@
 import React from "react";
-import { GoPlus } from "react-icons/go";
-import AddProjectButton from "./AddProjectButton";
+// import AddProjectButton from "./AddProjectButton";
 import ListButton from "./ListButton";
 import BoardButton from "./BoardButton";
 import CalendarButton from "./CalendarButton";
@@ -11,9 +10,6 @@ function Navbar() {
   return (
     <div className="add-delete-list-bar">
       <ul>
-        <li>
-          <AddProjectButton />
-        </li>
         <li>
           <ListButton />
         </li>

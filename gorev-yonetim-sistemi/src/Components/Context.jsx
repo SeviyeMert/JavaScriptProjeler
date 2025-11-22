@@ -229,7 +229,7 @@ function Context() {
     <div className="context-container">
       <div className="section-1">
         {cardData1.map((card1, index) => (
-          <Card_h1 key={index} {...card1} />
+          <Card_h1 key={index} {...card1} className={`card1-${index} `} />
         ))}
       </div>
       <div className="section-2">

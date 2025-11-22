@@ -1,9 +1,14 @@
 .projects {
   background-color: rgb(255, 255, 227);
   height: 100%;
-  padding: 60px;
+  padding: 0px;
   border-radius: 30px;
   display: flex;
+  flex-direction: column;
+}
+
+.project-list {
+  padding: 10px;
 }
 
 .header-line {
@@ -30,7 +35,7 @@
   background-color: rgb(255, 255, 255);
   width: 100%;
   gap: 20px;
-  padding: 10px 0;
+  padding: 5px 0;
   border-bottom: 1px solid rgb(56, 56, 56);
 }
 
@@ -46,10 +51,57 @@
   align-items: center;
   font-size: 15px;
   padding: 10px;
-  border-radius: 10px;
 }
 
+.add-project-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 40px;
+}
+
+/* Dark Mode Ayarları */
 body.dark .projects {
   background-color: #1e1e1e;
   border: 1px solid #bfbfbf;
+}
+
+body.dark .header-line {
+  border-bottom: 1px solid #bfbfbf;
+  color: #ececec;
+}
+
+body.dark .projects ul li {
+  background-color: #2c2c2c;
+  border-bottom: 1px solid #444;
+  color: #ececec;
+}
+
+body.dark .projects button {
+  background-color: #333;
+  color: #ececec;
+  border: 1px solid #555;
+}
+
+body.dark .projects button:hover {
+  background-color: #444;
+}
+
+@media (max-width: 1024px) {
+  .status-button,
+  .ok-button,
+  .edit-button,
+  .delete-button,
+  .comment-button {
+    width: 50px;
+  }
+
+  .item-name {
+    max-width: 30px;
+  }
+  .add-project-button {
+    margin-bottom: 50px;
+    border: 1px solid #9d9d9d;
+  }
 }

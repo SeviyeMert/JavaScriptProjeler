@@ -1,9 +1,21 @@
 .tasks {
   background-color: rgb(255, 255, 217);
   height: 100%;
-  padding: 60px;
   border-radius: 30px;
   display: flex;
+  box-sizing: border-box;
+}
+
+.tasks-list {
+  padding: 10px;
+}
+
+.list-item {
+  width: 100%;
+}
+
+.close-tasks-button {
+  width: 50px;
 }
 
 .header-line {
@@ -30,7 +42,7 @@
   background-color: rgb(255, 255, 255);
   width: 100%;
   gap: 20px;
-  padding: 10px 0;
+  padding: 5px 0;
   border-bottom: 1px solid rgb(56, 56, 56);
 }
 
@@ -48,4 +60,44 @@
   font-size: 15px;
   padding: 10px;
   border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+  .status-button,
+  .ok-button,
+  .edit-button,
+  .delete-button,
+  .comment-button {
+    width: 50px;
+  }
+
+  .item-name {
+    max-width: 30px;
+  }
+}
+
+body.dark .tasks {
+  background-color: #1e1e1e;
+  border: 1px solid #bfbfbf;
+}
+
+body.dark .header-line {
+  border-bottom: 1px solid #bfbfbf;
+  color: #ececec;
+}
+
+body.dark .tasks ul li {
+  background-color: #2c2c2c;
+  border-bottom: 1px solid #444;
+  color: #ececec;
+}
+
+body.dark .tasks button {
+  background-color: #333;
+  color: #ececec;
+  border: 1px solid #555;
+}
+
+body.dark .tasks button:hover {
+  background-color: #444;
 }

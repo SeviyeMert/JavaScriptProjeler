@@ -20,6 +20,7 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
       >
         <LuCircleDashed />
       </button>
+
       {isDropdownOpen && (
         <div className="dropdown-status">
           <button

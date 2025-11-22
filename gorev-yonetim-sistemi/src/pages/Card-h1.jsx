@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Card-h1.css";
+// import "../css/Card-h1.css";
 import { Link } from "react-router-dom";
 
 function Card_h1(props) {
@@ -21,7 +21,9 @@ function Card_h1(props) {
           ))}
       </div>
       <div className="card-image-h1">
-        {cardImage != null && <img src={cardImage} alt="image" />}
+        {cardImage != null && (
+          <img src={cardImage} alt="image" className="card-img-h1" />
+        )}
       </div>
     </div>
   );

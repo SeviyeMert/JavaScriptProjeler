@@ -5,22 +5,14 @@
   }
 }
 
-@media (480px <= width <= 1024px) {
-  .sidebar {
-    width: auto;
-  }
-}
-@media (320 <= width<= 480px) {
-  .sidebar {
-    width: 100%;
-  }
-}
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
+    width: 85%;
+    width: 350px;
     background-color: #ffffff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -37,21 +29,21 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin-right: 40px;
     margin-bottom: 20px;
-    padding-top: 10px;
   }
 
   .sidebar-logo img {
     display: flex;
     margin: 0;
-    height: 5vh;
+    height: 6vh;
   }
 
   /* Sidebar Navigasyon Linkleri */
   .sidebar-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     padding-bottom: 20px;
     margin-bottom: 20px;
   }
@@ -82,7 +74,7 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 15px;
-    padding: 30px 0 50px 0;
+    padding: 30px 40px 40px 0;
     border-top: 1px solid #ccc;
     margin-top: auto;
   }
@@ -102,5 +94,13 @@
   .sidebar-footer .log {
     display: flex;
     flex-direction: row;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+    max-width: none;
   }
 }
