@@ -26,6 +26,12 @@ import Loading from "./Components/Loading.jsx";
 import Project from "./DefaultLayout/Project.jsx";
 import Tasks from "./DefaultLayout/Tasks.jsx";
 
+import Products from "./pages/Products.jsx";
+import Solutions from "./pages/Solutions.jsx";
+import Resources from "./pages/Resources.jsx";
+import Overview from "./pages/Overview.jsx";
+import Services from "./pages/Services.jsx";
+
 const PublicLayout = ({ children }) => (
   <>
     <Header />
@@ -57,6 +63,47 @@ function App() {
                 </PublicLayout>
               }
             />
+            <Route
+              path="/products"
+              element={
+                <PublicLayout>
+                  <Products />
+                </PublicLayout>
+              }
+            />
+            <Route
+              path="/solutions"
+              element={
+                <PublicLayout>
+                  <Solutions />
+                </PublicLayout>
+              }
+            />
+            <Route
+              path="/resources"
+              element={
+                <PublicLayout>
+                  <Resources />
+                </PublicLayout>
+              }
+            />
+            <Route
+              path="/enterprise/overview"
+              element={
+                <PublicLayout>
+                  <Overview />
+                </PublicLayout>
+              }
+            />
+            <Route
+              path="/enterprise/services"
+              element={
+                <PublicLayout>
+                  <Services />
+                </PublicLayout>
+              }
+            />
+
             <Route
               path="/login"
               element={
