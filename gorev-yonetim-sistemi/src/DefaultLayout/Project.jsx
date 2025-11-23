@@ -65,12 +65,19 @@ function Project() {
   }, []);
 
   const handleDeleteClick = (projectDelete) => {
-    const updated = projects.filter((p) => p && p.id !== projectDelete.id);
+    setDeleteModal(projectDelete);
+  };
+
+  const confirmDelete = () => {
+    if (!deleteModal) return;
+    const updated = projects.filter((p) => p && p.id !== deleteModal.id);
     setProjects(updated);
 
     localStorage.setItem("projects", JSON.stringify(updated));
 
     setSearchVal("");
+
+    setDeleteModal(null);
   };
 
   const handleEditClick = (project) => {
@@ -166,6 +173,19 @@ function Project() {
       </div>
 
       {isCommentSectionOpen && <CommentSection />}
+
+      {deleteModal && (
+        <div className="delete-modal-container">
+          <p>
+            You are about to delete the file named{" "}
+            <strong>"{deleteModal.name}"</strong>. Are you sure?
+          </p>
+          <div className="delete-cancel-button">
+            <button onClick={() => setDeleteModal(null)}>Cancel</button>
+            <button onClick={confirmDelete}>Yes, Delete</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

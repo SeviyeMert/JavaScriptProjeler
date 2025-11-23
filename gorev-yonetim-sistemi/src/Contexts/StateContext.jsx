@@ -12,7 +12,7 @@ const StateProvider = ({ children }) => {
   const [filteredProjects, setFilteredProjects] = useState(null);
   const [tasks, setTasks] = useState([]);
 
-  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(null);
 
   // Tasks
 

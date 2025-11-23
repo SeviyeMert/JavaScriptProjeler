@@ -61,6 +61,30 @@
   margin-left: 40px;
 }
 
+.delete-modal-container {
+  height: 40vh;
+  width: 60vw;
+  position: fixed;
+  background-color: rgb(219, 219, 219);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15vw;
+  padding: 20px;
+  z-index: 1100;
+}
+.delete-cancel-button {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  gap: 20px;
+}
+.delete-cancel-button button:hover {
+  background-color: #e9e9e9;
+}
+
 /* Dark Mode Ayarları */
 body.dark .projects {
   background-color: #1e1e1e;
