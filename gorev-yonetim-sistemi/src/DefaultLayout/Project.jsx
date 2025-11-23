@@ -6,6 +6,7 @@ import SearchButton from "./SearchButton";
 import ListItem from "./ListItem.jsx";
 import CommentSection from "./CommentSection.jsx";
 import AddProjectButton from "./AddProjectButton.jsx";
+import { IoCloseSharp } from "react-icons/io5";
 import { useLanguage } from "../Contexts/languageContext.jsx";
 import { projectTranslations } from "../i18n/Project.js";
 
@@ -39,11 +40,21 @@ function Project() {
       status: "default",
       comments: [],
     };
-    const updated = [...projects, newProject];
+    const updated = [newProject, ...projects];
     setProjects(updated);
     localStorage.setItem("projects", JSON.stringify(updated));
     setProjectName("");
     setIsInput(false);
+  };
+
+  const handleCancelInput = () => {
+    setIsInput(false);
+    setProjectName("");
+  };
+
+  const handleCancelEdit = () => {
+    setEditableProject(null);
+    setEditedProjectName("");
   };
 
   useEffect(() => {
@@ -116,7 +127,12 @@ function Project() {
               onChange={handleInputChange}
               placeholder={t.project_input_placeholder}
             />
-            <button onClick={handleSaveProject}>{t.add_button}</button>
+            <div className="item-actions">
+              <button onClick={handleSaveProject}>{t.add_button}</button>
+              <button onClick={handleCancelInput}>
+                <IoCloseSharp />
+              </button>
+            </div>
           </li>
         )}
 
@@ -132,6 +148,7 @@ function Project() {
               handleEditInputChange={handleEditInputChange}
               handleSaveEdit={handleSaveEdit}
               handleEditClick={handleEditClick}
+              handleCancelEdit={handleCancelEdit}
               handleDeleteClick={handleDeleteClick}
               moveItem={moveProject}
               handleStatusChange={handleStatusChange}

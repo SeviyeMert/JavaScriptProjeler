@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import { IoCloseSharp } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
 import { useDrag, useDrop } from "react-dnd";
 import StatusIcon from "./StatusIcon";
@@ -15,6 +16,7 @@ function ListItem({
   handleEditInputChange,
   handleSaveEdit,
   handleEditClick,
+  handleCancelEdit,
   handleDeleteClick,
   moveItem,
   handleStatusChange,
@@ -84,11 +86,8 @@ function ListItem({
             <button className="ok-button" onClick={handleSaveEdit}>
               <TiTick />
             </button>
-            <button
-              className="delete-button"
-              onClick={() => handleDeleteClick(item)}
-            >
-              <MdDeleteOutline />
+            <button className="cancel-button" onClick={handleCancelEdit}>
+              <IoCloseSharp />
             </button>
           </div>
         </>
