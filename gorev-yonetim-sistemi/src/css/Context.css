@@ -424,6 +424,7 @@ body.dark div:not(.theme-switcher) {
   margin: 0;
   margin-bottom: 20px;
   font-size: 2.5rem;
+  cursor: pointer;
 }
 .card6-logos li {
   display: inline-block;
@@ -525,6 +526,7 @@ body.dark .back-home-button:hover {
     overflow: hidden;
     box-sizing: border-box;
   }
+
   .context-products,
   .context-solutions,
   .context-resources,

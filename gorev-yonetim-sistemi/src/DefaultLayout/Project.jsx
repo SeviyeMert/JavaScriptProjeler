@@ -26,6 +26,8 @@ function Project() {
     searchVal,
     setSearchVal,
     isCommentSectionOpen,
+    deleteModal,
+    setDeleteModal,
   } = useContext(StateContext);
   const { language } = useLanguage();
   const t = projectTranslations[language];
@@ -126,6 +128,7 @@ function Project() {
               value={projectName}
               onChange={handleInputChange}
               placeholder={t.project_input_placeholder}
+              autoFocus
             />
             <div className="item-actions">
               <button onClick={handleSaveProject}>{t.add_button}</button>

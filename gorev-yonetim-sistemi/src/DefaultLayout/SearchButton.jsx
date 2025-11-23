@@ -27,6 +27,7 @@ function SearchButton() {
         placeholder="search"
         value={searchVal}
         onChange={handleSearchClick}
+        autoFocus
       />
       <IoSearchSharp />
     </div>

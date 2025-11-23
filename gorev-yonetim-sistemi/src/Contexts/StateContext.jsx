@@ -12,6 +12,8 @@ const StateProvider = ({ children }) => {
   const [filteredProjects, setFilteredProjects] = useState(null);
   const [tasks, setTasks] = useState([]);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   // Tasks
 
   const [taskName, setTaskName] = useState("");
@@ -60,6 +62,8 @@ const StateProvider = ({ children }) => {
         setIsCommentSectionOpen,
         selectedProjectForComment,
         setSelectedProjectForComment,
+        deleteModal,
+        setDeleteModal,
       }}
     >
       {children}
