@@ -3,10 +3,10 @@ import React from "react";
 import "../css/Context.css";
 
 const Card_h3 = (props) => {
-  const { cardLogo, cardHeader, cardContext, cardImage, className } = props;
+  const { cardLogo, cardHeader, cardContext, cardImage } = props;
 
   return (
-    <div className={`card-container-h3 ${className}`}>
+    <div className="card-container-h3">
       <span
         className="card-logo-h3"
         style={{

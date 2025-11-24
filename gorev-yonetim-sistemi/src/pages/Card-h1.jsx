@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Card_h1(props) {
-  const { cardHeader, cardContext, cardList, cardImage, className } = props;
+  const { cardHeader, cardContext, cardList, cardImage } = props;
 
   return (
     <div className="card-container-h1">

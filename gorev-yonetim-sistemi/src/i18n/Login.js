@@ -1,0 +1,47 @@
+export const loginTranslations = {
+  en: {
+    loginHeader: "Log in",
+    emailPlaceholder: "Email",
+    passwordPlaceholder: "Password",
+    loginButton: "Log in",
+    noAccount: "Don't have an account?",
+    signUp: "Sign up",
+    // Hata ve Doğrulama Mesajları
+    emailRequired: "Email is required.",
+    passwordRequired: "Password is required.",
+    passwordMinLength: "Password must be at least 4 characters.",
+    serverError: "Server access error.",
+    credentialsError: "Email or password incorrect.",
+    loginErrorPrefix: "Login error: ",
+  },
+  tr: {
+    loginHeader: "Giriş Yap",
+    emailPlaceholder: "E-posta",
+    passwordPlaceholder: "Şifre",
+    loginButton: "Giriş Yap",
+    noAccount: "Hesabınız yok mu?",
+    signUp: "Kayıt Ol",
+    // Hata ve Doğrulama Mesajları
+    emailRequired: "Email zorunludur.",
+    passwordRequired: "Şifre zorunludur.",
+    passwordMinLength: "Şifre en az 4 karakter olmalıdır.",
+    serverError: "Sunucuya erişim hatası.",
+    credentialsError: "E-posta veya şifre hatalı.",
+    loginErrorPrefix: "Giriş hatası: ",
+  },
+  ru: {
+    loginHeader: "Вход",
+    emailPlaceholder: "Эл. почта",
+    passwordPlaceholder: "Пароль",
+    loginButton: "Войти",
+    noAccount: "Нет аккаунта?",
+    signUp: "Зарегистрироваться",
+    // Hata ve Doğrulama Mesajları
+    emailRequired: "Электронная почта обязательна.",
+    passwordRequired: "Пароль обязателен.",
+    passwordMinLength: "Пароль должен содержать не менее 4 символов.",
+    serverError: "Ошибка доступа к серверу.",
+    credentialsError: "Неверный адрес электронной почты или пароль.",
+    loginErrorPrefix: "Ошибка входа: ",
+  },
+};

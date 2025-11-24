@@ -4,6 +4,19 @@
   padding: 20px;
   height: 100vh;
 }
+.register {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+body.dark .register,
+body.dark .register-link-text {
+  color: #858585;
+}
+body.dark .small-login {
+  color: #ffffff;
+}
 
 .register-input {
   width: 100%;

@@ -98,10 +98,6 @@ function Project() {
   };
 
   const moveProject = (dragIndex, hoverIndex) => {
-    if (searchVal && searchVal.trim().length > 0) {
-      return;
-    }
-
     const dragProject = projects[dragIndex];
     const newProjects = [...projects];
     newProjects.splice(dragIndex, 1);
@@ -178,7 +174,7 @@ function Project() {
         <div className="delete-modal-container">
           <p>
             You are about to delete the file named{" "}
-            <strong>"{deleteModal.name}"</strong>. Are you sure?
+            <strong>{deleteModal.name}</strong>. Are you sure?
           </p>
           <div className="delete-cancel-button">
             <button onClick={() => setDeleteModal(null)}>Cancel</button>

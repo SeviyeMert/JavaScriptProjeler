@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { StateContext } from "../Contexts/StateContext";
 import "../css/Tasks.css";
 import SearchButton from "./SearchButton";
@@ -147,13 +147,15 @@ function Tasks() {
       <ul className="tasks-list">
         <div className="header-line">
           <button onClick={() => setIsInput(true)}>{projectName} Tasks</button>
-          <TaskSearchButton />
-          <button
-            className="close-tasks-button"
-            onClick={handleGoBackToProjects}
-          >
-            <IoCloseSharp />
-          </button>
+          <div className="tasks-search-close">
+            <TaskSearchButton />
+            <button
+              className="close-tasks-button"
+              onClick={handleGoBackToProjects}
+            >
+              <IoCloseSharp />
+            </button>
+          </div>
         </div>
 
         {isInput && (

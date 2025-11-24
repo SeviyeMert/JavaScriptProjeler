@@ -62,15 +62,20 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/Login.css";
+import { useLanguage } from "../Contexts/languageContext";
+import { loginTranslations } from "../i18n/Login";
 
 const MOCK_JWT_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NSIsImlhdCI6MTY3MjUzMTIwMH0.S-aA7wV0G_uX6tN8lJzFhQYwQxXn3tJ7oXy5rYx4Mzg";
 const API_URL = "https://6915be37465a9144626d5495.mockapi.io/api/User";
 
 function Login({ onLoginSuccess }) {
+  const { language } = useLanguage();
+  const t = loginTranslations[language];
+
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
   const {
     register,
@@ -100,7 +105,7 @@ function Login({ onLoginSuccess }) {
       });
 
       if (!response.ok) {
-        throw new Error("Sunucuya erişim hatası.");
+        throw new Error(t.serverError);
       }
 
       const users = await response.json();
@@ -116,22 +121,22 @@ function Login({ onLoginSuccess }) {
         }
         navigate("/projects");
       } else {
-        setErrorMessage("E-posta veya şifre hatalı.");
+        setErrorMessage(t.credentialsError);
       }
     } catch (error) {
-      setErrorMessage(`Giriş hatası: ${error.message}`);
+      setErrorMessage(`${t.loginErrorPrefix}${error.message}`);
     }
   };
 
   return (
     <div className="login-container">
-      <h2 className="login">Log in</h2>
+      <h2 className="login">{t.loginHeader}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t.emailPlaceHolder}
           {...register("email", {
-            required: "Email zorunludur.",
+            required: t.emailRequired,
           })}
           className="login-input"
         />
@@ -141,12 +146,12 @@ function Login({ onLoginSuccess }) {
 
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t.passwordPlaceholder}
           {...register("password", {
-            required: "Şifre zorunludur.",
+            required: t.passwordRequired,
             minLength: {
               value: 4,
-              message: "Şifre en az 4 karakter olmalıdır.",
+              message: t.passwordMinLength,
             },
           })}
           className="login-input"
@@ -160,13 +165,13 @@ function Login({ onLoginSuccess }) {
         )}
 
         <button type="submit" className="login-button">
-          Log in
+          {t.loginButton}
         </button>
       </form>
       <p className="login-link-text">
-        Don't have an account?{" "}
+        {t.noAccount}{" "}
         <Link to="/register" className="signup">
-          Sign up
+          {t.signUp}
         </Link>
       </p>
     </div>
