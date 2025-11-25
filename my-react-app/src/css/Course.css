@@ -1,12 +1,5 @@
-.course-main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
 .course {
-  width: 220px;
+  width: 200px;
   height: 300px;
   border: 1px solid lightgrey;
   padding: 10px;

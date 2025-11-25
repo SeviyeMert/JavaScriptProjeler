@@ -1,25 +1,44 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './Header'
-import { courses } from './data'
-import Course from './Course'
-import './css/Course.css'
+import "./App.css";
+import Header from "./Components/Header";
+import { courses as firstCourses } from "./pages/data";
+import Course from "./pages/Course";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [courses, setCourses] = useState(firstCourses);
+
+  // const moveCourse = (index) => {
+  //   const updatedCourses = [...courses];
+  //   updatedCourses.splice(index);
+  //   setCourses(updatedCourses);
+  // };
+
+  const moveCourse = (fromIndex, toIndex) => {
+    const updatedCourses = [...courses];
+    const [movedItem] = updatedCourses.splice(fromIndex, 1);
+    updatedCourses.splice(toIndex, 0, movedItem);
+    setCourses(updatedCourses);
+  };
 
   return (
-    <div>
-      <Header />
-      <div className='course-main'>
-      {
-        courses?.map((course)=>(
-          <Course key={course.id} course={course}/>
-        ))
-      }
+    <DndProvider backend={HTML5Backend}>
+      <div>
+        <Header />
+        <div className="course-main">
+          {courses?.map((course, index) => (
+            <Course
+              key={course.id}
+              index={index}
+              course={course}
+              moveCourse={moveCourse}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  )
+    </DndProvider>
+  );
 }
 
-export default App
+export default App;
