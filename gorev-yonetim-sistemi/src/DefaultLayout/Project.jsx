@@ -97,22 +97,21 @@ function Project() {
     setEditedProjectName("");
   };
 
-  const moveProject = (dragIndex, hoverIndex) => {
-    const dragProject = projects[dragIndex];
-    const newProjects = [...projects];
-    newProjects.splice(dragIndex, 1);
-    newProjects.splice(hoverIndex, 0, dragProject);
-
-    setProjects(newProjects);
-    localStorage.setItem("projects", JSON.stringify(newProjects));
-  };
-
   const handleStatusChange = (projectId, newStatus) => {
     const updatedProjects = projects.map((p) =>
       p.id === projectId ? { ...p, status: newStatus } : p
     );
     setProjects(updatedProjects);
     localStorage.setItem("projects", JSON.stringify(updatedProjects));
+  };
+
+  const moveProjects = (fromIndex, toIndex) => {
+    const newProjects = [...projects];
+    const [moveProject] = newProjects.splice(fromIndex, 1);
+    newProjects.splice(toIndex, 0, moveProject);
+
+    setProjects(newProjects);
+    localStorage.setItem("projects", JSON.stringify(newProjects));
   };
 
   return (
@@ -156,10 +155,10 @@ function Project() {
               handleEditClick={handleEditClick}
               handleCancelEdit={handleCancelEdit}
               handleDeleteClick={handleDeleteClick}
-              moveItem={moveProject}
               handleStatusChange={handleStatusChange}
               dragType="item"
               hasCommentButton={true}
+              moveProjects={moveProjects}
             />
           ))}
       </ul>

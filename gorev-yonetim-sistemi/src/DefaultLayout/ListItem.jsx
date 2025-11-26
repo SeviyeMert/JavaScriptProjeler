@@ -18,7 +18,7 @@ function ListItem({
   handleEditClick,
   handleCancelEdit,
   handleDeleteClick,
-  moveItem,
+  moveProjects,
   handleStatusChange,
   dragType,
   hasCommentButton = false,
@@ -27,39 +27,34 @@ function ListItem({
   const ref = useRef(null);
   const navigate = useNavigate();
 
-  const [{ isDragging }, dragRef] = useDrag({
-    type: dragType,
-    item: { id: item.id, index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: "row",
+      item: { index },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
     }),
-  });
+    [index]
+  );
 
-  const [, dropRef] = useDrop({
-    accept: dragType,
-    hover: (draggedItem, monitor) => {
-      if (!ref.current || draggedItem.index === index || !moveItem) {
-        return;
-      }
-      const dragIndex = draggedItem.index;
-      const hoverIndex = index;
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const hoverActualY = monitor.getClientOffset().y - hoverBoundingRect.top;
+  const [{ isOver }, drop] = useDrop(
+    () => ({
+      accept: "row",
+      drop: (item) => {
+        const fromIndex = item.index;
+        const toIndex = index;
 
-      if (dragIndex < hoverIndex && hoverActualY < hoverMiddleY) return;
-      if (dragIndex > hoverIndex && hoverActualY > hoverMiddleY) return;
+        moveProjects(fromIndex, toIndex);
+      },
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+      }),
+    }),
+    [index, moveProjects]
+  );
 
-      moveItem(dragIndex, hoverIndex);
-
-      draggedItem.index = hoverIndex;
-    },
-  });
-
-  const dragDropRef = dragRef(dropRef(ref));
-
-  const opacity = isDragging ? 0 : 1;
+  const dragDropRef = drag(drop(ref));
 
   const handleItemClick = () => {
     if (onItemClick) {
@@ -74,51 +69,57 @@ function ListItem({
   const isEditable = editableItem && editableItem.id === item.id;
 
   return (
-    <li ref={dragDropRef} style={{ opacity }} className="list-item">
-      {isEditable ? (
-        <>
-          <input
-            type="text"
-            value={editedItemName}
-            onChange={handleEditInputChange}
-          />
-          <div className="item-actions">
-            <button className="ok-button" onClick={handleSaveEdit}>
-              <TiTick />
-            </button>
-            <button className="cancel-button" onClick={handleCancelEdit}>
-              <IoCloseSharp />
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <StatusIcon
-            itemId={item.id}
-            currentStatus={item.status || "default"}
-            handleStatusChange={handleStatusChange}
-          />
-          <span onClick={handleItemClick} className="item-name">
-            {item.name}
-          </span>
-          <div className="item-actions">
-            <button
-              className="edit-button"
-              onClick={() => handleEditClick(item)}
-            >
-              <CiEdit />
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => handleDeleteClick(item)}
-            >
-              <MdDeleteOutline />
-            </button>
-            {hasCommentButton && <CommentButton project={item} />}
-          </div>
-        </>
-      )}
-    </li>
+    <div className="row">
+      <li
+        ref={dragDropRef}
+        style={{ opacity: isDragging ? 0.5 : 1, cursor: "move" }}
+        className="list-item"
+      >
+        {isEditable ? (
+          <>
+            <input
+              type="text"
+              value={editedItemName}
+              onChange={handleEditInputChange}
+            />
+            <div className="item-actions">
+              <button className="ok-button" onClick={handleSaveEdit}>
+                <TiTick />
+              </button>
+              <button className="cancel-button" onClick={handleCancelEdit}>
+                <IoCloseSharp />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <StatusIcon
+              itemId={item.id}
+              currentStatus={item.status || "default"}
+              handleStatusChange={handleStatusChange}
+            />
+            <span onClick={handleItemClick} className="item-name">
+              {item.name}
+            </span>
+            <div className="item-actions">
+              <button
+                className="edit-button"
+                onClick={() => handleEditClick(item)}
+              >
+                <CiEdit />
+              </button>
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteClick(item)}
+              >
+                <MdDeleteOutline />
+              </button>
+              {hasCommentButton && <CommentButton project={item} />}
+            </div>
+          </>
+        )}
+      </li>
+    </div>
   );
 }
 

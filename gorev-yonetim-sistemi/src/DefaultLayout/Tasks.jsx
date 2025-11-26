@@ -185,8 +185,7 @@ function Tasks() {
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
               handleStatusChange={handleStatusChange}
-              moveItem={moveTask}
-              dragType="taskItem"
+              moveProjects={moveTask}
               hasCommentButton={false}
             />
           ))}

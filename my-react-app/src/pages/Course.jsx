@@ -15,6 +15,7 @@ function Course({ course, index, moveCourse }) {
     }),
     [index]
   );
+
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: "card",
@@ -24,6 +25,8 @@ function Course({ course, index, moveCourse }) {
         const toIndex = index;
 
         moveCourse(fromIndex, toIndex);
+
+        item.index = index;
       },
       collect: (monitor) => ({
         isOver: monitor.isOver(),

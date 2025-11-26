@@ -14,6 +14,8 @@ const StateProvider = ({ children }) => {
 
   const [deleteModal, setDeleteModal] = useState(null);
 
+  const [item, setItem] = useState([]);
+
   // Tasks
 
   const [taskName, setTaskName] = useState("");
@@ -64,6 +66,8 @@ const StateProvider = ({ children }) => {
         setSelectedProjectForComment,
         deleteModal,
         setDeleteModal,
+        item,
+        setItem,
       }}
     >
       {children}

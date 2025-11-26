@@ -6,7 +6,7 @@ import { useLanguage } from "../Contexts/languageContext.jsx";
 import { navbarTranslations } from "../i18n/Navbar.js";
 
 function AddProjectButton() {
-  const { setIsInput, ProjectName, setProjectName } = useContext(StateContext);
+  const { setIsInput, projectName, setProjectName } = useContext(StateContext);
 
   const { language } = useLanguage();
   const t = navbarTranslations[language];

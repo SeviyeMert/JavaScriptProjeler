@@ -1,6 +1,7 @@
 import "./App.css";
 import { LanguageProvider } from "./Contexts/languageContext";
 import { ThemeProvider } from "./Contexts/ThemeContext";
+import StateProvider from "./Contexts/StateContext.jsx";
 import {
   BrowserRouter as Router,
   Routes,
@@ -54,93 +55,95 @@ function App() {
     <Router>
       <ThemeProvider>
         <LanguageProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PublicLayout>
-                  <Context />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/products"
-              element={
-                <PublicLayout>
-                  <Products />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/solutions"
-              element={
-                <PublicLayout>
-                  <Solutions />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/resources"
-              element={
-                <PublicLayout>
-                  <Resources />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/enterprise/overview"
-              element={
-                <PublicLayout>
-                  <Overview />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/enterprise/services"
-              element={
-                <PublicLayout>
-                  <Services />
-                </PublicLayout>
-              }
-            />
-
-            <Route
-              path="/login"
-              element={
-                <Suspense fallback={<Loading />}>
+          <StateProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
                   <PublicLayout>
-                    <Login onLoginSuccess={handleLoginSuccess} />
+                    <Context />
                   </PublicLayout>
-                </Suspense>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <Suspense fallback={<Loading />}>
+                }
+              />
+              <Route
+                path="/products"
+                element={
                   <PublicLayout>
-                    <Register />
+                    <Products />
                   </PublicLayout>
-                </Suspense>
-              }
-            />
-            <Route
-              path="/projects/*"
-              element={
-                <Suspense fallback={<Loading />}>
-                  {isLoggedIn ? (
-                    <DefaultLayout />
-                  ) : (
-                    <Navigate to="/login" replace />
-                  )}
-                </Suspense>
-              }
-            >
-              <Route index element={<Project />} />
+                }
+              />
+              <Route
+                path="/solutions"
+                element={
+                  <PublicLayout>
+                    <Solutions />
+                  </PublicLayout>
+                }
+              />
+              <Route
+                path="/resources"
+                element={
+                  <PublicLayout>
+                    <Resources />
+                  </PublicLayout>
+                }
+              />
+              <Route
+                path="/enterprise/overview"
+                element={
+                  <PublicLayout>
+                    <Overview />
+                  </PublicLayout>
+                }
+              />
+              <Route
+                path="/enterprise/services"
+                element={
+                  <PublicLayout>
+                    <Services />
+                  </PublicLayout>
+                }
+              />
 
-              <Route path="tasks/:projectId" element={<Tasks />} />
-            </Route>
-          </Routes>
+              <Route
+                path="/login"
+                element={
+                  <Suspense fallback={<Loading />}>
+                    <PublicLayout>
+                      <Login onLoginSuccess={handleLoginSuccess} />
+                    </PublicLayout>
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <Suspense fallback={<Loading />}>
+                    <PublicLayout>
+                      <Register />
+                    </PublicLayout>
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/projects/*"
+                element={
+                  <Suspense fallback={<Loading />}>
+                    {isLoggedIn ? (
+                      <DefaultLayout />
+                    ) : (
+                      <Navigate to="/login" replace />
+                    )}
+                  </Suspense>
+                }
+              >
+                <Route index element={<Project />} />
+
+                <Route path="tasks/:projectId" element={<Tasks />} />
+              </Route>
+            </Routes>
+          </StateProvider>
         </LanguageProvider>
       </ThemeProvider>
     </Router>
