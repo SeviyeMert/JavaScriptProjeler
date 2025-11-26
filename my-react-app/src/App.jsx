@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import { courses as firstCourses } from "./pages/data";
 import Course from "./pages/Course";
-import { DndProvider } from "react-dnd";
+import { DndProvider /*useDrop*/ } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useState } from "react";
 
@@ -22,11 +22,15 @@ function App() {
     setCourses(updatedCourses);
   };
 
+  // const [, drop] = useDrop(() => ({
+  //   accept: "card",
+  // }));
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div>
         <Header />
-        <div className="course-main">
+        <div className="course-main" /*ref={drop}*/>
           {courses?.map((course, index) => (
             <Course
               key={course.id}
