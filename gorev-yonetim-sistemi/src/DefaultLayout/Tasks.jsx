@@ -13,7 +13,7 @@ function Tasks() {
   const { projectId } = useParams();
 
   const navigate = useNavigate();
-  const projectName = location.state?.projectName || "Tasks";
+  const projectName = "Tasks";
 
   const {
     tasks,
@@ -32,25 +32,10 @@ function Tasks() {
     setFilteredTasks,
   } = useContext(StateContext);
 
-  const allProjectTasks = tasks.filter((task) => task.projectId === projectId);
-
-  const tasksToDisplay = searchValTask ? filteredTasks : allProjectTasks;
-
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) setTasks(JSON.parse(storedTasks));
   }, [setTasks]);
-
-  useEffect(() => {
-    if (searchValTask && allProjectTasks.length > 0) {
-      const results = allProjectTasks.filter((task) =>
-        task.name.toLowerCase().includes(searchValTask.toLowerCase())
-      );
-      setFilteredTasks(results);
-    } else {
-      setFilteredTasks(allProjectTasks);
-    }
-  }, [searchValTask, tasks, projectId]);
 
   const handleAddTask = () => {
     setIsInput(true);
@@ -89,9 +74,6 @@ function Tasks() {
     const updated = tasks.filter((t) => t && t.id !== taskToDelete.id);
     setTasks(updated);
     localStorage.setItem("tasks", JSON.stringify(updated));
-    if (searchValTask) {
-      setFilteredTasks((prev) => prev.filter((t) => t.id !== taskToDelete.id));
-    }
   };
 
   const handleEditClick = (task) => {
@@ -123,20 +105,6 @@ function Tasks() {
     navigate("/projects");
   };
 
-  const TaskSearchButton = () => {
-    return (
-      <div className="search-button">
-        <input
-          type="text"
-          placeholder="search tasks"
-          value={searchValTask}
-          onChange={(e) => setSearchValTask(e.target.value)}
-        />
-        <IoSearchSharp />
-      </div>
-    );
-  };
-
   const moveTasks = (fromIndex, toIndex) => {
     const newTasks = [...tasks];
     const [moveTask] = newTasks.splice(fromIndex, 1);
@@ -152,7 +120,6 @@ function Tasks() {
         <div className="header-line">
           <button onClick={() => setIsInput(true)}>{projectName}</button>
           <div className="tasks-search-close">
-            <TaskSearchButton />
             <button
               className="close-tasks-button"
               onClick={handleGoBackToProjects}
@@ -179,25 +146,23 @@ function Tasks() {
           </li>
         )}
 
-        {tasksToDisplay
-          .filter((task) => task != null)
-          .map((task, index) => (
-            <ListItem
-              key={task.id}
-              item={task}
-              index={index}
-              editableItem={editableTask}
-              editedItemName={editedTaskName}
-              handleEditInputChange={handleEditInputChange}
-              handleSaveEdit={handleSaveEdit}
-              handleCancelEdit={handleCancelEdit}
-              handleEditClick={handleEditClick}
-              handleDeleteClick={handleDeleteClick}
-              handleStatusChange={handleStatusChange}
-              moveProjects={moveTasks}
-              hasCommentButton={false}
-            />
-          ))}
+        {tasks.map((task, index) => (
+          <ListItem
+            key={task.id}
+            item={task}
+            index={index}
+            editableItem={editableTask}
+            editedItemName={editedTaskName}
+            handleEditInputChange={handleEditInputChange}
+            handleSaveEdit={handleSaveEdit}
+            handleCancelEdit={handleCancelEdit}
+            handleEditClick={handleEditClick}
+            handleDeleteClick={handleDeleteClick}
+            handleStatusChange={handleStatusChange}
+            moveProjects={moveTasks}
+            hasCommentButton={false}
+          />
+        ))}
       </ul>
 
       <div className="add-project-wrapper">

@@ -67,7 +67,7 @@ function Project() {
   useEffect(() => {
     const stored = localStorage.getItem("projects");
     if (stored) setProjects(JSON.parse(stored));
-  }, []);
+  }, [setProjects]);
 
   const handleDeleteClick = (projectDelete) => {
     setDeleteModal(projectDelete);
@@ -159,7 +159,6 @@ function Project() {
             handleCancelEdit={handleCancelEdit}
             handleDeleteClick={handleDeleteClick}
             handleStatusChange={handleStatusChange}
-            dragType="item"
             hasCommentButton={true}
             moveProjects={moveProjects}
           />

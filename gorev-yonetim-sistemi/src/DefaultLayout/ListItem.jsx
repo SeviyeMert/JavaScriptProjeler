@@ -20,9 +20,7 @@ function ListItem({
   handleDeleteClick,
   moveProjects,
   handleStatusChange,
-  dragType,
   hasCommentButton = false,
-  onItemClick,
 }) {
   const ref = useRef(null);
   const navigate = useNavigate();
@@ -57,13 +55,9 @@ function ListItem({
   const dragDropRef = drag(drop(ref));
 
   const handleItemClick = () => {
-    if (onItemClick) {
-      onItemClick(item);
-    } else if (dragType === "item") {
-      navigate(`/projects/tasks/${item.id}`, {
-        state: { projectName: item.name },
-      });
-    }
+    navigate(`/projects/tasks/${item.id}`, {
+      state: { projectName: item.name },
+    });
   };
 
   const isEditable = editableItem && editableItem.id === item.id;
