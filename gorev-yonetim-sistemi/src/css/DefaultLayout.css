@@ -35,7 +35,6 @@
   }
 
   .content-area {
-    grid-column: 1 / -1;
     padding: 0 40px;
     width: 100%;
   }
@@ -52,11 +51,10 @@
 
   .sidebar-area {
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     top: 0;
     left: 0;
-    height: 100vh;
   }
 
   .layout-container {

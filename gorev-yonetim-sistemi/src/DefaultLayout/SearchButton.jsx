@@ -10,14 +10,11 @@ function SearchButton() {
   const handleSearchClick = (e) => {
     const newSearchValue = e.target.value;
     setSearchVal(newSearchValue);
-    if (newSearchValue === "") {
-      setFilteredProjects(projects);
-    } else {
-      const results = projects.filter((project) =>
-        project.name.toLowerCase().includes(newSearchValue.toLowerCase())
-      );
-      setFilteredProjects(results);
-    }
+
+    const results = projects.filter((project) =>
+      project.name.toLowerCase().includes(newSearchValue.toLowerCase())
+    );
+    setFilteredProjects(results);
   };
 
   return (

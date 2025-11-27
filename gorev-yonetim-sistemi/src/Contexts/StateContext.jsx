@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const StateContext = createContext();
 
@@ -24,12 +24,20 @@ const StateProvider = ({ children }) => {
   const [editedTaskName, setEditedTaskName] = useState("");
 
   const [searchValTask, setSearchValTask] = useState("");
-  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState(null);
 
   // Comment
   const [isCommentSectionOpen, setIsCommentSectionOpen] = useState(false);
   const [selectedProjectForComment, setSelectedProjectForComment] =
     useState(null);
+
+  useEffect(() => {
+    setFilteredProjects(projects);
+  }, [projects]);
+
+  useEffect(() => {
+    setFilteredTasks(tasks);
+  }, [tasks]);
 
   return (
     <StateContext.Provider

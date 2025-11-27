@@ -14,7 +14,7 @@
   width: 150px;
   position: absolute;
   top: 100%;
-  z-index: 10;
+  z-index: 1050;
 }
 
 .dropdown-status button {

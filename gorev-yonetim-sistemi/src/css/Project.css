@@ -9,6 +9,7 @@
 
 .project-list {
   padding: 10px;
+  display: flex;
 }
 
 .header-line {
@@ -41,6 +42,7 @@
 
 .projects li div {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -57,8 +59,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: flex-start;
-  width: 100%;
-  margin-left: 40px;
+  margin-left: 10px;
 }
 
 .delete-modal-container {
@@ -113,18 +114,24 @@ body.dark .projects button:hover {
 }
 
 @media (max-width: 1024px) {
-  .status-button,
-  .ok-button,
-  .edit-button,
-  .delete-button,
-  .comment-button {
-    width: 50px;
+  .projects .status-button,
+  .projects .ok-button,
+  .projects .edit-button,
+  .projects .delete-button,
+  .projects .comment-button {
+    font-size: 0.8rem;
+    width: 40px;
+    height: 40px;
   }
 
   .item-name {
-    max-width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 2vw;
   }
   .add-project-button {
+    width: 30vw;
     margin-bottom: 50px;
     border: 1px solid #9d9d9d;
   }

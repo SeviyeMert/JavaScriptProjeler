@@ -5,7 +5,7 @@ import SearchButton from "./SearchButton";
 // import ProjectItem from "./ProjectItem";
 import ListItem from "./ListItem.jsx";
 import CommentSection from "./CommentSection.jsx";
-import AddProjectButton from "./AddProjectButton.jsx";
+import AddProjectTaskButton from "./AddProjectButton.jsx";
 import { IoCloseSharp } from "react-icons/io5";
 import { useLanguage } from "../Contexts/languageContext.jsx";
 import { projectTranslations } from "../i18n/Project.js";
@@ -33,6 +33,11 @@ function Project() {
   const t = projectTranslations[language];
 
   const handleInputChange = (e) => setProjectName(e.target.value);
+
+  function handleAddProject() {
+    setIsInput(true);
+    setProjectName("");
+  }
 
   const handleSaveProject = () => {
     if (!projectName.trim()) return;
@@ -141,30 +146,28 @@ function Project() {
           </li>
         )}
 
-        {(filteredProjects || projects)
-          .filter((project) => project != null)
-          .map((project, index) => (
-            <ListItem
-              key={project.id}
-              item={project}
-              index={index}
-              editableItem={editableProject}
-              editedItemName={editedProjectName}
-              handleEditInputChange={handleEditInputChange}
-              handleSaveEdit={handleSaveEdit}
-              handleEditClick={handleEditClick}
-              handleCancelEdit={handleCancelEdit}
-              handleDeleteClick={handleDeleteClick}
-              handleStatusChange={handleStatusChange}
-              dragType="item"
-              hasCommentButton={true}
-              moveProjects={moveProjects}
-            />
-          ))}
+        {filteredProjects.map((project, index) => (
+          <ListItem
+            key={project.id}
+            item={project}
+            index={index}
+            editableItem={editableProject}
+            editedItemName={editedProjectName}
+            handleEditInputChange={handleEditInputChange}
+            handleSaveEdit={handleSaveEdit}
+            handleEditClick={handleEditClick}
+            handleCancelEdit={handleCancelEdit}
+            handleDeleteClick={handleDeleteClick}
+            handleStatusChange={handleStatusChange}
+            dragType="item"
+            hasCommentButton={true}
+            moveProjects={moveProjects}
+          />
+        ))}
       </ul>
 
       <div className="add-project-wrapper">
-        <AddProjectButton />
+        <AddProjectTaskButton onClick={handleAddProject} text={t.add_project} />
       </div>
 
       {isCommentSectionOpen && <CommentSection />}

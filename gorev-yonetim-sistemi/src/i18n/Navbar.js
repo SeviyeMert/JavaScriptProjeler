@@ -1,6 +1,6 @@
 export const navbarTranslations = {
   en: {
-    add_project: "Add Project",
+    add_project: "Add",
     list_button: "List",
     board_button: "Board",
     calendar_button: "Calendar",

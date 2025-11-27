@@ -93,14 +93,16 @@ function ListItem({
           </>
         ) : (
           <>
-            <StatusIcon
-              itemId={item.id}
-              currentStatus={item.status || "default"}
-              handleStatusChange={handleStatusChange}
-            />
-            <span onClick={handleItemClick} className="item-name">
-              {item.name}
-            </span>
+            <div>
+              <StatusIcon
+                itemId={item.id}
+                currentStatus={item.status || "default"}
+                handleStatusChange={handleStatusChange}
+              />
+              <span onClick={handleItemClick} className="item-name">
+                {item.name}
+              </span>
+            </div>
             <div className="item-actions">
               <button
                 className="edit-button"

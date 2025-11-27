@@ -7,6 +7,7 @@ import SearchButton from "./SearchButton";
 import ListItem from "./ListItem";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
+import AddProjectTaskButton from "./AddProjectButton";
 
 function Tasks() {
   const { projectId } = useParams();
@@ -51,6 +52,11 @@ function Tasks() {
     }
   }, [searchValTask, tasks, projectId]);
 
+  const handleAddTask = () => {
+    setIsInput(true);
+    setTaskName("");
+  };
+
   const handleSaveTask = () => {
     if (!taskName.trim()) return;
     const newTaskId = Date.now();
@@ -61,12 +67,22 @@ function Tasks() {
       status: "default",
     };
 
-    const updatedTasks = [...tasks, newTask];
+    const updatedTasks = [newTask, ...tasks];
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
     setTaskName("");
     setIsInput(false);
+  };
+
+  const handleCancelInput = () => {
+    setIsInput(false);
+    setTaskName("");
+  };
+
+  const handleCancelEdit = () => {
+    setEditableTask(null);
+    setEditedTaskName("");
   };
 
   const handleDeleteClick = (taskToDelete) => {
@@ -103,27 +119,6 @@ function Tasks() {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  const moveTask = (dragIndex, hoverIndex) => {
-    if (searchValTask && searchValTask.trim().length > 0) {
-      return;
-    }
-
-    const dragTask = allProjectTasks[dragIndex];
-    const newProjectTasks = [...allProjectTasks];
-
-    newProjectTasks.splice(dragIndex, 1);
-    newProjectTasks.splice(hoverIndex, 0, dragTask);
-
-    const tasksWithoutCurrentProject = tasks.filter(
-      (t) => t.projectId !== projectId
-    );
-
-    const updatedTasks = [...tasksWithoutCurrentProject, ...newProjectTasks];
-
-    setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  };
-
   const handleGoBackToProjects = () => {
     navigate("/projects");
   };
@@ -142,11 +137,20 @@ function Tasks() {
     );
   };
 
+  const moveTasks = (fromIndex, toIndex) => {
+    const newTasks = [...tasks];
+    const [moveTask] = newTasks.splice(fromIndex, 1);
+    newTasks.splice(toIndex, 0, moveTask);
+
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+  };
+
   return (
     <div className="tasks">
       <ul className="tasks-list">
         <div className="header-line">
-          <button onClick={() => setIsInput(true)}>{projectName} Tasks</button>
+          <button onClick={() => setIsInput(true)}>{projectName}</button>
           <div className="tasks-search-close">
             <TaskSearchButton />
             <button
@@ -166,8 +170,12 @@ function Tasks() {
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
               placeholder="Enter new task..."
+              autoFocus
             />
             <button onClick={handleSaveTask}>Add Task</button>
+            <button onClick={handleCancelInput}>
+              <IoCloseSharp />
+            </button>
           </li>
         )}
 
@@ -182,14 +190,19 @@ function Tasks() {
               editedItemName={editedTaskName}
               handleEditInputChange={handleEditInputChange}
               handleSaveEdit={handleSaveEdit}
+              handleCancelEdit={handleCancelEdit}
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
               handleStatusChange={handleStatusChange}
-              moveProjects={moveTask}
+              moveProjects={moveTasks}
               hasCommentButton={false}
             />
           ))}
       </ul>
+
+      <div className="add-project-wrapper">
+        <AddProjectTaskButton onClick={handleAddTask} text="Add Task" />
+      </div>
     </div>
   );
 }

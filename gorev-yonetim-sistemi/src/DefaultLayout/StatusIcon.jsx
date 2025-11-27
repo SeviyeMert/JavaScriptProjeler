@@ -16,7 +16,10 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
     <div className="status-container">
       <button
         className={`status-button ${statusClass}`}
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsDropdownOpen(!isDropdownOpen);
+        }}
       >
         <LuCircleDashed />
       </button>
