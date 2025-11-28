@@ -63,7 +63,7 @@ function ListItem({
   const isEditable = editableItem && editableItem.id === item.id;
 
   return (
-    <div className="row">
+    <div className="items-container">
       <li
         ref={dragDropRef}
         style={{ opacity: isDragging ? 0.5 : 1, cursor: "move" }}

@@ -5,7 +5,6 @@ import "../css/Tasks.css";
 import SearchButton from "./SearchButton";
 // import TaskItem from "./TaskItem.jsx";
 import ListItem from "./ListItem";
-import { IoSearchSharp } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
 import AddProjectTaskButton from "./AddProjectButton";
 
@@ -26,8 +25,8 @@ function Tasks() {
     setEditableTask,
     editedTaskName,
     setEditedTaskName,
-    searchValTask,
-    setSearchValTask,
+    searchVal,
+    setSearchVal,
     filteredTasks,
     setFilteredTasks,
   } = useContext(StateContext);
@@ -120,6 +119,12 @@ function Tasks() {
         <div className="header-line">
           <button onClick={() => setIsInput(true)}>{projectName}</button>
           <div className="tasks-search-close">
+            <SearchButton
+              searchVal={searchVal}
+              setSearchVal={setSearchVal}
+              setFilteredItems={setFilteredTasks}
+              filterItems={filteredTasks}
+            />
             <button
               className="close-tasks-button"
               onClick={handleGoBackToProjects}
@@ -146,7 +151,7 @@ function Tasks() {
           </li>
         )}
 
-        {tasks.map((task, index) => (
+        {filteredTasks.map((task, index) => (
           <ListItem
             key={task.id}
             item={task}

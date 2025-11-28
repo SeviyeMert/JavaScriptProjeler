@@ -4,17 +4,31 @@ import { IoSearchSharp } from "react-icons/io5";
 import "../css/SearchButton.css";
 
 function SearchButton() {
-  const { searchVal, setSearchVal, projects, setFilteredProjects } =
-    useContext(StateContext);
+  const {
+    searchVal,
+    setSearchVal,
+    projects,
+    tasks,
+    setFilteredProjects,
+    setFilteredTasks,
+  } = useContext(StateContext);
 
   const handleSearchClick = (e) => {
     const newSearchValue = e.target.value;
     setSearchVal(newSearchValue);
 
-    const results = projects.filter((project) =>
-      project.name.toLowerCase().includes(newSearchValue.toLowerCase())
-    );
-    setFilteredProjects(results);
+    if (projects) {
+      const results = projects.filter((item) =>
+        item.name.toLowerCase().includes(newSearchValue.toLowerCase())
+      );
+      setFilteredProjects(results);
+    }
+    if (tasks) {
+      const results = tasks.filter((item) =>
+        item.name.toLowerCase().includes(newSearchValue.toLowerCase())
+      );
+      setFilteredTasks(results);
+    }
   };
 
   return (

@@ -23,6 +23,7 @@ function Project() {
     editedProjectName,
     setEditedProjectName,
     filteredProjects,
+    setFilteredProjects,
     searchVal,
     setSearchVal,
     isCommentSectionOpen,
@@ -124,7 +125,12 @@ function Project() {
       <ul className="project-list">
         <div className="header-line">
           <button>{t.projects_header}</button>
-          <SearchButton />
+          <SearchButton
+            searchVal={searchVal}
+            setSearchVal={setSearchVal}
+            setFilteredItems={setFilteredProjects}
+            filterItems={filteredProjects}
+          />
         </div>
 
         {isInput && (
