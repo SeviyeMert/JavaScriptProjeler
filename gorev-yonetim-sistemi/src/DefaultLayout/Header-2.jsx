@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PiUserCircleGearLight } from "react-icons/pi";
 import "../css/Header-2.css";
@@ -12,8 +12,26 @@ function Header_2() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isOpen &&
+        !event.target.closest(".dropdown-item") &&
+        !event.target.closest(".dropdown-menu") &&
+        !event.target.closest(".user-logo")
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <div className="user">

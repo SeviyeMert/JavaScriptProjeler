@@ -144,6 +144,7 @@ function Project() {
               autoFocus
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSaveProject();
+                if (e.key === "Escape") handleCancelInput();
               }}
             />
             <div className="item-actions">

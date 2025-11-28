@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LuCircleDashed } from "react-icons/lu";
 import "../css/StatusIcon.css";
 
@@ -10,6 +10,34 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
     setIsDropdownOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isDropdownOpen &&
+        !event.target.closest(".status-container") &&
+        !event.target.closest(".dropdown-status")
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
+  useEffect(() => {
+    if (isDropdownOpen)
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp") {
+          document.getElementById("in-progress").focus();
+        }
+        if (e.key === "ArrowDown") {
+          document.getElementById("completed").focus();
+        }
+      });
+  }, [isDropdownOpen]);
   const statusClass = `status-${currentStatus}`;
 
   return (
@@ -29,6 +57,7 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
           <button
             className="in-progress"
             onClick={() => handleLocalStatusChange("in-progress")}
+            id="in-progress"
           >
             <LuCircleDashed style={{ backgroundColor: "rgb(255,255,125)" }} />
             In Progress
@@ -36,6 +65,7 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
           <button
             className="completed"
             onClick={() => handleLocalStatusChange("completed")}
+            id="completed"
           >
             <LuCircleDashed style={{ backgroundColor: "rgb(255,192,110)" }} />
             Completed

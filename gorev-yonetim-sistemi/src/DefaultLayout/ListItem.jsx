@@ -75,6 +75,11 @@ function ListItem({
               type="text"
               value={editedItemName}
               onChange={handleEditInputChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSaveEdit();
+                if (e.key === "Escape") handleCancelEdit();
+              }}
+              autoFocus
             />
             <div className="item-actions">
               <button className="ok-button" onClick={handleSaveEdit}>

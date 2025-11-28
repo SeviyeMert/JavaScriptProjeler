@@ -143,6 +143,10 @@ function Tasks() {
               onChange={(e) => setTaskName(e.target.value)}
               placeholder="Enter new task..."
               autoFocus
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSaveTask();
+                if (e.key === "Escape") handleCancelInput();
+              }}
             />
             <button onClick={handleSaveTask}>Add Task</button>
             <button onClick={handleCancelInput}>
