@@ -1,23 +1,25 @@
 import React from "react";
 import "../css/SideBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import DarkLightToggle from "../Contexts/DarkLightToggle";
 import logo from "../images/logo.png";
 
-const Sidebar = ({
+function Sidebar({
   t,
   handleLanguageChange,
   language,
   isEnterpriseOpen,
   setIsEnterpriseOpen,
   handleCloseSidebar,
-}) => {
+}) {
+  const navigate = useNavigate();
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
         <div className="sidebar-logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" onClick={() => navigate("/")} />
         </div>
       </div>
 
@@ -104,6 +106,6 @@ const Sidebar = ({
       </div>
     </div>
   );
-};
+}
 
 export default Sidebar;

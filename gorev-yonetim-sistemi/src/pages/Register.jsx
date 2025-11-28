@@ -78,6 +78,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import { useLanguage } from "../Contexts/languageContext";
+import { registerTranslations } from "../i18n/Register";
 
 const API_URL = "https://6915be37465a9144626d5495.mockapi.io/api/User";
 
@@ -123,6 +124,9 @@ function Register() {
       console.error("Kayıt işlemi hatası:", error);
       setErrorMessage(t.genericError);
     }
+
+    localStorage.setItem(data.name, JSON.stringify(data));
+    localStorage.setItem(data.email, JSON.stringify(data));
   };
 
   return (

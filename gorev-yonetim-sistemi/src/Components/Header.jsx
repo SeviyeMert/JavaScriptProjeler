@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/Header.css";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../Contexts/languageContext";
 import DarkLightToggle from "../Contexts/DarkLightToggle";
 import { Link } from "react-router-dom";
@@ -9,6 +10,7 @@ import { headerTranslations } from "../i18n/Header";
 import Sidebar from "./Sidebar";
 
 function Header() {
+  const navigate = useNavigate();
   const { language, setLanguage } = useLanguage();
   const [isEnterpriseOpen, setIsEnterpriseOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,7 +36,7 @@ function Header() {
 
       <div className="header-left">
         <div className="header-logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" onClick={() => navigate("/")} />
         </div>
 
         <div className="nav-links-container desktop-only">

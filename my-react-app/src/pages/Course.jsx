@@ -35,6 +35,10 @@ function Course({ course, index, moveCourse }) {
     [index, moveCourse]
   );
 
+  const handleTouchStart = () => {
+    console.log("Touch move detected");
+  };
+
   const dragDropRef = drag(drop(ref));
   const { title, description, image } = course;
   return (
@@ -42,6 +46,8 @@ function Course({ course, index, moveCourse }) {
       className="course"
       ref={dragDropRef}
       style={{ opacity: isDragging ? 0.5 : 1, cursor: "move" }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={moveCourse}
     >
       <div>
         <img src={image} width={200} height={130} />

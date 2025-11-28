@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import { courses as firstCourses } from "./pages/data";
 import Course from "./pages/Course";
 import { DndProvider /*useDrop*/ } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
 import { useState } from "react";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
   // }));
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={TouchBackend}>
       <div>
         <Header />
         <div className="course-main" /*ref={drop}*/>
