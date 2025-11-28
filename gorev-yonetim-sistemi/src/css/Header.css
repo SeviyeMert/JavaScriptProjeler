@@ -74,8 +74,9 @@ body.dark .header {
 .language button {
   background: none;
   border: none;
-  font-size: 12px;
-  width: 4vw;
+  font-size: 10px;
+  width: 2vw;
+  padding-right: 1vw;
   cursor: pointer;
   color: #000;
 }

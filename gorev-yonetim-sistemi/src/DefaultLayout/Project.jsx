@@ -142,6 +142,9 @@ function Project() {
               onChange={handleInputChange}
               placeholder={t.project_input_placeholder}
               autoFocus
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSaveProject();
+              }}
             />
             <div className="item-actions">
               <button onClick={handleSaveProject}>{t.add_button}</button>

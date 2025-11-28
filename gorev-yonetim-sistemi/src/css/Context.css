@@ -272,6 +272,7 @@ body.dark div:not(.theme-switcher) {
 .card-context-h1 {
   display: flex;
   justify-content: center;
+  padding: 10px;
   cursor: pointer;
 }
 .card-list-h1 {
@@ -299,7 +300,12 @@ body.dark div:not(.theme-switcher) {
   width: 90%;
   max-width: 900px;
   height: auto;
-  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+.card-image-h1 {
+  display: flex;
+  justify-content: center;
 }
 
 .card-container-h2 {
