@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Header.css";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../Contexts/languageContext";
@@ -27,6 +27,24 @@ function Header() {
   const handleCloseSidebar = () => {
     setIsSidebarOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isEnterpriseOpen &&
+        !event.target.closest(".dropdown-enterprice") &&
+        !event.target.closest(".dropdown-item") &&
+        !event.target.closest(".dropdown-button")
+      ) {
+        setIsEnterpriseOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isEnterpriseOpen]);
 
   return (
     <header className="header">

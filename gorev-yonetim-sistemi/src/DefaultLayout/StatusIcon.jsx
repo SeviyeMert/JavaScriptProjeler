@@ -59,7 +59,9 @@ function StatusIcon({ itemId, currentStatus, handleStatusChange }) {
             onClick={() => handleLocalStatusChange("in-progress")}
             id="in-progress"
           >
-            <LuCircleDashed style={{ backgroundColor: "rgb(255,255,125)" }} />
+            <LuCircleDashed
+              style={{ backgroundColor: "rgba(255, 255, 218, 1)" }}
+            />
             In Progress
           </button>
           <button

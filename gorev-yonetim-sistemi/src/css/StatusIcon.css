@@ -28,11 +28,11 @@
 }
 
 .status-button.status-in-progress {
-  background-color: rgb(255, 255, 161);
+  background-color: rgb(255, 255, 198);
 }
 
 .status-button.status-completed {
-  background-color: rgb(255, 190, 106);
+  background-color: rgb(255, 209, 148);
 }
 
 body.dark .dropdown-status,
